@@ -16,13 +16,17 @@ namespace ConsoleApp1
     internal class Program
     {
         static void Main(string[] args)
-        { // 註解
+        {   // 註解
+
             /*
              * 跨行註解
              */
+
+            // 整數 integer
             int a = 10; // 定義了32位元的整數，變數名稱為a，指定的值是10
             int b = 20; int c = 30;
             c = 35;
+
             // csharp 當中各種 data types
             int d     = 2147483647; // int 有含正負號，32位元整數上限除以2
             uint ud   = 4294967295; // uint 不含正負號，32位元整數上限
@@ -48,14 +52,14 @@ namespace ConsoleApp1
             char c4 = '文'; // 也可以輸入中文
 
             // String 字串(把char集合起來)，長度不固定，16 bits x N
-            string s1 = "Hello World!!"; // 使用 double quote
+            string s1 = "Hello World !!"; // 使用 double quote
             string s2 = "C#";
             string s3 = "物件導向程式設計";
             string s4; // 沒有assign值時，它會是 null，在程式存取時，遇到null會有exception發生
             s4 = "Visual C#";
             string s5 = ""; //有空字串，但是沒有空的 char → 不能創造 char c5 = '', 會出錯
 
-            Console.WriteLine("Hi, this is the first Console App");
+            Console.WriteLine("Hi, 這是第一個 Console App 主控台程式");
             Console.WriteLine("---------------------------------");
             Console.Write("32位元整數上限(含正負號):"); // Write 不會進行換行
             Console.WriteLine(d);
@@ -67,7 +71,7 @@ namespace ConsoleApp1
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("=================================");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("第一次專題發表會 - Windows 視窗程式作品 日期 2025/11/04");
+            Console.WriteLine("第一次專題發表會 - Windows 視窗程式作品 日期: 2025/11/04");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("=================================");
             Console.ResetColor();
@@ -78,20 +82,40 @@ namespace ConsoleApp1
             Console.WriteLine("\n換行符號\n\n再換行\n"); // \n 是換行符號
             Console.WriteLine("\t縮排"); // 一個 \t 會縮排4個字元
 
-            Console.WriteLine("=================================");
-            Console.WriteLine("按任意鍵結束程式");
+
 
             // Console 合併輸出，合併多個變數或值
             // 方法 1. 用 + 號 進行合併
-
+            Console.WriteLine("合併內容：");
             Console.WriteLine(s1 + s2);
-            Console.WriteLine(c1 + c2);
-            Console.WriteLine(s1 + a);
+            Console.WriteLine(a + b);
+            Console.WriteLine(s1 + a); // 字串 + 整數 → 變字串
+            Console.WriteLine(b + ff); // 整數 + 浮點數 → 變成浮點數
+            Console.WriteLine(a + c2); // a: 10, c2: 51 (ascii) 整數 + 字元 → 變成整數 (字元會轉為ACKII的編碼，再相加)
+            Console.WriteLine(0 + c2); // c2: 51 (ascii)
+            Console.WriteLine(c2); // c2: '3'
+            Console.WriteLine(s1 + c2); // 字串 + 字元 → 變字串
+            Console.WriteLine(s1 + finish);
+            // Console.WriteLine(a + finish); // error 語法錯誤，不能 整數 + boolean (和其它語言規則不同)
+
+            // 方法 2. 字串插值 一
+            Console.WriteLine("=================================");
+            string strOutput1 = $"float:{ff} double:{df} string:{s1} boolean:{right} char:{c3} int:{b}";
+            Console.WriteLine(strOutput1);
+
+            // 方法 3. 字串插值 二
+            // index 是連續的，而且從零開始
+            string strOutput2 = string.Format("整數:{0} 字串:{1} 浮點:{2}", b, "字串插值", ff); // 0,1,2 是索引(index)值
+            Console.WriteLine(strOutput2);
 
 
-            // 方法 2.
+            /*
+             ASCII 是西歐語言會使用的文字編碼
+             UTF8  萬國碼，中文會用這個編碼
+             */
 
-            // 方法 3.
+            Console.WriteLine("=================================");
+            Console.WriteLine("按任意鍵結束程式");
 
             // 等待使用者按下任何一個keyboard上的鍵，才會關閉程式
             Console.ReadKey();
