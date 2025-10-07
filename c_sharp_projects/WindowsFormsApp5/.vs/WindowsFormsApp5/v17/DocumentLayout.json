@@ -28,7 +28,11 @@
               "RelativeDocumentMoniker": "WindowsFormsApp5\\Form1.cs",
               "ToolTip": "C:\\Users\\iSpan\\Desktop\\tomlin_full_stack\\full_stack_training\\c_sharp_projects\\WindowsFormsApp5\\WindowsFormsApp5\\Form1.cs",
               "RelativeToolTip": "WindowsFormsApp5\\Form1.cs",
+<<<<<<< Updated upstream
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHkAAABZAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAFwAAAAAAAAAAAAowHkAAABZAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-07T06:10:51.967Z",
               "EditorCaption": ""
@@ -42,8 +46,12 @@
               "ToolTip": "C:\\Users\\iSpan\\Desktop\\tomlin_full_stack\\full_stack_training\\c_sharp_projects\\WindowsFormsApp5\\WindowsFormsApp5\\Form1.cs [\u8A2D\u8A08]",
               "RelativeToolTip": "WindowsFormsApp5\\Form1.cs [\u8A2D\u8A08]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< Updated upstream
               "WhenOpened": "2025-10-07T05:51:37.694Z",
               "EditorCaption": " [\u8A2D\u8A08]"
+=======
+              "WhenOpened": "2025-10-07T05:51:37.694Z"
+>>>>>>> Stashed changes
             }
           ]
         }
