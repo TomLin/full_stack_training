@@ -10,100 +10,75 @@ namespace ConsoleApp5
     {
         static void Main(string[] args)
         {
-            // 如果這邊就先定義 i, 那麼下面 for loop 裡面，就會使用這個 i，外層大括號的變數，會被內層大括號的變數延用。
-            
-            Console.WriteLine("========= For Loop (迴圈) ===========");
+            Console.WriteLine("============ For Loop (迴圈)============");
 
-            for (int i = 1; i <= 10; i += 2)
-            { // 重覆執行
-              // C#語言中，在大括號中的區域變數，本例為i，離開大括號後，就被釋放出來了
-                Console.WriteLine($"(遞增)目前的index: {i}");
-
+            for (int i = 1; i <= 10; i += 1)
+            { //重覆執行
+                Console.WriteLine($"{i}");
             }
-
-            Console.WriteLine("------------------------------");
-            
-            for (int j = 20;j >= 2; j -= 2)
+            Console.WriteLine("-----------------------------------------");
+            //EXE: 輸出 20...2 的偶數
+            for (int i = 20; i >= 2; i -= 2)
             {
-                Console.WriteLine($"(遞減)目前的index: {j}");
+                Console.WriteLine($"{i}");
             }
+            Console.WriteLine("-----------------------------------------");
 
-            Console.WriteLine("------------------------------");
-
-            int money = 100;
-            // break 中斷迴圈
-            for (int i = 1; i <= 100; i += 1)
+            int 生命值 = 1000;
+            //break 中斷迴圈
+            for (int i = 1; i <= 100000; i += 1)
             {
-                // money <= 0 程式寫法，會比 money == 0 來的好 (防衛性寫法)
-                if (money <= 0)
+                if (生命值 <= 0)
                 {
-                    Console.WriteLine("money 為零, Game Over");
+                    Console.WriteLine("生命值為零, Game Over");
                     break;
                 }
 
-                Console.WriteLine($"(break寫法) 迴圈: {i} money: {money}");
-                money -= 7;
+                Console.WriteLine($"i:{i} hp:{生命值}");
+                生命值 -= 9;
             }
-
-            Console.WriteLine("------------------------------");
-
-            // continue 跳過這一次的迴圈
-            for (int i = 1; i <= 15; i += 1)
+            Console.WriteLine("-----------------------------------------");
+            // Continue 跳過這次迴圈
+            for (int i = 1; i <= 20; i += 1)
             {
-                if (i == 5 || i == 8 || i == 11)
-                { // 輸出跳過5,8,11
+                if ((i == 5) || (i == 8) || (i == 11) || (i == 13))
+                { //EXE: 請跳過5, 8 , 11, 13
                     continue;
                 }
-
-                Console.WriteLine($"(continue寫法) 目前的index: {i}");
+                
+                Console.WriteLine($"{i}");
             }
-
-            Console.WriteLine("------------------------------");
-
-            for (int i = 1; i <= 10;i += 1)
-            { 
+            Console.WriteLine("-----------------------------------------");
+            for (int i = 1; i <= 100; i += 1)
+            { // EXE: continue 只能輸出奇數
                 if (i % 2 == 0)
-                { 
-                    continue; 
+                { //偶數跳過
+                    continue;
                 }
-
-                Console.WriteLine($"(continue寫法) 只有輸出奇數index: {i}");
-
+                Console.WriteLine($"{i}");
             }
-
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("========== while 迴圈 ============");
-
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("============ while 迴圈 ============");
             int n = 1;
-
-            while (true)
+            //while (true) //無窮迴圈
+            while (n <= 20)
             {
-                if (n >= 100) 
-                { 
-                    break;
-                }
-                Console.WriteLine($"while 迴圈的index: {n}");
+                Console.WriteLine($"{n}");
                 n++; // n += 1
             }
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("============ do while 迴圈 ============");
 
-            Console.WriteLine("------------------------------");
-
-            int m = 1;
-
-            while (m <= 20)
+            do
             {
-                Console.WriteLine($"while 迴圈的index: {m}");
-                m++;
+                Console.WriteLine("do..while迴圈執行, 至少執行一次");
             }
-
-            Console.WriteLine("------------------------------");
-
-            // do ... while 迴圈，至少會先執行一次
+            while (false);
 
 
-
-            Console.WriteLine("==============================");
+            Console.WriteLine("=========================================");
             Console.ReadKey();
+
         }
     }
 }

@@ -1,7 +1,8 @@
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe.config
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.AssemblyReference.cache
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.exe
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.AssemblyReference.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.exe.config

@@ -98,7 +98,7 @@ namespace WindowsFormsApp3
         { //數字階乘 5! = 5 x 4 x 3 x 2 x 1
             if (num == 0)
             { // 0! = 1
-                return 1; // base case
+                return 1;
             }
 
             return num * 數字階乘遞迴法(num - 1);

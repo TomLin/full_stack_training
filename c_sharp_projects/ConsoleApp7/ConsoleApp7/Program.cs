@@ -10,14 +10,15 @@ namespace ConsoleApp7
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("========== 陣列 Array ===========");
-            // 初始化整數陣列，在記憶體內，預留6個連續的空間，來放置整數，並且給予default value，在整數，是給0
-            // 使用 new 這個 keyword
-            int[] arrayOne = new int[6];
+            Console.WriteLine("============ 陣列 Array ============");
+            int[] arrayOne = new int[6]; //初始化陣列, 0 為初始值
+            char[] arrayCharOne = new char[8];
+            string[] arrayStringOne = new string[8];
 
-            Console.WriteLine($"取出陣列的元素： {arrayOne[0]}"); // 取出array中的第一個值
-
-            Console.WriteLine("---------------------------------");
+            Console.WriteLine($"取出arrayOne陣列的元素: {arrayOne[5]}"); //索引值從0開始, 連續
+            Console.WriteLine($"取出arrayCharOne的元素: _{arrayCharOne[2]}_");
+            Console.WriteLine($"取出arrayStringOne的元素: _{arrayStringOne[3]}_");
+            Console.WriteLine("--------------------------------------");
 
             arrayOne[0] = 1;
             arrayOne[1] = 2;
@@ -26,50 +27,48 @@ namespace ConsoleApp7
             arrayOne[4] = 5;
             arrayOne[5] = 6;
 
-            Console.WriteLine($"Array的長度： {arrayOne.Length}");
-
-            for (int i = 0 ; i < arrayOne.Length; i++)
+            for (int i = 0; i < 6; i += 1)
             {
-                Console.WriteLine( $"arrayOne[{i}] = {arrayOne[i]}" );
+                Console.WriteLine($"arrayOne[{i}] = {arrayOne[i]}");
             }
+            Console.WriteLine("--------------------------------------");
+            //陣列的簡寫
+            int[] arrayTwo = new int[] { 9,8,7,6,5,4,3,2,1 };
+            int[] arrayThree = { 10,20,30,40,50,60,70,80,90,100 };
+            Console.WriteLine("--------------------------------------");
+            //字串陣列
+            string[] array科目名稱 = { "國文","英文","數學","自然","社會","電腦","美術","生物"};
 
-            Console.WriteLine("---------------------------------");
-            // array的簡寫
-            int[] arrayTwo = new int[] {9,8,7,6,5,4,3,2,1};
-            int[] arrayThree = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
-            
-            Console.WriteLine("---------------------------------");
-            // 字串陣列
-            string[] arrayCourse = { "Chinese", "English", "Math", "Natural Science", 
-                "Computer Science", "Arts", "Biology" };
-
-            Console.WriteLine("---------------------------------");
-            Console.WriteLine("請輸入科目名稱(輸入完按Enter)");
-
-            string ss = Console.ReadLine();
-            bool isCourse = false;
-
-            for (int i = 0; i < arrayCourse.Length; i++)
+            for (int i = 0; i < array科目名稱.Length; i += 1)
+            //for (int i = 0; i <= array科目名稱.GetUpperBound(0); i += 1)
             {
-                if (arrayCourse[i] == ss)
-                { // 有開這門課
-                    Console.WriteLine($"有這一門課:{ss} 趕快報名吧！\n");
-                    isCourse = true;
+                Console.WriteLine($"{array科目名稱[i]}");
+            }
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("請輸入科目名稱(輸入完成請按Ennter)");
+            string ss = Console.ReadLine();
+            bool is有這個科目 = false;
+
+            for (int i = 0; i < array科目名稱.Length; i += 1)
+            {
+                if (array科目名稱[i] == ss)
+                { //找到了
+                    Console.WriteLine($"有開這門課:{ss},趕快報名吧 !!\n");
+                    is有這個科目 = true;
                     break;
                 }
                 else
-                { // 沒開這門課
-                    isCourse = false;
+                { //找不到
+                    is有這個科目 = false;
                 }
             }
 
-            if (isCourse == false)
+            if (is有這個科目 == false)
             {
                 Console.WriteLine("無此科目");
             }
 
-
-            Console.WriteLine("=================================");
+            Console.WriteLine("====================================");
             Console.ReadKey();
         }
     }

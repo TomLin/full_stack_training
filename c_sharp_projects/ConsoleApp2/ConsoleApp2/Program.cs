@@ -10,10 +10,10 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            // 算術運算式
-            Console.WriteLine("============ 算術運算式 Math Operator ============");
-            int x = 48;
-            int y = 10;
+            //算術運算式
+            Console.WriteLine("========== 算術運算式 Math Operator =========");
+            int x = 10;
+            int y = 20;
             int z = 0;
 
             z = x + y; //z指定(assign)為x + y的運算結果
@@ -23,7 +23,7 @@ namespace ConsoleApp2
             z = x * y;
             Console.WriteLine($"{x} × {y} = {z}");
             z = x / y; //整數運算會去小數
-            Console.WriteLine($"{x} ÷ {y} = {z}"); // 輸入法整合器裡面，有四則運算數學符號可以使用
+            Console.WriteLine($"{x} ÷ {y} = {z}");
             z = x % y; //餘數
             Console.WriteLine($"{x} 除以 {y} 的餘數是 {z}");
             z = x + y * y; //先乘除後加減
@@ -32,7 +32,6 @@ namespace ConsoleApp2
             Console.WriteLine($"({x} + {y}) × {y} = {z}");
             z = -x + y; //負數運算
             Console.WriteLine($"-{x} + {y} = {z}");
-
 
             Console.WriteLine("========== 整數和浮點數 ==========");
             int x2 = 10;
@@ -97,27 +96,15 @@ namespace ConsoleApp2
             logic = (p > 30) || (w < 50) && (p < w); //&&要先算 true
             logic = ((p > 20) || (w > 76)) && (p >= w); //小括號先行 false
             logic = !(p >= w);
-
-            // & and | 是舊版的寫法，新版改用 && and ||
-
             //logic = (p > w) & (p >= 50);  //false
             //logic = (w <= 80) | (p <= w); //true
             //logic = logic & (p == w);
             //logic &= (p == w);
 
             Console.WriteLine($"關係運算式結果: {logic}");
-
-            
-            
-            Console.WriteLine("========== null的effect ==========");
-
-            string v = null;
-            bool j = !(v != null);
-            Console.WriteLine("null的狀況：");
-            Console.WriteLine(j);
-            
-            Console.WriteLine("=================================================");
+            Console.WriteLine("============================================");
             Console.ReadKey();
+
         }
     }
 }

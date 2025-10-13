@@ -43,6 +43,30 @@ namespace WindowsFormsApp5
 
             arrayTempStudentName = new string[5];
             arrayTempStudentScore = new int[5];
+
+            lbl成績總和.Text = $"{計算總分(arrayStudentScore)}";
+            lbl成績平均.Text = $"{計算平均(arrayStudentScore):F2}";
+        }
+
+        int 計算總分(int[] myArrayScore)
+        {
+            int sum = 0;
+
+            foreach (int score in myArrayScore)
+            {
+                sum += score;
+            }
+
+            return sum;
+        }
+
+        double 計算平均(int[] myArrayScore)
+        {
+            double avg = 0.0;
+
+            avg = Convert.ToDouble(計算總分(myArrayScore)) / myArrayScore.Length;
+
+            return avg;
         }
 
         void 姓名排序(string[] myArrayName)
@@ -53,7 +77,7 @@ namespace WindowsFormsApp5
 
             for (int i = 0; i < myArrayName.Length; i += 1)
             {
-                strMsg += $"姓名: {myArrayName[i]}\r\n"; // 在 textbox中，需要使用\r\n來進行換行
+                strMsg += $"姓名: {myArrayName[i]}\r\n";
             }
 
             txt查詢結果.Text = strMsg;
@@ -67,7 +91,7 @@ namespace WindowsFormsApp5
 
         void 成績排序(string[] myArrayName, int[] myArrayScore)
         {
-            Array.Sort(myArrayScore, myArrayName); //維持key-Value一致 → Sort 方法的多載，同時變動兩個array
+            Array.Sort(myArrayScore, myArrayName); //維持key-Value一致
 
             string strMsg = "";
 
@@ -119,7 +143,7 @@ namespace WindowsFormsApp5
                 }
                 else
                 {   //找到了
-                    名次 = arrayTempStudentName.Length - index; // 數學技巧，從遞增array的index，得到名次
+                    名次 = arrayTempStudentName.Length - index;
                     strMsg += $"姓名 {arrayTempStudentName[index]} 成績 {arrayTempStudentScore[index]} 第{名次}名";
                 }
 

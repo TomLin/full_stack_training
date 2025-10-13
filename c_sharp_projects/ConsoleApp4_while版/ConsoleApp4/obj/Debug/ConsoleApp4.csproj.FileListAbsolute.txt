@@ -1,0 +1,16 @@
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4\ConsoleApp4\bin\Debug\ConsoleApp4.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4\ConsoleApp4\bin\Debug\ConsoleApp4.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4\ConsoleApp4\bin\Debug\ConsoleApp4.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.AssemblyReference.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4_while版\ConsoleApp4\bin\Debug\ConsoleApp4.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4_while版\ConsoleApp4\bin\Debug\ConsoleApp4.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4_while版\ConsoleApp4\bin\Debug\ConsoleApp4.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4_while版\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.AssemblyReference.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4_while版\ConsoleApp4\obj\Debug\ConsoleApp4.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4_while版\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4_while版\ConsoleApp4\obj\Debug\ConsoleApp4.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp4_while版\ConsoleApp4\obj\Debug\ConsoleApp4.pdb

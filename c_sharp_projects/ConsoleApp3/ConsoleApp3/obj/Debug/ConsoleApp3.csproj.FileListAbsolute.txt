@@ -1,8 +1,8 @@
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.pdb
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.AssemblyReference.cache
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CoreCompileInputs.cache
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp3\ConsoleApp3\bin\Debug\ConsoleApp3.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.AssemblyReference.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp3\ConsoleApp3\obj\Debug\ConsoleApp3.exe.config

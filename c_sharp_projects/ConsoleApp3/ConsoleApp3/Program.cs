@@ -10,72 +10,86 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("========== 條件判斷式 ==========");
-            Console.WriteLine("========== if...else ==========");
+            Console.WriteLine("========= 條件判斷式 =========");
+            Console.WriteLine("--------- if...else ----------");
 
-            int x = 20;
-            int y = 80;
-            Console.WriteLine($"x: {x} y: {y}");
+            int x = 80;
+            int y = 20;
+            Console.WriteLine($"x:{x} y:{y}");
 
-            if (x > y) // C#中，if 裡面的條件判斷式，不能省略括號()
-            {// true
+            if (x > y)
+            { //true
                 Console.WriteLine("x 大於 y");
-
+            }
+            else
+            { //false
+                Console.WriteLine("x 小於等於 y");
+            }
+            /////////////////////////////////////////
+            if (x > y)
+            { //true
+                Console.WriteLine("x 大於 y");
+            }
+            else
+            { //false
+                if (x < y)
+                {
+                    Console.WriteLine("x 小於 y");
+                }
+                else
+                {
+                    Console.WriteLine("x 等於 y");
+                }
+            }
+            //////////////////////////////////////////
+            Console.WriteLine("---------- else...if ----------");
+            if (x > y)
+            {
+                Console.WriteLine("x 大於 y");
+            }
+            else if (x < y)
+            {
+                Console.WriteLine("x 小於 y");
             }
             else if (x == y)
             {
-             // true
                 Console.WriteLine("x 等於 y");
             }
-            else {
-                Console.WriteLine("x 小於 y");
-            };
-
-            /* 練習題：寫出一個C#的Console程式，有三個初始變數，進行比較數值大小，
-             * 執行結果，由小到大排列輸出，需要使用if else的判斷式來寫，不能使用陣列與排序，
-             * 並且使用 .net 4.8 framework的架構。
-             */
-
-            int a = 3;
-            int b = 2;
-            int c = 1;
-
-            int temp;
-
-            if (a > b)
+            else
             {
-                temp = a;
-                a = b;
-                b = temp;
+                Console.WriteLine("其他情況(此例不執行)");
             }
-
-            if (b > c)
-            {
-                temp = b;
-                b = c;
-                c = temp;
-            }
-
-            if (a > b)
-            {
-                temp = a;
-                a = b;
-                b = temp;
-            }
-
-            Console.WriteLine("3個數字的排序(sorting)");
-            Console.WriteLine("{0}, {1}, {2}", a, b, c);
-
-
-            Console.WriteLine("========== 條件判斷式(簡式) ==========");
-
+            ////////////////////////////////////////////////////
+            Console.WriteLine("========== 條件運算式(簡式) ==========");
             int w = -8;
             int s = 0;
 
-            s = (w < 0) ? -1 : w *2; // 簡式判斷，(cond) ? true : false
-            Console.WriteLine("簡式判斷式的結果： {0}", s);
+            if (w < 0)
+            {
+                s = -1;
+            }
+            else
+            { // w >= 0
+                s = w * 2;
+            }
+
+            s = (w < 0) ? -1 : w * 2;
+
+            Console.WriteLine($"s : {s}");
+
+            Console.WriteLine("==============================");
             Console.ReadKey();
 
+            ////////////////////////////////////////////////////////////
+            // 練習題Q: 請寫出一個c#的Console程式, 利用三個初始變數, 做出三個整數比大小的功能,
+            // 執行結果列出這三個整數變數的值, 由小到大排列輸出, 只能用 if else來寫.
+            // 不能使用陣列和排序. 使用 .net framework 4.8 函式庫.
+            //
+            // 練習步驟:
+            // step 1. 自己嘗試寫作
+            // step 2. Google 部落格的教學範例, 再模仿寫一次
+            // step 3. 使用AI工具產生
+            // (我是初學的學生, 請給我範例, 並且詳細的解釋, 簡單容易理解一點, 謝謝拜託了)
         }
     }
 }

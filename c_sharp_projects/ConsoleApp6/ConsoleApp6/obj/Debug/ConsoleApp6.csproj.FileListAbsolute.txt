@@ -1,8 +1,8 @@
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.exe.config
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.exe
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.pdb
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.csproj.AssemblyReference.cache
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.csproj.CoreCompileInputs.cache
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.exe
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.pdb
-C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.exe.config
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp6\ConsoleApp6\bin\Debug\ConsoleApp6.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.csproj.AssemblyReference.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.exe
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.pdb
+C:\Users\iSpan\Documents\C#程式語言\ConsoleApp6\ConsoleApp6\obj\Debug\ConsoleApp6.exe.config

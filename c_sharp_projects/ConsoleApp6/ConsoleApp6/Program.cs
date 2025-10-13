@@ -10,32 +10,33 @@ namespace ConsoleApp6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("========= 多重迴圈 ===========");
-            Console.WriteLine("--------- 十十乘法表 ---------");
+            Console.WriteLine("============= 多重迴圈 ===============");
+            Console.WriteLine("------------  十十乘法表  -------------");
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 1; i <= 10; i += 1)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 1; j <= 10; j += 1)
                 {
-                    Console.WriteLine($"十十乖法表: {i} x {j} = {i * j}");
+                    Console.WriteLine($"{i} × {j} = {i * j}");
                 }
+                Console.WriteLine("----------");
             }
 
-            Console.WriteLine("----------- 表格 1 -----------");
-            // 表格 table 15 列(row) 10 欄 (column)
+            Console.WriteLine("------------- 表格 1 ------------------");
+            //表格 table 5列(row) 9欄(column)
 
-            for (int i = 1; i <= 9; i++)
+            for (int i = 1; i <= 5; i += 1)
             {
-                for (int j = 1;  j <= 9; j++)
+                for (int j = 1; j <= 9; j += 1)
                 {
-                    Console.Write($"[{i,-3},{j,-3}]"); // {word, -3} 表示 left aligned, length is 3
+                    Console.Write($"[{i},{j}]");
                 }
                 Console.WriteLine();
             }
 
-
-            Console.WriteLine("====================");
+            Console.WriteLine("======================================");
             Console.ReadKey();
+
         }
     }
 }
