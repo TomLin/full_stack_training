@@ -1,0 +1,15 @@
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4\ConsoleApp4\bin\Debug\ConsoleApp4.exe.config
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4\ConsoleApp4\bin\Debug\ConsoleApp4.exe
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4\ConsoleApp4\bin\Debug\ConsoleApp4.pdb
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.AssemblyReference.cache
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.exe
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.pdb
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4_while_version\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.AssemblyReference.cache
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4_while_version\ConsoleApp4\obj\Debug\ConsoleApp4.exe.config
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4_while_version\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4_while_version\ConsoleApp4\obj\Debug\ConsoleApp4.exe
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4_while_version\ConsoleApp4\obj\Debug\ConsoleApp4.pdb
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4_while_version\ConsoleApp4\bin\Debug\ConsoleApp4.exe.config
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4_while_version\ConsoleApp4\bin\Debug\ConsoleApp4.exe
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ConsoleApp4_while_version\ConsoleApp4\bin\Debug\ConsoleApp4.pdb
