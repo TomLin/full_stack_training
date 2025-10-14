@@ -42,6 +42,10 @@ namespace WindowsFormsApp1
         //struct結構欄位
         public AddressInfo 地址;
 
+        //泛型欄位
+        public PersonInfo<string> Email = new PersonInfo<string>();
+        public PersonInfo<int> 年齡 = new PersonInfo<int>();
+
 
 
         public Person()
@@ -70,7 +74,7 @@ namespace WindowsFormsApp1
         public virtual void 顯示基本資料()
         {
             string strMsg = $"{this.姓名}\n{身高}cm\n{體重}kg\n到職日 {到職日:D}\n薪資 {薪資}元\n部門名稱 {顯示部門名稱(部門代號)}\n地址 {地址.輸出完整地址有郵遞區號()}";
-
+            strMsg += $"\n郵件 {Email.myData} 年齡 {年齡.myData}";
             MessageBox.Show(strMsg);
         }
 

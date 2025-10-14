@@ -1,0 +1,10 @@
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.AssemblyReference.cache
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\DotNet\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
