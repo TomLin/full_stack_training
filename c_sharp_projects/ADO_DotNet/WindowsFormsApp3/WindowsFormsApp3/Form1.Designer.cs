@@ -35,17 +35,17 @@
             this.personsTableAdapter = new WindowsFormsApp3.myDBDataSetTableAdapters.PersonsTableAdapter();
             this.tableAdapterManager = new WindowsFormsApp3.myDBDataSetTableAdapters.TableAdapterManager();
             this.personsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.personsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.personsDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,17 +81,18 @@
             this.btnRevert = new System.Windows.Forms.Button();
             this.lblEntryNum = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAddMember = new System.Windows.Forms.Button();
             this.btnSaveMember = new System.Windows.Forms.Button();
+            this.btnAddMember = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtFind = new System.Windows.Forms.TextBox();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.comboFind = new System.Windows.Forms.ComboBox();
             this.comboFilter = new System.Windows.Forms.ComboBox();
+            this.comboFind = new System.Windows.Forms.ComboBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.myDBDataSet1 = new WindowsFormsApp3.myDBDataSet();
+            this.btnFilterClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.myDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personsBindingNavigator)).BeginInit();
@@ -153,6 +154,31 @@
             this.personsBindingNavigator.TabIndex = 0;
             this.personsBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "加入新的";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(27, 22);
+            this.bindingNavigatorCountItem.Text = "/{0}";
+            this.bindingNavigatorCountItem.ToolTipText = "項目總數";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "刪除";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -186,16 +212,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "目前的位置";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(27, 22);
-            this.bindingNavigatorCountItem.Text = "/{0}";
-            this.bindingNavigatorCountItem.ToolTipText = "項目總數";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -218,26 +237,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "加入新的";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "刪除";
             // 
             // personsBindingNavigatorSaveItem
             // 
@@ -346,6 +347,7 @@
             this.label3.Size = new System.Drawing.Size(54, 26);
             this.label3.TabIndex = 4;
             this.label3.Text = "電話";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -356,6 +358,7 @@
             this.label4.Size = new System.Drawing.Size(54, 26);
             this.label4.TabIndex = 5;
             this.label4.Text = "地址";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -366,6 +369,7 @@
             this.label5.Size = new System.Drawing.Size(68, 26);
             this.label5.TabIndex = 6;
             this.label5.Text = "Email";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -376,6 +380,7 @@
             this.label6.Size = new System.Drawing.Size(54, 26);
             this.label6.TabIndex = 7;
             this.label6.Text = "生日";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -386,6 +391,7 @@
             this.label7.Size = new System.Drawing.Size(96, 26);
             this.label7.TabIndex = 8;
             this.label7.Text = "婚姻狀態";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -424,6 +430,7 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(200, 33);
             this.txtTel.TabIndex = 12;
+            this.txtTel.TextChanged += new System.EventHandler(this.txtTel_TextChanged);
             // 
             // txtAddress
             // 
@@ -433,6 +440,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(200, 33);
             this.txtAddress.TabIndex = 13;
+            this.txtAddress.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
             // 
             // txtEmail
             // 
@@ -442,6 +450,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(200, 33);
             this.txtEmail.TabIndex = 14;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // txtPoints
             // 
@@ -460,6 +469,7 @@
             this.dtPicker.Name = "dtPicker";
             this.dtPicker.Size = new System.Drawing.Size(200, 33);
             this.dtPicker.TabIndex = 17;
+            this.dtPicker.ValueChanged += new System.EventHandler(this.dtPicker_ValueChanged);
             // 
             // chkMarriage
             // 
@@ -472,6 +482,7 @@
             this.chkMarriage.TabIndex = 18;
             this.chkMarriage.Text = "已婚";
             this.chkMarriage.UseVisualStyleBackColor = true;
+            this.chkMarriage.CheckedChanged += new System.EventHandler(this.chkMarriage_CheckedChanged);
             // 
             // btnPageOne
             // 
@@ -573,17 +584,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "會員註冊";
             // 
-            // btnAddMember
-            // 
-            this.btnAddMember.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAddMember.Location = new System.Drawing.Point(40, 34);
-            this.btnAddMember.Name = "btnAddMember";
-            this.btnAddMember.Size = new System.Drawing.Size(104, 41);
-            this.btnAddMember.TabIndex = 28;
-            this.btnAddMember.Text = "新增資料";
-            this.btnAddMember.UseVisualStyleBackColor = true;
-            this.btnAddMember.Click += new System.EventHandler(this.btnAddMember_Click);
-            // 
             // btnSaveMember
             // 
             this.btnSaveMember.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -595,9 +595,21 @@
             this.btnSaveMember.UseVisualStyleBackColor = true;
             this.btnSaveMember.Click += new System.EventHandler(this.btnSaveMember_Click);
             // 
+            // btnAddMember
+            // 
+            this.btnAddMember.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAddMember.Location = new System.Drawing.Point(40, 34);
+            this.btnAddMember.Name = "btnAddMember";
+            this.btnAddMember.Size = new System.Drawing.Size(104, 41);
+            this.btnAddMember.TabIndex = 28;
+            this.btnAddMember.Text = "新增資料";
+            this.btnAddMember.UseVisualStyleBackColor = true;
+            this.btnAddMember.Click += new System.EventHandler(this.btnAddMember_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.LemonChiffon;
+            this.groupBox2.Controls.Add(this.btnFilterClear);
             this.groupBox2.Controls.Add(this.comboFilter);
             this.groupBox2.Controls.Add(this.comboFind);
             this.groupBox2.Controls.Add(this.btnFind);
@@ -611,21 +623,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "資料搜尋";
             // 
-            // txtFind
+            // comboFilter
             // 
-            this.txtFind.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtFind.Location = new System.Drawing.Point(23, 29);
-            this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(221, 33);
-            this.txtFind.TabIndex = 30;
+            this.comboFilter.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboFilter.FormattingEnabled = true;
+            this.comboFilter.Location = new System.Drawing.Point(281, 119);
+            this.comboFilter.Name = "comboFilter";
+            this.comboFilter.Size = new System.Drawing.Size(126, 32);
+            this.comboFilter.TabIndex = 34;
             // 
-            // txtFilter
+            // comboFind
             // 
-            this.txtFilter.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtFilter.Location = new System.Drawing.Point(23, 118);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(221, 33);
-            this.txtFilter.TabIndex = 32;
+            this.comboFind.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboFind.FormattingEnabled = true;
+            this.comboFind.Location = new System.Drawing.Point(281, 29);
+            this.comboFind.Name = "comboFind";
+            this.comboFind.Size = new System.Drawing.Size(126, 32);
+            this.comboFind.TabIndex = 33;
             // 
             // btnFind
             // 
@@ -637,6 +651,22 @@
             this.btnFind.Text = "Find";
             this.btnFind.UseVisualStyleBackColor = true;
             // 
+            // txtFilter
+            // 
+            this.txtFilter.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtFilter.Location = new System.Drawing.Point(23, 118);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(221, 33);
+            this.txtFilter.TabIndex = 32;
+            // 
+            // txtFind
+            // 
+            this.txtFind.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtFind.Location = new System.Drawing.Point(23, 29);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(221, 33);
+            this.txtFind.TabIndex = 30;
+            // 
             // btnFilter
             // 
             this.btnFilter.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -647,28 +677,21 @@
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
             // 
-            // comboFind
-            // 
-            this.comboFind.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboFind.FormattingEnabled = true;
-            this.comboFind.Location = new System.Drawing.Point(281, 29);
-            this.comboFind.Name = "comboFind";
-            this.comboFind.Size = new System.Drawing.Size(126, 32);
-            this.comboFind.TabIndex = 33;
-            // 
-            // comboFilter
-            // 
-            this.comboFilter.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboFilter.FormattingEnabled = true;
-            this.comboFilter.Location = new System.Drawing.Point(281, 119);
-            this.comboFilter.Name = "comboFilter";
-            this.comboFilter.Size = new System.Drawing.Size(126, 32);
-            this.comboFilter.TabIndex = 34;
-            // 
             // myDBDataSet1
             // 
             this.myDBDataSet1.DataSetName = "myDBDataSet";
             this.myDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnFilterClear
+            // 
+            this.btnFilterClear.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnFilterClear.Location = new System.Drawing.Point(132, 158);
+            this.btnFilterClear.Name = "btnFilterClear";
+            this.btnFilterClear.Size = new System.Drawing.Size(112, 41);
+            this.btnFilterClear.TabIndex = 31;
+            this.btnFilterClear.Text = "Filter解除";
+            this.btnFilterClear.UseVisualStyleBackColor = true;
+            this.btnFilterClear.Click += new System.EventHandler(this.btnFilterClear_Click);
             // 
             // Form1
             // 
@@ -788,6 +811,7 @@
         private System.Windows.Forms.ComboBox comboFind;
         private System.Windows.Forms.BindingSource bindingSource1;
         private myDBDataSet myDBDataSet1;
+        private System.Windows.Forms.Button btnFilterClear;
     }
 }
 
