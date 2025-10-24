@@ -107,7 +107,7 @@ namespace WindowsFormsApp4
 
             if (reader.Read() == true)
             {
-                txtId.Text = ((int)reader["id"]).ToString();
+                txtId.Text = ((int)reader["id"]).ToString();  // 型態轉化的邏輯: reader讀進來object →  轉int → 再轉string → 存入textBox
                 txtName.Text = (string)reader["姓名"];
                 txtTel.Text = (string)reader["電話"];
                 txtEmail.Text = (string)reader["email"];
@@ -245,6 +245,41 @@ namespace WindowsFormsApp4
 
         }
 
+        void ShowDetails(int myId)
+        {   // 顯示會員詳細資訊
+            if (myId > 0)
+            {
+                SqlConnection con = new SqlConnection( strDBConnectionString);
+                con.Open();
+                string strSQL = "select * from persons where id = @SearchId;";
+                SqlCommand cmd = new SqlCommand(strSQL, con);
+                cmd.Parameters.AddWithValue("@SearchId", myId);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read() == true)
+                {
+                    txtId.Text = ((int)reader["id"]).ToString();
+                    txtName.Text = (string)reader["姓名"];
+                    txtTel.Text = (string)reader["電話"];
+                    txtEmail.Text = (string)reader["email"];
+                    txtAddress.Text = (string)reader["地址"];
+                    dtPicker.Value = (DateTime)reader["生日"];
+                    chkMarriage.Checked = (bool)reader["婚姻狀態"];
+                    txtPoints.Text = ((int)reader["點數"]).ToString();
+                }
+                else
+                {
+                    MessageBox.Show("查無此人");
+                    ClearField();
+                }
+
+                reader.Close();
+                con.Close();   
+
+            }
+        }
+
+
         void ShowAllEntries(int topNum)
         {
             SqlConnection con = new SqlConnection(strDBConnectionString);
@@ -278,5 +313,102 @@ namespace WindowsFormsApp4
         {
             ShowAllEntries(100);
         }
+
+        private void dataGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // DataGridViewCellEventArgs 這是點擊dataGridView的Cell，產生事件後，一併由publisher回傳的事件相關資訊
+
+            // 確保只有使用者點擊表格內的資料，才會反應，否則點擊其它區域，就不動作
+            if ((e.RowIndex >= 0) && (e.ColumnIndex >= 0) && (e.RowIndex < numEntries))
+            {
+                // 從使用者選取的cell，回傳那個rowIndex，抓出row entry，再取第一個欄位的值(就是使用者ID)
+                int selectId = (int)dataGV.Rows[e.RowIndex].Cells[0].Value;
+                ShowDetails(selectId);
+            }
+        }
+
+
+
+        private void btnAdvanceSearch_Click(object sender, EventArgs e)
+        {   // window forms 的值，如果沒有值，就會回傳 -1
+            // window forms 的 textBox，不會有null，沒有輸入就是空字串
+            if (txtKeyword.Text != "") {
+
+                string strSeachField = comboField.SelectedItem.ToString();
+                string strStartBirth = dtpStart.Value.ToString();
+                string strEndBirth = dtpEnd.Value.ToString();
+
+                string strSQL_MaritalStatus = "";
+
+                switch (intMaritalStatus)
+                {
+                    case 0: // 全部
+                        strSQL_MaritalStatus = " ";
+                        break;
+                    case 1: // 已婚
+                        strSQL_MaritalStatus = " and (婚姻狀態=1) ";
+                        break;
+                    case 2: // 單身
+                        strSQL_MaritalStatus = " and (婚姻狀態=2) ";
+                        break;
+                    default:
+                        strSQL_MaritalStatus = " ";
+                        break;
+                }
+
+                SqlConnection con = new SqlConnection(strDBConnectionString);
+                con.Open();
+                string strSQL = $"select * from persons where {strSeachField} like @SearchWord and " +
+                    $"(生日 >= @StartBirth) and (生日 <= @EndBirth) {strSQL_MaritalStatus}";
+                SqlCommand cmd = new SqlCommand(strSQL, con);
+                cmd.Parameters.AddWithValue("@SearchWord", $"%{txtKeyword.Text.Trim()}%");
+
+                // Windows Form裡面的dateTimePicker的時間Value，和SQL Server的日期格式相符，不需要轉成字串回傳給SQL Server
+                cmd.Parameters.AddWithValue("@StartBirth", dtpStart.Value);  
+                cmd.Parameters.AddWithValue("@EndBirth", dtpEnd.Value);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);  // 用dataTable這個in-memory物件，把reader的所有rows的資料，存入
+                    dataGV.DataSource = dt;
+
+                    int numEntries = dt.Rows.Count;
+                    MessageBox.Show($"Data Table View筆數: {numEntries}");
+
+                }
+                else
+                {
+                    numEntries = 0;
+                    dataGV.DataSource = null;
+                    MessageBox.Show("查無資料");
+                }
+
+                reader.Close();
+                con.Close();
+            }
+
+        }
+
+        private void radioAll_CheckedChanged(object sender, EventArgs e)
+        {
+            intMaritalStatus = 0;
+        }
+
+        private void radioMarried_CheckedChanged(object sender, EventArgs e)
+        {
+            intMaritalStatus = 1;
+        }
+
+        private void radioSingle_CheckedChanged(object sender, EventArgs e)
+        {
+            intMaritalStatus = 2;
+        }
+
+
+
+
     }
 }
