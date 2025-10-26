@@ -44,20 +44,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(32, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(43, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 35);
+            this.label1.Size = new System.Drawing.Size(189, 43);
             this.label1.TabIndex = 0;
             this.label1.Text = "福氣水果行";
             // 
             // btnAllProduct
             // 
-            this.btnAllProduct.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAllProduct.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnAllProduct.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnAllProduct.Location = new System.Drawing.Point(38, 68);
+            this.btnAllProduct.Location = new System.Drawing.Point(51, 91);
+            this.btnAllProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAllProduct.Name = "btnAllProduct";
-            this.btnAllProduct.Size = new System.Drawing.Size(124, 43);
+            this.btnAllProduct.Size = new System.Drawing.Size(165, 57);
             this.btnAllProduct.TabIndex = 1;
             this.btnAllProduct.Text = "全部商品";
             this.btnAllProduct.UseVisualStyleBackColor = true;
@@ -66,20 +68,22 @@
             // listViewEntries
             // 
             this.listViewEntries.HideSelection = false;
-            this.listViewEntries.Location = new System.Drawing.Point(211, 68);
+            this.listViewEntries.Location = new System.Drawing.Point(281, 91);
+            this.listViewEntries.Margin = new System.Windows.Forms.Padding(4);
             this.listViewEntries.Name = "listViewEntries";
-            this.listViewEntries.Size = new System.Drawing.Size(536, 353);
+            this.listViewEntries.Size = new System.Drawing.Size(713, 469);
             this.listViewEntries.TabIndex = 2;
             this.listViewEntries.UseCompatibleStateImageBehavior = false;
             this.listViewEntries.ItemActivate += new System.EventHandler(this.listViewEntries_ItemActivate);
             // 
             // btnDiscountProduct
             // 
-            this.btnDiscountProduct.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnDiscountProduct.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnDiscountProduct.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnDiscountProduct.Location = new System.Drawing.Point(38, 117);
+            this.btnDiscountProduct.Location = new System.Drawing.Point(51, 156);
+            this.btnDiscountProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnDiscountProduct.Name = "btnDiscountProduct";
-            this.btnDiscountProduct.Size = new System.Drawing.Size(124, 43);
+            this.btnDiscountProduct.Size = new System.Drawing.Size(165, 57);
             this.btnDiscountProduct.TabIndex = 3;
             this.btnDiscountProduct.Text = "特價商品";
             this.btnDiscountProduct.UseVisualStyleBackColor = true;
@@ -87,11 +91,12 @@
             // 
             // btnGiftBox
             // 
-            this.btnGiftBox.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnGiftBox.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnGiftBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnGiftBox.Location = new System.Drawing.Point(38, 166);
+            this.btnGiftBox.Location = new System.Drawing.Point(51, 221);
+            this.btnGiftBox.Margin = new System.Windows.Forms.Padding(4);
             this.btnGiftBox.Name = "btnGiftBox";
-            this.btnGiftBox.Size = new System.Drawing.Size(124, 43);
+            this.btnGiftBox.Size = new System.Drawing.Size(165, 57);
             this.btnGiftBox.TabIndex = 4;
             this.btnGiftBox.Text = "水果禮盒";
             this.btnGiftBox.UseVisualStyleBackColor = true;
@@ -99,47 +104,55 @@
             // 
             // btnPicMode
             // 
-            this.btnPicMode.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnPicMode.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnPicMode.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnPicMode.Location = new System.Drawing.Point(38, 231);
+            this.btnPicMode.Location = new System.Drawing.Point(51, 308);
+            this.btnPicMode.Margin = new System.Windows.Forms.Padding(4);
             this.btnPicMode.Name = "btnPicMode";
-            this.btnPicMode.Size = new System.Drawing.Size(124, 43);
+            this.btnPicMode.Size = new System.Drawing.Size(165, 57);
             this.btnPicMode.TabIndex = 5;
             this.btnPicMode.Text = "圖片模式";
             this.btnPicMode.UseVisualStyleBackColor = true;
+            this.btnPicMode.Click += new System.EventHandler(this.btnPicMode_Click);
             // 
             // btnListMode
             // 
-            this.btnListMode.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnListMode.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnListMode.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnListMode.Location = new System.Drawing.Point(38, 280);
+            this.btnListMode.Location = new System.Drawing.Point(51, 373);
+            this.btnListMode.Margin = new System.Windows.Forms.Padding(4);
             this.btnListMode.Name = "btnListMode";
-            this.btnListMode.Size = new System.Drawing.Size(124, 43);
+            this.btnListMode.Size = new System.Drawing.Size(165, 57);
             this.btnListMode.TabIndex = 6;
             this.btnListMode.Text = "列表模式";
             this.btnListMode.UseVisualStyleBackColor = true;
+            this.btnListMode.Click += new System.EventHandler(this.btnListMode_Click);
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAddProduct.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnAddProduct.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnAddProduct.Location = new System.Drawing.Point(38, 329);
+            this.btnAddProduct.Location = new System.Drawing.Point(51, 439);
+            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(124, 43);
+            this.btnAddProduct.Size = new System.Drawing.Size(165, 57);
             this.btnAddProduct.TabIndex = 7;
             this.btnAddProduct.Text = "新增商品";
             this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnRefresh.ForeColor = System.Drawing.Color.Chocolate;
-            this.btnRefresh.Location = new System.Drawing.Point(38, 378);
+            this.btnRefresh.Location = new System.Drawing.Point(51, 504);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(124, 43);
+            this.btnRefresh.Size = new System.Drawing.Size(165, 57);
             this.btnRefresh.TabIndex = 8;
             this.btnRefresh.Text = "重新載入";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // imageListProduct
             // 
@@ -149,10 +162,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 600);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.btnListMode);
@@ -162,6 +175,7 @@
             this.Controls.Add(this.listViewEntries);
             this.Controls.Add(this.btnAllProduct);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

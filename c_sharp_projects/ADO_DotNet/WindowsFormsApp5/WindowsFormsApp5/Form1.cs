@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient; // 連接SQL Server使用
+using System.Diagnostics;
 using System.Drawing;
+using System.IO; // 輸出入圖片用
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient; // 連接SQL Server使用
-using System.IO; // 輸出入圖片用
 
 
 namespace WindowsFormsApp5
@@ -28,7 +29,8 @@ namespace WindowsFormsApp5
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            scsb.DataSource = @".";
+            // scsb.DataSource = @"./";
+            scsb.DataSource = @".\MSSQLSERVER01";
             scsb.InitialCatalog = "myDB";
             scsb.IntegratedSecurity = true;
 
@@ -81,8 +83,8 @@ namespace WindowsFormsApp5
                 count ++;
 
             }
-            Console.WriteLine($"共有 {count} 筆");
-
+            Console.WriteLine($"text 01 共有 {count} 筆");
+            // Debug.WriteLine($"text 02 共有 {count} 筆");
             reader.Close();  // SQL Server 的使用者連線的數量限制，所以不使用時，盡量關閉連線
             con.Close();
 
@@ -105,6 +107,7 @@ namespace WindowsFormsApp5
             for (int i = 0; i < listId.Count; i++)
             {
                 ListViewItem item = new ListViewItem();
+                item.ImageIndex = i; // 將 ImageList 裡面的圖片加入
                 item.Text = $"{listProducts[i]} {listPPrices[i]}元";
                 item.Font = new Font("微軟正黑體", 12, FontStyle.Bold);
                 item.ForeColor = Color.Blue;
@@ -117,19 +120,26 @@ namespace WindowsFormsApp5
         void ShowListViewListMode()
         {
             listViewEntries.Clear();
-            listViewEntries.LargeImageList = null;
-            listViewEntries.SmallImageList = null;
-            listViewEntries.View = View.Details;
+            listViewEntries.LargeImageList = null; // 列表模式下，需要先將 LargeImageList 設為 null 才不會出錯
+            listViewEntries.SmallImageList = null; // 列表模式下，需要先將 SmallImageList 設為 null 才不會出錯
+            listViewEntries.View = View.Details;  // 列表模式只有一個設定，就是 Details
             listViewEntries.Columns.Add("id", 100);
             listViewEntries.Columns.Add("商品名稱", 200);
             listViewEntries.Columns.Add("商品價格", 100);
-            listViewEntries.GridLines = true;
-            listViewEntries.FullRowSelect = true;
+            listViewEntries.GridLines = true;  // 畫格線
+            listViewEntries.FullRowSelect = true;  // 點擊時，會全選
 
             for (int i = 0; i < listId.Count; i++)
             {
                 ListViewItem item = new ListViewItem();
-                item.Text = listId[i].ToString();
+                item.Text = listId[i].ToString(); // 第一欄，是加在 Text 屬性下
+                item.SubItems.Add(listProducts[i]); // 第二欄之後，是加在 SubItems 屬性下
+                item.SubItems.Add(listPPrices[i].ToString());
+                item.Tag = listId[i];
+                item.Font = new Font("微軟正黑體", 12, FontStyle.Regular);
+                item.ForeColor = Color.DarkBlue;  // 字體顏色
+                // item.BackColor = Color.LightGray; //背景顏色
+                listViewEntries.Items.Add(item);
 
             }
         }
@@ -160,7 +170,7 @@ namespace WindowsFormsApp5
             // 判所目前ListView所要顯示的模式
             if (listViewEntries.View == View.Details)
             {
-                //
+                ShowListViewListMode();
             }
             else
             {
@@ -185,6 +195,28 @@ namespace WindowsFormsApp5
         private void btnGiftBox_Click(object sender, EventArgs e)
         {
             PGroup = "fruitbox";
+            ReFreshProduct();
+        }
+
+        private void btnPicMode_Click(object sender, EventArgs e)
+        {
+            ShowListViewImageMode();
+        }
+
+        private void btnListMode_Click(object sender, EventArgs e)
+        {
+            ShowListViewListMode();
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            FormDetail myFormDetail = new FormDetail();
+            myFormDetail.ShowDialog();
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
             ReFreshProduct();
         }
     }

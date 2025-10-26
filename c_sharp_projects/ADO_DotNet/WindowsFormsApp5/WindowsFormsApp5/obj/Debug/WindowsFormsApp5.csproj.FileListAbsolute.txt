@@ -10,3 +10,15 @@ C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\AD
 C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.exe
 C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.pdb
 C:\Users\iSpan\Desktop\tomlin_full_stack\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.exe.config
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\bin\Debug\WindowsFormsApp5.exe.config
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\bin\Debug\WindowsFormsApp5.exe
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\bin\Debug\WindowsFormsApp5.pdb
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.csproj.AssemblyReference.cache
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.exe.config
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.Form1.resources
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.FormDetail.resources
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.Properties.Resources.resources
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.csproj.GenerateResource.cache
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.csproj.CoreCompileInputs.cache
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.exe
+C:\Users\thebl\source\repos\full_stack_training\c_sharp_projects\ADO_DotNet\WindowsFormsApp5\WindowsFormsApp5\obj\Debug\WindowsFormsApp5.pdb
