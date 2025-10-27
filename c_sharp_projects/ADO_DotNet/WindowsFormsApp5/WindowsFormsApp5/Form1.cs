@@ -29,8 +29,8 @@ namespace WindowsFormsApp5
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // scsb.DataSource = @"./";
-            scsb.DataSource = @".\MSSQLSERVER01";
+            scsb.DataSource = @"./";
+            // scsb.DataSource = @".\MSSQLSERVER01";
             scsb.InitialCatalog = "myDB";
             scsb.IntegratedSecurity = true;
 

@@ -41,17 +41,17 @@
             this.textBoxAmt = new System.Windows.Forms.TextBox();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
             this.groupBoxNew = new System.Windows.Forms.GroupBox();
+            this.btnClearNew = new System.Windows.Forms.Button();
+            this.btnSaveNew = new System.Windows.Forms.Button();
+            this.btnPicNew = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBoxProduct = new System.Windows.Forms.PictureBox();
             this.groupBoxUpdate = new System.Windows.Forms.GroupBox();
-            this.groupBoxDelete = new System.Windows.Forms.GroupBox();
-            this.comboBoxGroup = new System.Windows.Forms.ComboBox();
-            this.btnPicNew = new System.Windows.Forms.Button();
-            this.btnSaveNew = new System.Windows.Forms.Button();
-            this.btnClearNew = new System.Windows.Forms.Button();
-            this.btnPicUpdate = new System.Windows.Forms.Button();
             this.btnSaveUpdate = new System.Windows.Forms.Button();
+            this.btnPicUpdate = new System.Windows.Forms.Button();
+            this.groupBoxDelete = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.comboBoxGroup = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBoxNew.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduct)).BeginInit();
@@ -192,6 +192,36 @@
             this.groupBoxNew.TabStop = false;
             this.groupBoxNew.Text = "新增";
             // 
+            // btnClearNew
+            // 
+            this.btnClearNew.Location = new System.Drawing.Point(57, 107);
+            this.btnClearNew.Name = "btnClearNew";
+            this.btnClearNew.Size = new System.Drawing.Size(109, 36);
+            this.btnClearNew.TabIndex = 2;
+            this.btnClearNew.Text = "清空欄位";
+            this.btnClearNew.UseVisualStyleBackColor = true;
+            this.btnClearNew.Click += new System.EventHandler(this.btnClearNew_Click);
+            // 
+            // btnSaveNew
+            // 
+            this.btnSaveNew.Location = new System.Drawing.Point(57, 65);
+            this.btnSaveNew.Name = "btnSaveNew";
+            this.btnSaveNew.Size = new System.Drawing.Size(109, 36);
+            this.btnSaveNew.TabIndex = 1;
+            this.btnSaveNew.Text = "新增儲存";
+            this.btnSaveNew.UseVisualStyleBackColor = true;
+            this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
+            // 
+            // btnPicNew
+            // 
+            this.btnPicNew.Location = new System.Drawing.Point(57, 23);
+            this.btnPicNew.Name = "btnPicNew";
+            this.btnPicNew.Size = new System.Drawing.Size(109, 36);
+            this.btnPicNew.TabIndex = 0;
+            this.btnPicNew.Text = "選取圖片";
+            this.btnPicNew.UseVisualStyleBackColor = true;
+            this.btnPicNew.Click += new System.EventHandler(this.btnPicNew_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -224,6 +254,26 @@
             this.groupBoxUpdate.TabStop = false;
             this.groupBoxUpdate.Text = "修改";
             // 
+            // btnSaveUpdate
+            // 
+            this.btnSaveUpdate.Location = new System.Drawing.Point(59, 65);
+            this.btnSaveUpdate.Name = "btnSaveUpdate";
+            this.btnSaveUpdate.Size = new System.Drawing.Size(109, 36);
+            this.btnSaveUpdate.TabIndex = 2;
+            this.btnSaveUpdate.Text = "修改儲存";
+            this.btnSaveUpdate.UseVisualStyleBackColor = true;
+            this.btnSaveUpdate.Click += new System.EventHandler(this.btnSaveUpdate_Click);
+            // 
+            // btnPicUpdate
+            // 
+            this.btnPicUpdate.Location = new System.Drawing.Point(59, 23);
+            this.btnPicUpdate.Name = "btnPicUpdate";
+            this.btnPicUpdate.Size = new System.Drawing.Size(109, 36);
+            this.btnPicUpdate.TabIndex = 1;
+            this.btnPicUpdate.Text = "選取圖片";
+            this.btnPicUpdate.UseVisualStyleBackColor = true;
+            this.btnPicUpdate.Click += new System.EventHandler(this.btnPicUpdate_Click);
+            // 
             // groupBoxDelete
             // 
             this.groupBoxDelete.BackColor = System.Drawing.Color.Pink;
@@ -236,60 +286,6 @@
             this.groupBoxDelete.TabStop = false;
             this.groupBoxDelete.Text = "刪除";
             // 
-            // comboBoxGroup
-            // 
-            this.comboBoxGroup.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comboBoxGroup.FormattingEnabled = true;
-            this.comboBoxGroup.Location = new System.Drawing.Point(234, 71);
-            this.comboBoxGroup.Name = "comboBoxGroup";
-            this.comboBoxGroup.Size = new System.Drawing.Size(121, 29);
-            this.comboBoxGroup.TabIndex = 17;
-            // 
-            // btnPicNew
-            // 
-            this.btnPicNew.Location = new System.Drawing.Point(57, 23);
-            this.btnPicNew.Name = "btnPicNew";
-            this.btnPicNew.Size = new System.Drawing.Size(109, 36);
-            this.btnPicNew.TabIndex = 0;
-            this.btnPicNew.Text = "選取圖片";
-            this.btnPicNew.UseVisualStyleBackColor = true;
-            // 
-            // btnSaveNew
-            // 
-            this.btnSaveNew.Location = new System.Drawing.Point(57, 65);
-            this.btnSaveNew.Name = "btnSaveNew";
-            this.btnSaveNew.Size = new System.Drawing.Size(109, 36);
-            this.btnSaveNew.TabIndex = 1;
-            this.btnSaveNew.Text = "新增儲存";
-            this.btnSaveNew.UseVisualStyleBackColor = true;
-            // 
-            // btnClearNew
-            // 
-            this.btnClearNew.Location = new System.Drawing.Point(57, 107);
-            this.btnClearNew.Name = "btnClearNew";
-            this.btnClearNew.Size = new System.Drawing.Size(109, 36);
-            this.btnClearNew.TabIndex = 2;
-            this.btnClearNew.Text = "清空欄位";
-            this.btnClearNew.UseVisualStyleBackColor = true;
-            // 
-            // btnPicUpdate
-            // 
-            this.btnPicUpdate.Location = new System.Drawing.Point(59, 23);
-            this.btnPicUpdate.Name = "btnPicUpdate";
-            this.btnPicUpdate.Size = new System.Drawing.Size(109, 36);
-            this.btnPicUpdate.TabIndex = 1;
-            this.btnPicUpdate.Text = "選取圖片";
-            this.btnPicUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btnSaveUpdate
-            // 
-            this.btnSaveUpdate.Location = new System.Drawing.Point(59, 65);
-            this.btnSaveUpdate.Name = "btnSaveUpdate";
-            this.btnSaveUpdate.Size = new System.Drawing.Size(109, 36);
-            this.btnSaveUpdate.TabIndex = 2;
-            this.btnSaveUpdate.Text = "修改儲存";
-            this.btnSaveUpdate.UseVisualStyleBackColor = true;
-            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(63, 23);
@@ -298,6 +294,16 @@
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "刪除商品";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // comboBoxGroup
+            // 
+            this.comboBoxGroup.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBoxGroup.FormattingEnabled = true;
+            this.comboBoxGroup.Location = new System.Drawing.Point(234, 71);
+            this.comboBoxGroup.Name = "comboBoxGroup";
+            this.comboBoxGroup.Size = new System.Drawing.Size(121, 29);
+            this.comboBoxGroup.TabIndex = 17;
             // 
             // label9
             // 
