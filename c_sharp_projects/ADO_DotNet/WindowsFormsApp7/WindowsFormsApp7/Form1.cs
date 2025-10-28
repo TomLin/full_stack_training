@@ -62,6 +62,149 @@ namespace WindowsFormsApp7
                 Console.WriteLine(item);
             }
 
+            Console.WriteLine("==============================");
+
+            // 排序
+
+            // 遞增
+            myQueryResult = from name 
+                            in NameCollection
+                            orderby name ascending
+                            select name;
+
+            // 遞減
+            myQueryResult = from name
+                            in NameCollection
+                            orderby name descending
+                            select name;
+
+            // Method Syntax
+            myQueryResult = NameCollection.OrderBy(name => name); // ascending
+            myQueryResult = myQueryResult.OrderByDescending(name => name);
+
+            // 條件加排序
+            // Query Syntax
+            myQueryResult = from name
+                            in NameCollection
+                            where name.Contains("大")
+                            orderby name ascending
+                            select name;
+
+            // Method Syntax
+            myQueryResult = NameCollection.Where(name => name.Contains("大")).OrderBy(name => name);
+
+            foreach (string item in myQueryResult) { 
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("==============================");
+
+            // EXE: 輸出大於2的數列，由大到小排列
+            int[] nums = new int[] { 9, 3, 6, 8, 1, 2, 3 };
+            
+
+            // Query Syntax:
+            /*
+            var result = from s
+                         in nums
+                         where s > 2
+                         orderby s descending
+                         select s;
+            */
+            var result = from s 
+                     in nums
+                     where (s > 3) && (s < 9)
+                     select s;
+
+
+            // Method Syntax
+            result = nums.Where(s => s > 2).OrderByDescending(s => s);
+
+            
+            Console.WriteLine("==============================");
+            
+            // 求平均
+
+            double Avg = nums.Average(s => s);
+            Console.WriteLine($"數列平均: {Avg}");
+
+            Console.WriteLine("==============================");
+
+            // EXE 大於6 的平均
+            double SubAvg = nums.Where(s => s >= 6).Average(s => s);
+            // double SubAvg = nums.Average(s => s >= 6);  // Average() 沒有支搜條件篩選  
+            Console.WriteLine($"數列大於6的平均: {SubAvg}");
+
+            // Average 沒有支援條件
+
+            
+            Console.WriteLine("==============================");
+
+            // EXE 使用 count 
+            // 注意：count 有支援條件
+            int Cnt = nums.Count(s => s > 2);
+            Console.WriteLine($"數列中大於2的數量:{Cnt}");
+
+            // EXE: 求 1-5，8-12，總共有幾個數字
+
+            Cnt = nums.Count(s => (s >= 1 && s <= 5) || (s >= 8 && s <= 12));
+            Console.WriteLine($"1...5 and 8...12 的數量:{Cnt}");
+
+            Console.WriteLine("==============================");
+
+            // 計算偶數的數量
+            int Even = nums.Count(s => s % 2 == 0); // 取得奇數，餘數為1
+            Even = nums.Where(s => s % 2 == 0).Count();
+
+            Console.WriteLine($"數列中偶數的數量:{Even}");
+            Console.WriteLine("==============================");
+
+            // 取得第一個元素
+
+            int intFirst = nums.First(); // C# 的語法
+            int intEvenFirst = nums.First(s => s % 2 == 0);
+            Console.WriteLine($"數列中第一個偶數: {intEvenFirst}");
+
+            // 取得最後一個元素
+            int intLast = nums.Last();
+            int intOddLast = nums.Last(s => s % 2 == 1);
+
+            Console.WriteLine($"數列中最後一個奇數: {intOddLast}");
+
+            // 總和
+            int intSum = nums.Sum(s => s);
+            int intEvenSum = nums.Where(s => s % 2 == 0).Sum();
+
+            Console.WriteLine($"偶數總和:{intEvenSum}");
+
+            // 最大值
+
+            int intMax = nums.Max(s => s);
+            int intEvenMax = nums.Where(s => s % 2 == 0).Max(); // 使用條件的syntax
+            
+            // Linq 支搜大括號的語法，但是不建議用，syntax不是標準的寫法
+            intEvenMax = nums.Max(s => { if (s % 2 == 0) return s; else return Int32.MinValue; });
+
+
+            //
+            int intMin = nums.Min(s => s);
+            int intEvenMin = nums.Where(s => s % 2 == 0).Min(); // 加入條件式比較
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="myDB" Class="myDBDataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=CR3-S03;Initial Catalog=myDB;Integrated Security=True;Encrypt=False" SettingsObjectName="WindowsFormsApp9.Properties.Settings" SettingsPropertyName="myDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Persons" Member="Persons">
+    <Type Name="Persons">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="姓名" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="電話" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="地址" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="生日" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="婚姻狀態" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="點數" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Products">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pimage" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="pdesc" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="pclass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="pamount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
