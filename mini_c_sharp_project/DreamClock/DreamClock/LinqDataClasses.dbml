@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dreamClock" Class="LinqDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost\MSSQLSERVER01;Initial Catalog=dreamClock;Integrated Security=True;Encrypt=False" SettingsObjectName="DreamClock.Properties.Settings" SettingsPropertyName="dreamClockConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.dreamMember" Member="dreamMembers">
+    <Type Name="dreamMember">
+      <Column Name="acct" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pword" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="lstUpdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.memberRank" Member="memberRanks">
+    <Type Name="memberRank">
+      <Column Name="threshold" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="memRank" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.img" Member="imgs">
+    <Type Name="img">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="imgFile" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="msg" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="memRank" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

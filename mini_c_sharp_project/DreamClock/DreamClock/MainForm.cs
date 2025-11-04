@@ -2,27 +2,40 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient; // connect to DB
 
 namespace DreamClock
 {
     public partial class MainForm : Form
     {
+        // DB connection config
+        public static string strDBConnect;
+
+        // Data Context (defined as a field)
+        LinqDataClassesDataContext clockDB;
+
         // 循環次數
-        int repTime = 0;
+        int cylTime;
 
         // 已循環次數
-        int curRep = 0;
+        int curCyl;
 
         // 任務時長(秒)
-        int cntDownSec = 20;
+        int cntDownSec;
 
         // 休息秒數
-        int restSec = 5;
+        public readonly int restSec = 2;
+
+        // Flags
+        public bool isRestDone = false; // Flag for rest period
+        public bool isWorkDone = false; // Flag for work period 
 
         public MainForm()
         {
@@ -31,92 +44,156 @@ namespace DreamClock
 
         private void MainForm_Load(object sender, EventArgs e)
         {   
-            // 初始畫面 for circular progress bar 
-            cirProgBarWork.Text = cntDownSec.ToString();
-            cirProgBarWork.Value = cntDownSec;
-            cirProgBarWork.Maximum = 100;
+            // Initialize DB connection
+            SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
+            scsb.DataSource = GlobalVar.dataSrc;
+            scsb.InitialCatalog = GlobalVar.catalog;
+            scsb.IntegratedSecurity = true;  // window auth
+            strDBConnect = scsb.ConnectionString.ToString();
+
+            clockDB = new LinqDataClassesDataContext(strDBConnect);
+
+            // Invoke LogInForm
+            InitiateLogIn();
+
+            // Initialize user interface
+            Reset();
 
         }
 
-        private void btnAccept_Click(object sender, EventArgs e)
+        private void MainForm_Activated(object sender, EventArgs e)
         {
-            bool isRepConvert = Int32.TryParse(txtRepTime.Text.ToString(), out repTime);
-            bool isCntDownConvert = Int32.TryParse(txtCntDownSec.Text.ToString(), out cntDownSec);
 
-            if (isRepConvert && isCntDownConvert)
-            {
-                btnAccept.Enabled = false; // 在倒數時，使用者不能再按扭
-                ReCount();
+            // When completing all cycles, do reset
+            if (this.curCyl == this.cylTime)
+            {   
+                Reset();
+            }
 
-                if (curRep == repTime)
+        }
+
+
+        void Reset()
+        {
+            // Layout initialization
+            lblAcct.Text = GlobalVar.memAcct;  // Display account name
+
+            // Initial values for circular progress bar
+            cirProgBarWork.Maximum = 100;
+            cirProgBarWork.Value = 60;
+            cirProgBarWork.Text = cirProgBarWork.Value.ToString();
+
+            cirProgBarRest.Maximum = 100;
+            cirProgBarRest.Value = 60;
+            cirProgBarRest.Text = cirProgBarRest.Value.ToString();
+            
+            // Initial or Updated user's points and tier
+
+            var qryRetUser = from m in clockDB.dreamMembers
+                             where m.acct == GlobalVar.memAcct && m.pword == GlobalVar.memPassword 
+                                let r = (
+                                from r in clockDB.memberRanks
+                                where r.threshold <= m.points
+                                orderby r.threshold descending
+                                select r).FirstOrDefault()
+                             select new { curPoints = m.points, curTier = r.memRank };
+
+            lblCurPoints.Text = qryRetUser.SingleOrDefault().curPoints.ToString();
+            lblCurTier.Text = qryRetUser.SingleOrDefault().curTier.ToString();
+
+        }
+
+        void InitiateLogIn()
+        {
+            LogInForm logInF = new LogInForm();
+            logInF.ShowDialog();
+
+        }
+
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {   
+            // Check user inputs
+            bool isCyl = Int32.TryParse(txtCylTime.Text, out this.cylTime);
+            bool isCntDown = Int32.TryParse(txtCntDownSec.Text, out this.cntDownSec);
+            
+            if (isCyl || isCntDown) {
+                // Reset
+                this.curCyl = 0;
+
+                while (this.curCyl < this.cylTime)
                 {
-                    // 重設 curRep
-                    curRep = 0;
-
-                    btnAccept.Enabled = true;
+                    this.isWorkDone = false;
+                    this.isRestDone = false;
+                    FullCycle();  // 1 work and 1 rest
+                    curCyl += 1;
                 }
+
+                // Invoke Congrats window...
+                CongratsForm cform = new CongratsForm();
+                cform.ShowDialog();
 
             }
             else
             {
-                MessageBox.Show("循環次數與任數時長，都需要輸入「整數值」喔！");
-                txtRepTime.Text = ""; // 清空錯誤字元
-                txtCntDownSec.Text = "";
+                MessageBox.Show("Only integer values accepted for cell Cycles and CountDown Length!");
             }
-
         }
 
-        /*
-        void Reset()
+        void FullCycle()
         {
-            cntDownSec = 0;
-            cirProgBar.Text = cntDownSec.ToString();
-            cirProgBar.Value = cntDownSec;
-            cirProgBar.Maximum = 100;
-        }
-        */
-
-        void ReCount()
-        {
-            /* DialogResult r = MessageBox.Show("循環結束！是否接續", "Confirmation", MessageBoxButtons.OKCancel);
-
-            if (r == DialogResult.OK) {
-
-            }
-            */
-
-
-
-            if (curRep < repTime) {
-
-                if (curRep > 0)  // 重覆循環前，先休息一下
+            while (this.isWorkDone == false || this.isRestDone == false)
+            {
+                if (isWorkDone == false)
                 {
-                    Rest();
+                    WorkCount();
                 }
-
-                // 初始化 circular progress bar 的值
-                cirProgBarWork.Value = 0;
-                cirProgBarWork.Text = cirProgBarWork.Value.ToString();
-                cirProgBarWork.Maximum = cntDownSec;
-
-                timerWork.Start();
+                else if (isRestDone == false)
+                {
+                    RestCount();
+                }
             }
 
         }
 
-        void Rest()
+        void WorkCount()
         {
+            // Initialize before work clock countdown
+            cirProgBarWork.Maximum = this.cntDownSec;
+            cirProgBarWork.Value = 0;
+            cirProgBarWork.Text = cirProgBarWork.Value.ToString();
+            
+            timerWork.Start();
+
+            while (this.isWorkDone == false)
+            {
+                // Keep counting down...
+                Application.DoEvents();
+                
+            }
+            MessageBox.Show($"Well done, kiddo! Take a break. {this.cylTime - (this.curCyl + 1)} cycles left...");
+
+        }
+
+        void RestCount()
+        {
+            cirProgBarRest.Maximum = this.restSec;
             cirProgBarRest.Value = 0;
             cirProgBarRest.Text = cirProgBarRest.Value.ToString();
-            cirProgBarRest.Maximum = restSec;
 
             timerRest.Start();
 
+            while (this.isRestDone == false)
+            {
+                // Keep counting down
+                Application.DoEvents();
+                
+            }
+            MessageBox.Show("Kiddo! break time is over...");
+
         }
 
-        
-
-        private void timer_Tick(object sender, EventArgs e)
+        private void timerWork_Tick(object sender, EventArgs e)
         {
             if (cirProgBarWork.Value < cirProgBarWork.Maximum)
             {
@@ -126,24 +203,21 @@ namespace DreamClock
             else
             {
                 timerWork.Stop();
-                // TODO: 把資料寫入DB
-                
-                curRep += 1;
-                MessageBox.Show($"循環結束！ 剩下 {repTime - curRep} 次循環");
-                ReCount();
+                this.isWorkDone = true;
             }
         }
 
         private void timerRest_Tick(object sender, EventArgs e)
         {
-            if (cirProgBarRest.Value < cirProgBarRest.Maximum) { 
+            if (cirProgBarRest.Value < cirProgBarRest.Maximum)
+            {
                 cirProgBarRest.Value += 1;
                 cirProgBarRest.Text = cirProgBarRest.Value.ToString();
             }
             else
             {
                 timerRest.Stop();
-                MessageBox.Show($"休息結束，再接再勵");
+                this.isRestDone = true;
 
             }
         }

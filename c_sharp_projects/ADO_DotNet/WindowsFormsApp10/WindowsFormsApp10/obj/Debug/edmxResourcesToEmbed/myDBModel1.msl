@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="myDBModelStoreContainer" CdmEntityContainer="myDBEntities">
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="myDBModel.Persons">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="姓名" ColumnName="姓名" />
+          <ScalarProperty Name="電話" ColumnName="電話" />
+          <ScalarProperty Name="地址" ColumnName="地址" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="生日" ColumnName="生日" />
+          <ScalarProperty Name="婚姻狀態" ColumnName="婚姻狀態" />
+          <ScalarProperty Name="點數" ColumnName="點數" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="myDBModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pname" ColumnName="pname" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="pimage" ColumnName="pimage" />
+          <ScalarProperty Name="pdesc" ColumnName="pdesc" />
+          <ScalarProperty Name="pclass" ColumnName="pclass" />
+          <ScalarProperty Name="pamount" ColumnName="pamount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

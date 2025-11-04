@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="myDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'myDB.dbo.Persons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Persons">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="姓名" Type="nvarchar" MaxLength="50" />
+    <Property Name="電話" Type="nvarchar" MaxLength="50" />
+    <Property Name="地址" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="生日" Type="date" />
+    <Property Name="婚姻狀態" Type="bit" />
+    <Property Name="點數" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'myDB.dbo.Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pname" Type="nvarchar" MaxLength="100" />
+    <Property Name="price" Type="int" />
+    <Property Name="pimage" Type="nvarchar" MaxLength="100" />
+    <Property Name="pdesc" Type="nvarchar" MaxLength="1000" />
+    <Property Name="pclass" Type="nvarchar" MaxLength="50" />
+    <Property Name="pamount" Type="int" />
+  </EntityType>
+  <EntityContainer Name="myDBModelStoreContainer">
+    <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Persons].[id] AS [id], 
+    [Persons].[姓名] AS [姓名], 
+    [Persons].[電話] AS [電話], 
+    [Persons].[地址] AS [地址], 
+    [Persons].[email] AS [email], 
+    [Persons].[生日] AS [生日], 
+    [Persons].[婚姻狀態] AS [婚姻狀態], 
+    [Persons].[點數] AS [點數]
+    FROM [dbo].[Persons] AS [Persons]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Products" EntityType="Self.Products" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Products].[id] AS [id], 
+    [Products].[pname] AS [pname], 
+    [Products].[price] AS [price], 
+    [Products].[pimage] AS [pimage], 
+    [Products].[pdesc] AS [pdesc], 
+    [Products].[pclass] AS [pclass], 
+    [Products].[pamount] AS [pamount]
+    FROM [dbo].[Products] AS [Products]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
