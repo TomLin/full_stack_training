@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <style>
+        .stxt01 {
+            width: 450px;
+            border-bottom: 3px dotted red;
+            padding-bottom: 10px;
+            margin: 10px;
+
+        }
+
+        .sbtn01 {
+            width: 450px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .lbl01 {
+            width: 100px;
+            background-color: green;
+            float: left;
+            text-align: right;
+        }
+
+        .fld01 {
+            width: 500px;
+            margin: 10px;
+            border: 2px solid blue;
+            border-radius: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- action值暫時設定#，表示資料傳輸留在表單上 -->
+    <form action="#" method="get" enctype="multipart/form-data">
+        <fieldset class="fld01">
+            <legend>個人資料</legend>
+            <div class="stxt01">
+                <!-- label 裡面的 for 屬性，在鼠標點擊這個label時，會自動移到相對應的id -->
+                <label for="act" class="lbl01">姓名:</label>
+                <!-- input(text) 裡面的 size 是指字元大小，不是指px -->
+                <input type="text" id="act" name="account" value="guest" size="10">
+            </div>
+            <div class="stxt01">
+                <label class="lbl01" for="">性別:</label>
+                <input type="radio" name="gender" value="male" id="">男
+                <input type="radio" name="gender" value="female" id="">女
+            </div>
+            <div class="stxt01">
+                <label class="lbl01" for="pword">密碼:</label>
+                <input type="password" id="pword" name="pwd" maxlength="6">
+            </div>
+            <div class="stxt01">
+                <label class="lbl01" for="">興趣:</label>
+                <!-- 新的label寫法，不需要for，裡面直接放input，就可以設定在點擊「字」時就會選取該box -->
+                <label>
+                    <input type="checkbox" name="hobby" value="jogging" id="">Jogging
+                </label>
+                <label>
+                    <input type="checkbox" name="hobby" value="swimming" id="">Swimming
+                </label>
+
+            </div>
+            <div class="stxt01">
+                <label class="lbl01" for="cmt">意見:</label>
+                <textarea id="cmt" name="comment" cols="40" rows="5"></textarea>
+            </div>
+        </fieldset>
+        <fieldset class="fld01">
+            <legend>其它</legend>
+            <div class="stxt01">
+                <label class="lbl01" for="">縣市</label>
+                <select name="liveIn" id="">
+                    <option value="TPE">Taipei</option>
+                    <option value="NTPE">New Taipei</option>
+                    <option value="KH" selected>Kaohsiung</option>
+                </select>
+            </div>
+            <div class="stxt01">
+                <label for="" class="lbl01">地址</label>
+                <input type="text" name="address" id="" size="30">
+            </div>
+
+            <div class="sbtn01">
+                <label for="" class="lbl01">上傳檔案</label>
+                <!-- accept 指 input file 可以接受的檔案格式 -->
+                <input type="file" name="file01" id="" accept=".png,.jpg,.jpeg">
+
+            </div>
+            <div class="sbtn01">
+                <input type="submit" value="送出">
+                <input type="reset" value="清除" disabled>
+            </div>
+            <div class="sbtn01">
+                <input type="button" value="一般按鈕01" disabled>
+                <button type="button">一般按鈕02</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html>

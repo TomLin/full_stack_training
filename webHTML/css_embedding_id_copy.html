@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - Style via Link</title>
+
+    <!-- 如果是套用CSS Style，這裡的rel的值都是stylesheet -->
+    <!-- 下面的 rel stands for relationship -->
+    <link rel="stylesheet" href="./style/style01.css">
+    <style>
+        p {
+            color: purple;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 在style套用上，inline 覆寫 embedding 覆寫 linking -->
+    <h2 class="cHeadColor" id="hColor">The fruit</h2>
+    <h2 class="cHeadColor">The juice</h2>
+    <h2>The drinks</h2>
+    <p>This is the testing paragraph.</p>
+
+    <script>
+        // 使用 javascript 的 id selector 來做style update 時，只會套用在第一個id物件上
+        // document.getElementById("hColor").style.color = "pink";
+    </script>
+</body>
+
+</html>

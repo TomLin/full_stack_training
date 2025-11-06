@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - ID Style</title>
+    <style>
+        /* ID selector 優先次序最高，繼之 Class, 繼之 標籤名*/
+        #hColor {
+            color: blue;
+        }
+
+        .cHeadColor {
+            color: green
+        }
+
+        h2 {
+            color: red
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2 class="cHeadColor" id="hColor">The fruit</h2>
+    <h2 class="cHeadColor">The juice</h2>
+    <h2>The drinks</h2>
+    <script>
+        // 使用 javascript 的 id selector 來做style update 時，只會套用在第一個id物件上
+        // document.getElementById("hColor").style.color = "pink";
+    </script>
+</body>
+
+</html>

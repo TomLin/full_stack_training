@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        .tb01 {
+            border: 3px solid blue;
+            width: 400px;
+
+            /* collapse 會把隔線簡化 */
+            border-collapse: collapse;
+
+        }
+
+        td {
+            border: 1px solid gray;
+        }
+
+
+        th {
+            border: 1px solid gray;
+        }
+
+        thead {
+            background-color: green;
+            text-transform: uppercase;
+        }
+
+        tbody {
+            background-color: lightgreen;
+            text-align: center;
+        }
+
+        /* 如果是奇數列，就用 2n+1 */
+        tbody tr:nth-child(2n) {
+            background-color: yellow;
+        }
+
+        tbody tr:hover {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="tb01">
+        <caption>
+            <h2>Table Title</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>Column01</th>
+                <th>Column02</th>
+                <th>Column03</th>
+                <th>Column04</th>
+            </tr>
+            <tr>
+                <th colspan="2">Column01</th>
+                <!-- <th>Column02</th> -->
+                <th colspan="2">Column03</th>
+                <!-- <th>Column04</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- 如果是row的上下合併，要找對應的tr中的cell，進行comment與合併 -->
+                <td rowspan="2">1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <!-- <td>1</td> -->
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td colspan="2">3</td>
+                <!-- <td>4</td> -->
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

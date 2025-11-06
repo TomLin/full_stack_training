@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Style Modified</title>
+    <style>
+        .listCircle {
+            list-style-type: circle;
+        }
+
+        .listImg {
+            /* 移除清單的黑點 */
+            list-style-type: none;
+            /* 清單黑點要改為圖片，記得圖片大小約為一個字元(16px) */
+            list-style-image: url(./image/jupiter_16_16.png);
+
+        }
+
+        .listIn {
+            background-color: orange;
+            /* 單一項目的黑點會被包在li裡面 */
+            list-style-position: inside;
+        }
+
+        .listOut {
+            background-color: orange;
+            /* 單一項目的黑點會被放在li外面 */
+            list-style-position: outside;
+        }
+
+        .listBorder {
+            /* border的指令: 線條厚度 線條style 線條顏色 */
+            border: 3px dotted brown;
+
+            /* 四邊的彎角幅度指定 */
+            /* border-radius: 20px; */
+
+            /* 指定左上、右上、右下、左下的彎角幅度 */
+            border-radius: 20px 0 20px 0;
+            list-style-image: url(./image/jupiter_16_16.png);
+        }
+    </style>
+    <link rel="stylesheet" href="./style/listStyle.css">
+</head>
+
+<body>
+    <ul class="listCircle">
+        <li>第1層之1</li>
+        <li>第1層之2</li>
+        <li>第1層之3</li>
+    </ul>
+
+    <hr>
+
+    <ul class="listImg">
+        <li>第1層之1</li>
+        <li>第1層之2</li>
+        <li>第1層之3</li>
+    </ul>
+
+    <hr>
+
+    <ul>
+        <li class="listIn">第1層之1</li>
+        <li>第1層之2</li>
+        <li class="listOut">第1層之3</li>
+    </ul>
+
+    <hr>
+
+    <ul class="listBorder">
+        <li>第1層之1</li>
+        <li>第1層之2</li>
+        <li>第1層之3</li>
+    </ul>
+
+    <hr>
+
+    <ul class="listBorderFromSheet">
+        <li>第1層之1</li>
+        <li>第1層之2</li>
+        <li>第1層之3</li>
+    </ul>
+
+
+</body>
+
+</html>

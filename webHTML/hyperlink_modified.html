@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperLink Modified Style</title>
+    <style>
+        /* 在 hyperlink 的樣式調整中，link, visited, hover, active的順序要固定 */
+        .list a:link {
+            text-decoration: none;
+            color: aqua
+        }
+
+        .list a:visited {
+            color: blueviolet;
+        }
+
+        .list a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .list a:active {
+            color: red;
+            font-size: 30px;
+        }
+
+        /* 在命名list的class下的hyperlink style套用寫法(寫法二) */
+
+        /* .list>li>a:link {
+            text-decoration: none;
+            color: aqua
+        }
+
+        .list>li>a:visited {
+            color: blueviolet;
+        }
+
+        .list>li>a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .list>li>a:active {
+            color: red;
+            font-size: 30px;
+        } */
+    </style>
+
+</head>
+
+<body>
+    <!-- 要讓多個hyperlink可以換行，建議用list清單呈現 -->
+    <ul class="list">
+        <li><a href="https://24h.pchome.com.tw/">PCHome 24H</a></li>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="list.html">清單</a></li>
+        <li><a href="mailto:theblessed918@gmail.com">Mail to Me</a></li>
+    </ul>
+
+    <hr>
+    <a href="https://24h.pchome.com.tw/">PCHome 24H</a>
+    <a href="index.html">首頁</a>
+    <a href="list.html">清單</a>
+    <a href="mailto:theblessed918@gmail.com">Mail to Me</a>
+</body>
+
+</html>

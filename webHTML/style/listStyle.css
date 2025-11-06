@@ -1,0 +1,9 @@
+.listBorderFromSheet {
+    border: 3px dotted brown;
+    /* 四邊的彎角幅度指定 */
+    /* border-radius: 20px; */
+
+    /* 指定左上、右上、右下、左下的彎角幅度 */
+    border-radius: 20px 0 20px 0;
+    list-style-image: url(../image/jupiter_16_16.png);
+}
