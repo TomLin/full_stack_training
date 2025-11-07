@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+.dancing-script-normal {
+    font-family: "Dancing Script", cursive;
+    /* 自動調整字型的可讀性 */
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: JustOldFashion;
+    src: url(./JustOldFashion.ttf);
+}
+
+.font1 {
+    font-family: JustOldFashion;
+}
+
+@font-face {
+    font-family: SCRIPTIN;
+    src: url(./SCRIPTIN.ttf);
+}
+
+.font2 {
+    font-family: SCRIPTIN;
+}
