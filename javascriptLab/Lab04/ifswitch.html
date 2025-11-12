@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF Switch</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>IF Switch</h1>
+    </header>
+    <div class="class"></div>
+    <script>
+        // javascript 程式碼寫在這裡
+        if (true) {
+            console.log("條件為真");
+        } else {
+            console.log("條件為假");
+        }
+
+        // javascript 大括號也可不放，但不建議
+        if (9 > 5) console.log("9 大於 5");
+
+        // switch
+        let day = 3;
+
+        // switch 使用 === 嚴格比較
+        switch (day) {
+            case 1:
+                console.log("今天是星期一");
+                break;
+            case 2:
+                console.log("今天是星期二");
+                break;
+            case 3:
+                console.log("今天是星期三");
+                break;
+            default:
+                console.log("不知道今天是星期幾");
+                break; // 可加可不加
+        }
+
+    </script>
+</body>
+
+</html>

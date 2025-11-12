@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab05</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>object</h1>
+    </header>
+    <div class="container"></div>
+    <script>
+        // javascript code
+
+        // 第一種創建物件
+        let obj = new Object();
+        // 設定 修改物件屬性跟值;
+        obj.name = 'Gary';
+        obj.age = 18;
+        // 刪除物件屬性
+        delete obj.name; // 刪除屬性 name，之後再呼叫，會是 undefined
+        // 讀取屬性
+        console.log(obj.name);
+
+        // 物件屬性名稱不像變數有強制規定
+        obj.let = 'hello';
+        // 強制屬性名稱 object["屬性名稱"]
+        obj["123"] = 123;
+
+        // 屬性的值 是可以任意值
+        obj.test = true;
+        obj.test1 = null;
+        obj.test2 = new Object();
+        obj.test3 = function () { };
+        console.log(obj);
+
+        // 第二種創建物件
+        let obj2 = {
+            name: 'gary',
+            gender: 'male',
+            pet: { animal: 'cat', name: 'lemon' },
+            interest: ['running', 'coding'],
+            greeting: function () {
+                return 'hello';
+            }
+        };
+        console.log(obj2.pet["name"]);
+        console.log(obj2.interest[0]);
+        console.log(obj2.greeting());
+
+        // 檢查物件是否有該屬性 in
+        // ("屬性名稱" in 物件)
+        console.log("name" in obj2);
+        console.log("name1" in obj2);
+
+        let a = 123;
+        let b = a;
+        a++;
+        console.log(a);//124
+        console.log(b);//123
+
+        let objA = {};
+        objA.name = "gary";
+        let objB = objA;
+        objB.name = "jerry";
+        console.log(objA.name);//jerry
+        console.log(objB.name);//jerry
+
+        let objC = {};
+        let objD = {};
+        objC.name = 'gary';
+        objD.name = 'gary';
+        console.log(objC == objD);//false
+        console.log(objC.name == objD.name);//true
+
+
+    </script>
+</body>
+
+</html>

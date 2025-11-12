@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Object</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        .wrapper {
+            width: 800px;
+            height: 400px;
+            background-color: lightgray;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #div1 {
+            width: 500px;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid black;
+            background-color: lightblue;
+        }
+
+        p {
+            background-color: lightcoral;
+        }
+
+        span {
+            background-color: lightgreen;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Event Return Object</h1>
+    </header>
+    <div class="container">
+        <div class="wrapper">
+            <div class="box"></div>
+        </div>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+        <hr>
+        <div id="div1">
+            div element
+            <p>
+                paragraph element
+                <span>span element</span>
+            </p>
+        </div>
+        <a href="https://www.google.com">google</a>
+        <div id="target"></div>
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        /*
+            event 物件
+                事件封裝一些與事件相關的屬性資訊
+                keyCode
+                type
+                which
+                pageX
+                pageY
+                target
+        */
+
+        document.getElementById('textarea')
+            .addEventListener('mousemove', function (event) {
+                // console.log(event.type); // 事件類型, 例如: click, mousemove
+                // console.log(event.target); // 事件目標物件，例如: textarea, button
+                // console.log(`x=${event.pageX}, y=${event.pageY}`);
+            });
+
+        // 方塊移動
+        let box = document.querySelector('.box');
+        let boxStyle = window.getComputedStyle(box); // 取得 box 的 CSS 樣式物件
+        console.log('left: ' + boxStyle.left); // 取得 left 屬性值
+        console.log('top: ' + boxStyle.top); // 取得 top 屬性值
+        console.log('width: ' + boxStyle.width); // 取得 width 屬性值
+        console.log('height: ' + boxStyle.height); // 取得 height 屬性值
+        console.log('offsetLeft: ' + box.offsetLeft); // 取得 box 的 offsetLeft
+        console.log('offsetTop: ' + box.offsetTop); // 取得 box 的 offsetTop
+        console.log('offsetWidth: ' + box.offsetWidth); // 取得 box 的 offsetWidth
+        console.log('offsetHeight: ' + box.offsetHeight); // 取得 box 的 offsetHeight
+
+
+        document.onkeydown = function (event) {
+            /*
+                event.keyCode
+                    37: left
+                    38: up
+                    39: right
+                    40: down
+
+                    offsetLeft: 元素相對於父元素的左邊距 - 往左移動減少， + 往右移動增加
+                    offsetTop: 元素相對於父元素的上邊距 - 往上移動減少，+ 往下移動增加
+            */
+
+            // switch (event.keyCode) {
+            //     case 37: // left
+            //         box.style.left = (box.offsetLeft - 10) + 'px';
+            //         break;
+            //     case 38: // up
+            //         box.style.top = (box.offsetTop - 10) + 'px';
+            //         break;
+            //     case 39: // right
+            //         box.style.left = (box.offsetLeft + 10) + 'px';
+            //         break;
+            //     case 40: // down
+            //         box.style.top = (box.offsetTop + 10) + 'px';
+            //         break;
+            // }
+
+            // confine box movement within wrapper
+            switch (event.keyCode) {
+                case 37: // left
+                    if (parseInt(boxStyle.left) > 0) {
+                        box.style.left = box.offsetLeft - 30 + 'px';
+                    } else {
+                        box.style.left = '0px';
+                    }
+                    break;
+                case 38: // up
+                    if (parseInt(boxStyle.top) > 0) {
+                        box.style.top = box.offsetTop - 30 + 'px';
+                    } else {
+                        box.style.top = '0px';
+                    }
+                    break;
+                case 39: // right
+                    if (parseInt(boxStyle.left) < 700) {
+                        box.style.left = box.offsetLeft + 30 + 'px';
+                    } else {
+                        box.style.left = '700px';
+                    }
+                    break;
+                case 40: // down
+                    if (parseInt(boxStyle.top) < 300) {
+                        box.style.top = box.offsetTop + 30 + 'px';
+                    } else {
+                        box.style.top = '300px';
+                    }
+                    break;
+            }
+        };
+
+        // event bubbling 氣泡事件
+        // 子元素的事件會觸發父元素的事件
+        // 例如: 點擊 span 會觸發 p 和 div 的 click 事件
+        // 前提是 p 和 div 也有綁定 click 事件
+        document.getElementById('div1')
+            .addEventListener('click', function (event) {
+                console.log('div element clicked');
+            });
+
+        document.querySelector('p')
+            .addEventListener('click', function (event) {
+                event.stopPropagation(); // 停止事件冒泡
+                console.log('paragraph element clicked');
+
+            });
+
+        document.querySelector('span')
+            .addEventListener('click', function (event) {
+                event.stopPropagation(); // 停止事件冒泡
+                console.log('span element clicked');
+
+            });
+
+        // 注意:
+        // querySelector 與 getElementById 的差異
+        // getElementById('id名稱') 直接取得該 id 的元素
+        // querySelector('選擇器') 可使用任何 CSS 選擇器，但只會回傳第一個符合的元素
+        // 例如: class 選擇器 .className, id 選擇器 #idName, 標籤選擇器 tagName
+        // querySelector('#id') 等同於 getElementById('id')
+        // querySelector('.class') 等同於 getElementsByClassName('class')[0] (取得第一個符合的元素)
+        // querySelector('tag') 等同於 getElementsByTagName('tag')[0] (取得第一個符合的元素)
+        // 針對屬性
+        // querySelector('[name="value"]') 可選取具有特定屬性值的元素
+        // 例如 querySelector('[name="book"]') 會選取 name 屬性值為 book 的第一個元素
+
+        // event.preventDefault() 取消預設行為
+        document.querySelector('a').addEventListener('click', function (event) {
+            event.preventDefault(); // 取消預設行為
+            document.querySelector('#target').innerText = `Link clicked! default ${event.type} prevented.`;
+        });
+
+    </script>
+</body>
+
+</html>

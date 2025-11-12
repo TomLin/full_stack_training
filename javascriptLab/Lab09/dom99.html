@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 99</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        table {
+            width: 800px;
+            height: 400px;
+            border: 1px solid blue;
+            background-color: lightblue;
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>DOM 99 乘法表</h1>
+    </header>
+    <div class="class">
+        <table id="mulTable">
+            <!-- 乘法表會出現在這裡 -->
+
+        </table>
+
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        window.onload = function () {
+            console.log("網頁載入完成");
+            // tr
+            for (let i = 1; i <= 9; i++) {
+
+                let tr = document.createElement("tr");
+
+                for (let j = 1; j <= 9; j++) {
+                    let td = document.createElement("td");
+                    td.innerText = `${i} x ${j} = ${i * j}`;
+                    console.log(`${i} x ${j} = ${i * j}`);
+
+                    tr.appendChild(td);
+                }
+                document.querySelector('table').appendChild(tr);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

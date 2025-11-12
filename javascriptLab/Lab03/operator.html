@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Operator</h1>
+    </header>
+    <div class="class"></div>
+    <script>
+        // javascript 程式碼寫在這裡
+        // 算術運算子
+        var ret = 10 + 5; // 加法
+        console.log("10 + 5 = " + ret);
+
+        var ret = 1 + 2 + '3'; // 數字和字串相加，會變成字串相連(前面的1和2還會先相加)
+        console.log("1 + 2 + '3' = " + ret); // 結果是 '33'
+        console.log(typeof ret); // 結果是 string
+
+        var ret = '3' + 1 + 2; // 字串和數字相加，會變成字串相連(後面的1和2也會變字串相連，而不會相加)
+        console.log("'3' + 1 + 2 = " + ret); // 結果是 '312'
+        console.log(typeof ret); // 結果是 string
+
+        // 任何值加上 NaN，結果都是 NaN
+        var ret = 1 + NaN; // NaN 代表不是一個數字
+        console.log("1 + NaN = " + ret); // 結果是 NaN
+        console.log(typeof ret); // 結果是 number
+
+        // 有人會用下面的方式，數字轉字串
+        var num = 123;
+        var str = num + ''; // 利用加上空字串，讓數字變成字串
+        console.log("num + '' = " + str); // 結果是 '123'
+        console.log(typeof str); // 結果是 string
+
+        // -, *, / 都會轉成數字來運算
+        var ret = 10 - 5; // 減法
+        console.log("10 - 5 = " + ret);
+
+        var ret = 10 - '5'; // 字串會自動轉成數字
+        console.log("10 - '5' = " + ret);
+
+        var ret = '10' - 5; // 字串會自動轉成數字
+        console.log("'10' - 5 = " + ret);
+        console.log(typeof ret); // 結果是 number
+
+        var ret = '10' - NaN; // 字串會自動轉成數字，但 NaN 不是數字
+        console.log("'10' - NaN = " + ret); // 結果是 NaN
+        console.log(typeof ret); // 結果是 number
+
+        var ret = 10 - 'a'; // 'a' 非數字運算，轉成數字會是 NaN
+        console.log("10 - 'a' = " + ret); // 結果是 NaN
+        console.log(typeof ret); // 結果是 number
+
+        var ret = 10 - true; // true 會轉成數字 1
+        console.log("10 - true = " + ret); // 結果是 9
+        console.log(typeof ret); // 結果是 number
+
+        // 數字的字串 - 0
+        // 可以把字串轉成數字
+        var ret = '123' - 0; // '123' 會轉成數字 123
+        console.log("'123' - 0 = " + ret); // 結果是 123
+        console.log(typeof ret); // 結果是 number
+
+        // ++, --
+        /*
+            遞增分兩種，前置遞增(++a)，後置遞增(a++)
+            ++a 會先把 a 的值加 1，再拿來使用
+            a++ 會先拿 a 的值來使用，再把 a 的值加 1
+        */
+
+        let x = 10;
+        let x1 = ++x; // 前置遞增
+        console.log("x = " + x); // 結果是 11
+        console.log("x1 = " + x1); // 結果是 11
+
+        let y = 10;
+        let y1 = y++; // 後置遞增
+        console.log("y = " + y); // 結果是 11
+        console.log("y1 = " + y1); // 結果是 10
+
+        // 邏輯運算子
+        /*
+            && (AND)
+                當遇到第一個值為false, 就會直接回傳該值，不會再看後續
+                如果比較都是true，就會返回最後一個的值
+            || (OR)
+                當遇到第一個值為true, 就會直接回傳該值，不會再看後續
+                當第一個是false, 會繼續看後面的值, 看到 true 就會返回
+                如果比較都是false，就會返回最後一個的值
+            ! (NOT)
+        */
+
+        var ret = true && false; // AND 運算
+        console.log("true && false = " + ret); // 結果是 false
+        console.log(typeof ret); // 結果是 boolean
+
+        // true 返回後面的值
+        var ret = 5 && 6 && 7;
+        console.log("5 && 6 && 7 = " + ret); // 結果是 7
+        console.log(typeof ret); // 結果是 number
+
+        // false 返回前面的值
+        var ret = 0 && 6; // 0 會被當成 false，直接返回 0
+        console.log("0 && 6 = " + ret); // 結果是 0
+        console.log(typeof ret); // 結果是 number
+
+        var ret = 6 && 8 && 0 && 9; // 中間遇到 0，直接返回 0
+        console.log("3 && 7 && 0 && 9 = " + ret); // 結果是 0
+        console.log(typeof ret); // 結果是 number
+
+        // || (OR)
+        var ret = 5 || 6; // 5 會被當成 true，直接返回 5
+        console.log("5 || 6 = " + ret); // 結果是 5
+        console.log(typeof ret); // 結果是 number
+
+        var ret = 0 || 6; // 0 會被當成 false，返回後面的 6
+        console.log("0 || 6 = " + ret); // 結果是 6
+        console.log(typeof ret); // 結果是 number
+
+        var ret = '' || 6; // 空字串會被當成 false，返回後面的 6
+        console.log("'' || 6 = " + ret); // 結果是 6
+        console.log(typeof ret); // 結果是 number
+
+        var ret = 0 || ''; // 0 和空字串都被當成 false，返回最後一個值 ''
+        console.log("0 || '' = " + ret); // 結果是 ''
+        console.log(typeof ret); // 結果是 string   
+
+        var ret = null || 'hello'; // null 被當成 false，返回後面的 'hello'
+        console.log("null || 'hello' = " + ret); // 結果是 'hello'
+        console.log(typeof ret); // 結果是 string
+
+        var ret = -1 || 'hello'; // -1 被當成 true，返回 -1
+        console.log("-1 || 'hello' = " + ret); // 結果是 -1
+        console.log(typeof ret); // 結果是 number
+
+        // ! (NOT)
+        var ret = !true; // NOT 運算
+        console.log("!true = " + ret); // 結果是 false
+
+        var ret = !NaN;
+        console.log("!NaN = " + ret); // 結果是 true
+
+        var ret = !null;
+        console.log("!null = " + ret); // 結果是 true
+        var ret = !undefined;
+        console.log("!undefined = " + ret); // 結果是 true
+
+        // 指派運算子
+        /*
+            =      指派
+            +=     加後指派
+            -=     減後指派
+            *=     乘後指派
+            /=     除後指派
+        */
+
+        let c = 10;
+
+        // c = c + 5;
+        c += 5; // 等同於 c = c + 5
+        console.log("c += 5 => c = " + c); // 結果是 15
+
+        // 比較運算子
+        /*
+            ==     等於
+            ===    全等於(值和型別都要相同)
+            !=     不等於
+            !==    不全等於(值或型別不同)
+            >      大於
+            <      小於
+            >=     大於等於
+            <=     小於等於
+        */
+
+        ret = 1 == 1; // 等於
+        console.log("1 == 1 = " + ret); // 結果是 true
+
+        ret = 1 == '1'; // 等於，字串會自動轉型別
+        console.log("1 == '1' = " + ret); // 結果是 true
+
+        ret = 'a' < 'b'; // 小於，比較字母的 Unicode 編碼
+        console.log("'a' < 'b' = " + ret); // 結果是 true
+
+        ret = 123 > NaN; // NaN 不是數字
+        console.log("123 > NaN = " + ret); // 結果是 false
+
+        ret = 123 < NaN; // NaN 不是數字
+        console.log("123 < NaN = " + ret); // 結果是 false
+
+        // NaN 和任何值比較，結果都是 false, 包含自己
+        ret = NaN == NaN; // NaN 不是數字
+        console.log("NaN == NaN = " + ret); // 結果是 false
+
+        // isNaN() 函式，可以用來檢查一個值是否為 NaN
+        ret = isNaN(NaN);
+        console.log("isNaN(NaN) = " + ret); // 結果是 true
+
+        // === 全等於
+        ret = 1 === '1'; // 值相同但型別不同, 不會自動轉型別
+        console.log("1 === '1' = " + ret); // 結果是 false
+
+        // !== 不全等於
+        ret = 1 !== '1'; // 值相同但型別不同, 不會自動轉型別
+        console.log("1 !== '1' = " + ret); // 結果是 true
+
+        // 三元運算子
+        /*
+            條件 ? 表達式1 : 表達式2
+            如果 條件 為 true，回傳 表達式1 的值
+            如果 條件 為 false，回傳 表達式2 的值
+        */
+        let age = 20;
+        let status = (age >= 18) ? '成年人' : '未成年人';
+        console.log("年齡 " + age + " 的身分是: " + status); // 結果是 '成年人'
+
+        let e = 20;
+        let f = 15;
+        let g = 10;
+
+        let maxValue = e > f ? (e > g ? e : g) : (f > g ? f : g);
+        console.log("最大值是: " + maxValue); // 結果是 20
+
+
+    </script>
+</body>
+
+</html>

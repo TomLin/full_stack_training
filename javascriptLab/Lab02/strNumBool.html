@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrNumBool</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Demo - String Number Bool</h1>
+    </header>
+    <div class="class"></div>
+    <script>
+        // javascript 程式碼寫在這裡
+        // 字串 String
+        let str1 = "Hello\n";
+        let str2 = 'World\n';
+        let str3 = `Hello World\n`;
+        console.log(str1, str2, str3);
+
+        // 跳脫字元 \ 
+        let str4 = "He\'s a hero.";
+        console.log(str4);
+
+        let str5 = str1 + str4; // 字串串接
+        console.log(str5);
+
+        // 反引號
+        let name = "John";
+        let str6 = `My name is ${name}.\n`;
+        console.log(str6);
+
+        // 數字 Number
+        let num1 = 10;
+        console.log(typeof num1); // number
+
+        let num2 = 'abc' * 'def'; // NaN
+        console.log(num2);
+
+        console.log(Number.MAX_VALUE * Number.MAX_VALUE); // Infinity
+        console.log(10 / 0); // Infinity, 其它語言會顯示是 NaN
+
+        // 算法是2進制去算，會有一點誤差，整數是保證不會有誤差
+        console.log(0.2 * 3); // 0.6000000000000001 浮點數誤差
+        console.log(0.2 * 3 == 0.6); // false
+
+        // 在javascript中，如果要計算，記得要後處理，因為它不會很精確
+
+        // 布林值 Boolean
+        let bool1 = true;
+        let bool2 = false;
+
+        console.log(typeof bool1); // boolean
+
+        /*
+        轉成bool，使用 Boolean() 函式
+        下面這些會是 false:
+        1. 數字 0
+        2. 空字串 ""
+        3. undefined
+        4. null
+        5. NaN
+
+        其它的都會是 true
+        */
+        var bool3 = 123; // 非0數字都會是 true (包括正負號)
+        console.log(Boolean(bool3)); // true
+        var bool4 = 0; // 0 是 false
+        console.log(Boolean(bool4)); // false
+        var bool5 = -123; // 非0數字都會是 true (包括正負號)
+        console.log(Boolean(bool5)); // true
+
+        var bool6 = "Hello"; // 非空字串都是 true
+        console.log(Boolean(bool6)); // true
+        var bool7 = " "; // 非空字串都是 true
+        console.log(Boolean(bool7)); // true，注意空白字串不是空字串, 也是 true
+
+        var bool8 = ""; // 空字串是 false
+        console.log(Boolean(bool8)); // false
+
+        var bool9 = undefined; // undefined 是 false
+        console.log(Boolean(bool9)); // false
+
+        var bool10 = null; // null 是 false
+        console.log(Boolean(bool10)); // false
+
+        var bool11 = NaN; // NaN 是 false
+        console.log(Boolean(bool11)); // false
+
+
+    </script>
+</body>
+
+</html>

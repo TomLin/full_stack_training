@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab06</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>scope</h1>
+    </header>
+    <div class="container"></div>
+    <script>
+        // javascript code
+        // ex1
+        var scope = '全域';
+        if (true) {
+            var scope = '區域';
+        }
+        console.log(scope);//區域
+
+        // ex2
+        var scope2 = '全域';
+        function getValue() {
+            var scope2 = '區域';
+            return scope2;
+        }
+        console.log(scope2);//全域
+        console.log(getValue());//區域
+        console.log(scope2);//全域
+
+        //ex3
+        var scope3 = '全域';
+        function getValue2() {
+            scope3 = '區域';
+            return scope3;
+        }
+        console.log(scope3);//全域
+        console.log(getValue2());//區域
+        console.log(scope3);//區域
+
+        //ex4
+        var value = 10;
+        // 傳遞參數的值不會影響變數
+        function decrementValue(value) {
+            value--;
+            return value;
+        }
+        console.log(decrementValue(100));//99
+        console.log(value);//10;
+
+        //ex5
+        var valueArr = [1, 2, 3, 4, 5];
+        // 傳遞物件的地址 參考型別的記憶體位址
+        function deleteElement(valueArr) {
+            // 刪除尾端元素
+            valueArr.pop();
+            return valueArr;
+        }
+        console.log(deleteElement(valueArr));//1,2,3,4
+        console.log(valueArr);//1,2,3,4
+
+        // ex6
+        var scope4 = '全域';
+        function checkScope() {
+            var scope4 = '區域';
+            var fun1 = function () {
+                return scope4;
+            }
+            console.log(fun1());//區域
+            var fun2 = new Function("return scope4");
+            console.log(fun2());//全域
+        }
+        checkScope();
+    </script>
+</body>
+
+</html>

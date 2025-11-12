@@ -1,0 +1,1 @@
+console.log("外部的js檔案: This is the appdix.js file in Lab01.");

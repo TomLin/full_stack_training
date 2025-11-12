@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        span {
+            border: 1px solid orange;
+            margin: 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Form</h1>
+    </header>
+    <div class="container">
+        <input type="text" name="" id="input" placeholder="請輸入文字">
+        <hr>
+        <div>
+            <label for="">
+                身份證字號：
+                <input type="text" name="" id="idInput" placeholder="請輸入身份證字號">
+                <span id="idInputSpan"></span>
+            </label>
+        </div>
+        <div>
+            <label for="">
+                密碼驗證：
+                <input type="text" name="" id="inputPwd" placeholder="請輸入密碼">
+                <span id="pwdSpan"></span>
+                <ol>
+                    <li>不可空白</li>
+                    <li>至少6個字</li>
+                    <li>必須要有英文字</li>
+                    <li>必須要有特殊字元[!@#$%^&*]</li>
+                </ol>
+            </label>
+        </div>
+        <hr>
+        <div>
+            <input type="text" class="card" name="">
+            <input type="text" class="card" name="">
+            <input type="text" class="card" name="">
+            <input type="text" class="card" name="">
+        </div>
+        <div style="display: inline-block">
+            <input type="text" maxlength="4" class="card2">
+        </div>
+        <div style="display: inline-block">
+            <input type="text" maxlength="4" class="card2">
+        </div>
+        <div style="display: inline-block">
+            <input type="text" maxlength="4" class="card2">
+        </div>
+        <div style="display: inline-block">
+            <input type="text" maxlength="4" class="card2">
+        </div>
+        <hr>
+        <div>
+            <select name="" id="select">
+                <option value="TPE">台北</option>
+                <option value="KHH">高雄</option>
+                <option value="TAO">桃園</option>
+            </select>
+            <div id="target"></div>
+            <hr>
+            <div>
+                <input type="radio" name="radioGroup" value="A">A
+                <input type="radio" name="radioGroup" value="B">B
+                <input type="radio" name="radioGroup" value="C">C
+
+                <br>
+
+                <button id="getRadioBtn">取得radio的值</button>
+                <button id="setRadioBtn">設定radio的值</button>
+            </div>
+            <div>
+                <!-- checkbox是屬於複選的 -->
+                <input type="checkbox" name="checkboxGroup" value="1">1
+                <input type="checkbox" name="checkboxGroup" value="2">2
+                <input type="checkbox" name="checkboxGroup" value="3">3
+
+                <br>
+                <button id="getCheckboxBtn">取得checkbox的值</button>
+                <button id="setCheckboxBtn">設定checkbox的值</button>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        // input element 同時綁定多個事件
+        // focus 點擊進去input時 focus 事件發生
+        document.getElementById('input')
+            .addEventListener('focus', function () {
+                console.log('點擊進去input時 focus 事件發生');
+            });
+
+        // blur 離開input時 blur 事件發生
+        document.getElementById('input')
+            .addEventListener('blur', function () {
+                console.log('離開input時 blur 事件發生');
+            });
+
+        // 身份證字號 blur
+        document.getElementById('idInput')
+            .addEventListener('blur', function () {
+                let idValue = this.value;
+                let idSpan = document.getElementById('idInputSpan');
+
+                // let idRegex = /^[A-Z][12]\d{8}$/;
+                let idRegex = new RegExp('^[A-Z][12]\\d{8}$');
+                if (idRegex.test(idValue)) {
+                    idSpan.innerHTML = idValue + ' 是合法的身份證字號';
+
+                } else {
+                    idSpan.innerHTML = idValue + ' 不是合法的身份證字號';
+
+                }
+            });
+
+        // 密碼驗證 blur (進階寫法)
+        document.getElementById('inputPwd')
+            .addEventListener('blur', function () {
+                let pwdValue = this.value;
+                let pwdSpan = document.getElementById('pwdSpan');
+
+                let pwdRegex = new RegExp('^(?=.*[A-Za-z])(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{6,}$');
+
+                if (pwdRegex.test(pwdValue)) {
+                    pwdSpan.innerHTML = '密碼合法';
+                } else {
+                    pwdSpan.innerHTML = '密碼不合法';
+                }
+            });
+
+        // 密碼驗證 (基本寫法)
+        /*
+        document.getElementById('inputPassword')
+            .addEventListener('blur', function () {
+                // console.log(this.value);
+                // console.log(this.value.length);
+                let rule1 = new RegExp(/[a-z]+/i);
+                let rule2 = new RegExp(/[0-9]+/i);
+                let rule3 = new RegExp(/[!@#$%^&*]+/);
+                if (this.value.length == 0) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼不可為空白';
+                } else if (this.value.length < 6) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼至少6個字';
+                } else if (!rule1.test(this.value)) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼必須要有英文';
+                } else if (!rule2.test(this.value)) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼必須要有數字';
+                } else if (!rule3.test(this.value)) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼必須要有特殊字元';
+                } else {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼正確';
+                }
+            })
+        */
+
+        // 信用卡驗證碼選取
+        let cardInputs = document.querySelectorAll('.card');
+        // console.log(cardInputs);
+        for (let i = 0; i < cardInputs.length; i++) {
+            cardInputs[i].addEventListener('keyup', function () {
+                // console.log(this.value.length);
+                if (this.value.length == 4) {
+                    let nextInput = this.nextElementSibling;
+                    if (nextInput !== null) {
+                        nextInput.focus();
+                    }
+                }
+            });
+        }
+
+        // 信用卡驗證碼選取 2
+        let card2Inputs = document.querySelectorAll('.card2');
+        for (let i = 0; i < card2Inputs.length; i++) {
+            card2Inputs[i].addEventListener('keyup', function () {
+                if (this.value.length == 4) {
+
+                    // 因為div包住input, 所以當前的input，要跳到下一個input
+                    // 需要先往上找父元素，再找下一個兄弟元素
+                    // 再從下一個兄弟元素找子元素input
+
+                    let nextDiv = this.parentNode.nextElementSibling;
+                    // console.log(nextDiv);
+                    if (nextDiv !== null) {
+                        nextDiv.children[0].focus();
+                    }
+                }
+            });
+        }
+
+        // change 事件
+        document.getElementById('select')
+            .onchange = function () {
+                console.log('選取改變了'); // 一直選同一個option不會觸發
+                console.log(this.value); // 取得選取的值
+                document.getElementById('target').innerHTML =
+                    '你選取的是 ' + this.value;
+            };
+
+
+        // 取得radio的值
+        document.getElementById('getRadioBtn')
+            .addEventListener('click', () => {
+                let radios = document.getElementsByName('radioGroup'); // NodeList
+                console.log(radios);
+
+                let checkRet;
+                for (let i = 0; i < radios.length; i++) {
+                    let radio = radios[i];
+                    if (radio.checked) {
+                        checkRet = radio.value;
+                    }
+                }
+
+                console.log('最後取得的值是 ' + checkRet);
+            });
+
+        // 設定radio的值
+        document.getElementById('setRadioBtn')
+            .addEventListener('click', () => {
+                setRadioValue('radioGroup', 'B');
+
+            });
+
+        // 根據每一個radio的name屬性，設定為該value的radio為選取狀態
+        function setRadioValue(name, value) {
+            let radioG = document.getElementsByName(name);
+            for (let i = 0; i < radioG.length; i++) {
+                let radio = radioG[i];
+                if (radio.value == value) {
+                    radio.checked = true;
+                }
+            }
+        }
+
+        // 取得checkbox的值
+        document.getElementById('getCheckboxBtn')
+            .onclick = function () {
+                let checkboxGroup = document.getElementsByName('checkboxGroup');
+                let ret = [];
+                for (let i = 0; i < checkboxGroup.length; i++) {
+                    let checkbox = checkboxGroup[i];
+                    if (checkbox.checked) {
+                        ret.push(checkbox.value);
+                    }
+                }
+
+                console.log('取得的checkbox值有 ' + ret.join(','));
+            };
+
+        // 設定checkbox的值
+        document.getElementById('setCheckboxBtn')
+            .onclick = function () {
+                setCheckboxValue('checkboxGroup', ['1', '3']);
+            };
+
+        function setCheckboxValue(name, values) {
+            let checkboxG = document.getElementsByName(name);
+            for (let i = 0; i < checkboxG.length; i++) {
+                let checkbox = checkboxG[i];
+                // 判斷該checkbox的value是否在values陣列中
+                // indexOf() 搜尋陣列是否有該值，回傳索引值，如果沒有找到則回傳 -1
+                if (values.indexOf(checkbox.value) > -1) {
+                    checkbox.checked = true;
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

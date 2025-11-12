@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab09</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        table {
+            width: 400px;
+            border: 2px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>記事本</h1>
+    </header>
+    <div class="container">
+        <div>
+            <input type="text" placeholder="請輸入姓名" id="inputName">
+            <input type="text" placeholder="請輸入內容" id="inputContent">
+            <button id="addButton">+</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>內容</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>張三</td>
+                        <td>今天天氣真好</td>
+                        <td><button>刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td>李四</td>
+                        <td>我喜歡打籃球</td>
+                        <td><button>刪除</button></td>
+                    </tr>
+                    <tr>
+                        <td>王五</td>
+                        <td>我愛吃火鍋</td>
+                        <td><button>刪除</button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        // javascript code
+
+        /*
+            1. 使用者在input輸入後，按下add按鈕，新增到tbody
+            2. tbody裡面的刪除按鈕，可以刪除該列
+        */
+        // console.log(document.querySelectorAll('div input[type="text"]')); // 取得input元素
+
+        document.querySelector('#addButton').onclick = function () {
+            let name = document.querySelector('#inputName').value;
+            let content = document.querySelector('#inputContent').value;
+
+            // 動態新增 tr, td, button
+            let tr = document.createElement('tr');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            let td3 = document.createElement('td');
+            let button = document.createElement('button');
+
+            td1.innerText = name;
+            td2.innerText = content;
+            button.innerText = '刪除';
+            button.onclick = function (event) {
+                deleteData(event.target);
+            };
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+
+            // button 需要放在 td 裡面
+            td3.appendChild(button);
+            tr.appendChild(td3);
+            document.querySelector('tbody').appendChild(tr);
+
+        }
+
+        function deleteData(button) {
+            // button 的父元素 td, td 的父元素 tr
+            document.querySelector('tbody').removeChild(button.parentNode.parentNode);
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab09</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>表單事件</h1>
+    </header>
+    <div class="container">
+        <input type="text" id="input" placeholder="請輸入">
+        <hr>
+        <div>
+            <label for="">
+                身分證字號：
+                <input type="text" id="inputTwId">
+                <span id="twIdMsgSapn"></span>
+            </label>
+        </div>
+        <div>
+            <label for="">
+                密碼驗證：
+                <input type="text" id="inputPassword">
+                <span id="passwordMsgSpan"></span>
+                <ol>
+                    <li>不可空白</li>
+                    <li>至少6個字</li>
+                    <li>必須要有英文數字</li>
+                    <li>必須要有特殊字元[!@#$%^&*]</li>
+                </ol>
+            </label>
+        </div>
+    </div>
+    <script>
+        // javascript code
+        // focus
+        document.getElementById('input').addEventListener('focus', function () {
+            console.log('focus');
+        })
+        // blur
+        document.getElementById('input').addEventListener('blur', function () {
+            console.log('blur');
+        })
+
+        // 身分證驗證
+        document.getElementById('inputTwId')
+            .addEventListener('blur', function () {
+                // console.log(this.value);
+                let regexpTwId = new RegExp(/^[A-Z]{1}[1289]{1}[0-9]{8}$/);
+                if (regexpTwId.test(this.value)) {
+                    document.getElementById('twIdMsgSapn').innerHTML = '正確';
+                } else {
+                    document.getElementById('twIdMsgSapn').innerHTML = '錯誤';
+                }
+            })
+        // 密碼驗證
+        document.getElementById('inputPassword')
+            .addEventListener('blur', function () {
+                // console.log(this.value);
+                // console.log(this.value.length);
+                let rule1 = new RegExp(/[a-z]+/i);
+                let rule2 = new RegExp(/[0-9]+/i);
+                let rule3 = new RegExp(/[!@#$%^&*]+/);
+                if (this.value.length == 0) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼不可為空白';
+                } else if (this.value.length < 6) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼至少6個字';
+                } else if (!rule1.test(this.value)) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼必須要有英文';
+                } else if (!rule2.test(this.value)) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼必須要有數字';
+                } else if (!rule3.test(this.value)) {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼必須要有特殊字元';
+                } else {
+                    document.getElementById('passwordMsgSpan').innerHTML = '密碼正確';
+                }
+            })
+    </script>
+</body>
+
+</html>

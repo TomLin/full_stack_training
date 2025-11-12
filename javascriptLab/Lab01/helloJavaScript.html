@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab01 - Hello JavaScript</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Hello JavaScript</h1>
+    </header>
+    <div class="container">
+        <!-- 這裡是另外一個放置javascript的寫法 -->
+        <!-- 當點擊這個button時，console就會顯示 hello javascript02 -->
+        <!-- 不推薦這種寫法，未來不容易維護 -->
+        <button onclick="console.log('hello javascript02')">button element</button>
+
+        <!-- 在超連結中，要寫javascript的語法 -->
+        <!-- 記得要在href裡面，javascript 程式的開始寫上 javascript: -->
+        <a href="javascript:console.log('超連結 javascript03')">hyper link - javascript event</a>
+    </div>
+    <!-- 通常外部引入的js檔案(也就是套件)，越重要的js檔案，會放在越上面的script tag當中 -->
+    <script src="./pkg01.js">
+        // 空的src屬性
+        // 這段程式碼會被忽略
+        console.log("這段程式碼會被忽略");
+    </script>
+
+    <script src="./appdix.js">
+        // 在src使用外部的js檔案
+        // 中間 script 標籤裡面的內容會被忽略
+        // 所以這邊不需要寫任何東西
+        // 例如:
+        console.log("這段程式碼會被忽略");
+    </script>
+
+    <script>
+        // javascript code
+        // 在 javascript 當中，很loosely，甚至statement 後面沒有打 分號，也不會暴錯
+        // browser會幫你自動添加
+        // 但在parsing的時候，會有出錯的機率，但是很小(不為0)
+        console.log("hello javascript");
+    </script>
+</body>
+
+</html>

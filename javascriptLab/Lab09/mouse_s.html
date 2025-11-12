@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventMouse</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .out {
+            width: 40%;
+            height: 250px;
+            background-color: lightgreen;
+            float: left;
+            margin: 0 15px;
+        }
+
+        .in {
+            width: 60%;
+            height: 60%;
+            background-color: lightblue;
+            margin: 10px auto;
+        }
+
+        .targetAll {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Event Mouse</h1>
+    </header>
+    <div class="container">
+        <h3 id="target">JavaScript</h3>
+        <hr>
+        <h3 class="targetAll">JavaScript</h3>
+        <h3 class="targetAll">JavaScript</h3>
+        <h3 class="targetAll">JavaScript</h3>
+        <button id="btn">Click Me!</button>
+        <hr>
+        <div class="out overout">
+            <span id="overoutSpan">move your mouse</span>
+            <div class="in"></div>
+        </div>
+        <div class="out enterleave">
+            <span id="enterleaveSpan">move your mouse</span>
+            <div class="in"></div>
+        </div>
+
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        // click 
+        // dblclick 雙擊
+        let btn = document
+            .getElementById('btn');
+        btn.addEventListener('dblclick', function () {
+            console.log('button double clicked');
+        });
+
+        // contextmenu 右鍵選單
+        btn.addEventListener('contextmenu', function () {
+            console.log('right clicked');
+        });
+
+        // mouseup 放開滑鼠按鍵
+        btn.addEventListener('mouseup', function () {
+            console.log('滑鼠按著，放開了，才會觸發 mouseup 事件');
+        });
+
+        /*
+            (mouse over 搭配 mouse out, 不能用mouse over 搭配 mouse leave)
+            mouseover
+            mouseout
+                mousemove
+
+            (mouse enter 搭配 mouse leave)
+            mouseenter
+            mouseleave
+
+            hover: CSS 偽事件, 不是 javascript 事件
+        */
+
+        // overout 在滑鼠移入，包含子元素，都會觸發
+        let countOverout = 0;
+        let overoutDiv = document.querySelector('.overout');
+        overoutDiv
+            .addEventListener('mouseover', function () {
+                countOverout++;
+                document.getElementById('overoutSpan')
+                    .innerText = `mouseOver 次數: ${countOverout}`;
+            });
+
+        // enterleave 在滑鼠移入，只會在該元素時觸發，不包含子元素
+        let countEnterleave = 0;
+        let enterleaveDiv = document.querySelector('.enterleave');
+        enterleaveDiv
+            .addEventListener('mouseenter', function () {
+                countEnterleave++;
+                document.getElementById('enterleaveSpan')
+                    .innerText = `mouseEnter 次數: ${countEnterleave}`;
+            });
+
+        // 改變 target 文字顏色
+        document.getElementById('target').addEventListener('mouseover',
+            function () {
+                this.style.color = 'pink';
+            });
+        document.getElementById('target').addEventListener('mouseout',
+            function () {
+                this.style.color = 'black';
+            });
+
+        // 改變 targetAll javascript 文字顏色
+        let h3targetAll = document.querySelectorAll('.targetAll');
+        console.log(h3targetAll);
+
+        for (let i = 0; i < h3targetAll.length; i++) {
+            h3targetAll[i].addEventListener('mouseenter',
+                function () {
+                    this.style.color = 'pink';
+                });
+            h3targetAll[i].addEventListener('mouseleave',
+                function () {
+                    this.style.color = 'black';
+                });
+        }
+
+
+    </script>
+</body>
+
+</html>

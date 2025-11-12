@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Number</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>String Number</h1>
+    </header>
+    <div class="class"></div>
+    <script>
+        // javascript 程式碼寫在這裡
+        // string method
+        let str1 = "Hello World";
+        // 底層字串是以字元陣列方式儲存
+        // ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd' ]
+
+
+        console.log(str1);
+        console.log(str1.length);
+        console.log(str1[1]); // e
+
+        // trim 會移除前後空白
+        let str2 = "    My trimming string    ";
+        let newStr2 = str2.trim();
+        console.log(newStr2);
+
+
+        // toUpperCase, toLowerCase, indexOf
+        console.log(str1.toUpperCase());
+        console.log(str1.toLowerCase());
+        console.log(str1.indexOf('o')); // 4
+        console.log(str1.indexOf('o', 5)); // 從位置5開始找 o , 答案是 7
+
+        // split()
+        // 字串轉陣列
+        let str3 = "apple,banana,orange,watermelon";
+        let newStr3 = str3.split(',');
+        console.log(newStr3);
+
+        /*
+        slice(start, end)
+            參數結束位址，不包含在內，可省略，表示擷取到字串結尾
+        substring(start, end)
+        substr(start, length)
+        以上三個方法都可以從字串中擷取子字串
+        以上三個方法的第一個參數都是起始位置
+        1. slice : 參數2，可以接受負值, 負值表示從字串尾巴開始算起
+        2. substring : 參數2，不接受負值
+        3. substr : 第二個參數表示長度
+        
+    
+        */
+
+        console.log(str1.slice(0, 5)); // Hello
+        console.log(str1.slice(6)); // World
+        console.log(str1.slice(-5)); // World
+        console.log(str1.substring(0, 5)); // Hello
+        console.log(str1.substring(6)); // World
+        console.log(str1.substr(0, 5)); // Hello
+        console.log(str1.substr(6, 5)); // World
+
+
+        // number method
+        // toString()
+        let num1 = 12345;
+        let numStr = num1.toString();
+        console.log(typeof numStr); // string
+        console.log(numStr);
+
+        // String() 建構子
+        let num2 = 67890;
+        let numStr2 = String(num2);
+        console.log(typeof numStr2); // string
+        console.log(numStr2);
+
+        // number + '' 會自動轉成字串
+        let num3 = 54321;
+        let numStr3 = num3 + '';
+        console.log(typeof numStr3); // string
+        console.log(numStr3);
+
+        // 字串轉數字
+        // Number() 建構子
+        // 純數字字串，轉為數字型態
+        // 非數字字串，轉為 NaN
+        // 空字串 '' 轉為 0
+        // 有空白的字串 '   ' 轉為 0
+        // true 轉為 1 , false 轉為 0
+        // null 轉為 0
+        // undefined 轉為 NaN
+        let strNum1 = "98765";
+        let numFromStr1 = Number(strNum1);
+        console.log(typeof numFromStr1); // number
+        console.log(numFromStr1);
+
+        // parseInt() , parseFloat()
+        // 會從字串最前面開始解析，遇到非數字字元就停止
+        let strNum2 = "12345abc";
+        let numFromStr2 = parseInt(strNum2);
+        console.log(typeof numFromStr2); // number
+        console.log(numFromStr2); // 12345
+        let strNum3 = "3.14159xyz";
+        let numFromStr3 = parseFloat(strNum3);
+        console.log(typeof numFromStr3); // number
+        console.log(numFromStr3); // 3.14159
+
+        // 再將數字轉字串範例
+        newStrFromNum = numFromStr3 + 'px';
+        console.log(newStrFromNum); // 3.14159px
+
+        // 純數數字串 - 0
+        let strNum4 = '100' - 0;
+        console.log(typeof strNum4); // number
+        console.log(strNum4); // 100
+
+    </script>
+</body>
+
+</html>

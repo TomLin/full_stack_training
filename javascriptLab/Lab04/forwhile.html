@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab04</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>while for</h1>
+    </header>
+    <div class="container"></div>
+    <script>
+        // javascript code
+
+        // 在頁面產生要的字串，這個方法效能比較差，不建議使用
+        // document.write('字串')
+        // document.write(123456 + "<br>");
+        // document.write('資展' + "<br>");
+        // document.write('123');
+        let n = 1;
+        while (n < 10) {
+            document.write(n++ + "<br>");
+        }
+
+        // 後置判斷
+        let m = 10;
+        do {
+            // 任意程式至少會執行一次
+            document.write(123 + "<br>");
+            document.write(m++ + "<br>");
+        } while (m < 10);
+
+        /*
+            投資年利率8% 1000成長10000多少年
+            第一年 1000+1000*0.08
+            第二年 1080+1080*0.08
+            money + money*0.08
+            money(1+0.08)
+            money=money * 1.08
+            money*=1.08
+        */
+        let money = 1000;
+        let i = 0;
+        while (money < 10000) {
+            money *= 1.08;
+            i++;
+        }
+        console.log(money);
+        console.log(i);
+
+        // for迴圈的起始條件 宣告要使用let宣告
+        for (let i = 0; i < 10; i++) {
+            console.log(i);
+        }
+
+        // 1~100奇數和
+        let sum = 0;
+        for (let j = 0; j <= 100; j++) {
+            // j % 2 ==0 偶數
+            // j % 2 !=0 奇數
+            if (j % 2 != 0) {
+                console.log(j);
+                sum = sum + j;
+            }
+        }
+        console.log(sum);
+
+        // 99乘法表
+        /*
+            *
+            **
+            ***
+            ****
+        */
+        document.write('*' + "<br>");
+        document.write('**' + "<br>");
+        document.write('***' + "<br>");
+        document.write('****' + "<br>");
+
+        // 圖形高度
+        for (let i = 1; i < 5; i++) {
+            // 圖形寬度
+            for (let j = 0; j < i; j++) {
+                document.write("*");
+            }
+            document.write('<br>');
+        }
+
+        // for of 
+        let arr = ['資展', '高雄', 'FUEN47', '第三教室'];
+        for (let data of arr) {
+            console.log(data);
+        }
+
+        // 上面的程式碼，在C#寫法會是
+        /*
+        string[] arr = new string[] { "資展", "高雄", "FUEN47", "第三教室" };
+
+        foreach (string data in arr)
+        {
+            Console.WriteLine(data);
+        }
+        */
+
+    </script>
+</body>
+
+</html>

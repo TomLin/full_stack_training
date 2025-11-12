@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Keyboard</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Event Keyboard</h1>
+    </header>
+    <div class="container">
+        <input type="text" name="" id="input" placeholder="Type here...">
+        <div id="target"></div>
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        // key up event (放開鍵盤按鍵觸發)
+        let input = document.getElementById('input');
+        input.addEventListener('keyup', function () {
+            // console.log('key up');
+
+            // 讀取元素屬性 element.value 下面兩種寫法都可以
+            // console.log(input.value);
+            // console.log(this.value);
+
+            // document.getElementById('target').innerText = this.value;
+        });
+
+        // key down event (按下鍵盤按鍵觸發)
+        input.addEventListener('keydown', function () {
+            // console.log('key down');
+            document.getElementById('target').innerText = this.value;
+
+            // 兩個鍵同時按下觸發事件
+            if (event.ctrlKey && event.altKey) {
+                console.log('Ctrl + Alt 被按下');
+                console.log(event.keyCode); // event.keyCode 取得按鍵的代碼
+            }
+        });
+
+    </script>
+</body>
+
+</html>

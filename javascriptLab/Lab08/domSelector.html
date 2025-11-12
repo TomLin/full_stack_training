@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selector</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        .target {
+            width: 90%;
+            height: 50px;
+            background-color: lightgray;
+            margin: auto;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>DOM Selector</h1>
+    </header>
+    <div class="class">
+        <button id="btn">button</button>
+        <ul>
+            <li>list01</li>
+            <li>list02</li>
+            <li>list03</li>
+        </ul>
+        <input type="checkbox" name="checkboxGroup1" id="">1
+        <input type="checkbox" name="checkboxGroup1" id="">2
+        <input type="checkbox" name="checkboxGroup1" id="">3
+        <div class="target"></div>
+        <div class="target"></div>
+        <div class="target"></div>
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+        // getElementById 單選選擇器
+        let btn = document.getElementById("btn");
+        console.log(btn);
+
+        // getElementsByTagName(元素tag) 多選選擇器
+        // 回傳 HTML Collection 類似陣列 元素節點
+        let li = document.getElementsByTagName("li");
+        console.log(li);
+
+        // document.getElementByName (name屬性) 多選選擇器
+        // 回傳 NodeList 類似陣列 元素節點 文字節點 屬性節點
+        // 靜態 無法動態更新
+        let checkboxGroup1 = document.getElementsByName("checkboxGroup1");
+        console.log(checkboxGroup1);
+
+        // getElementsByClassName (class屬性) 多選選擇器
+        // 回傳 HTML Collection 類似陣列 元素節點
+        // 動態更新
+        let targets = document.getElementsByClassName("target");
+        console.log(targets);
+
+        // document.querySelector( CSS 選擇器) 單選選擇器
+        // document.querySelectorAll( CSS 選擇器) 多選選擇器
+        let btn1 = document.querySelector("#btn");
+        console.log(btn1);
+
+        let targetSingle = document.querySelector(".target");
+        console.log(targetSingle);
+
+        let targetMulti = document.querySelectorAll(".target");
+        console.log(targetMulti);
+
+
+    </script>
+</body>
+
+</html>

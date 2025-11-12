@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProtoType Object</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ProtoType Object原型物件</h1>
+    </header>
+    <div class="class"></div>
+    <script>
+        // javascript 程式碼寫在這裡
+        function createPerson(name, age, gender) {
+            let obj = {};
+            obj.name = name;
+            obj.age = age;
+            obj.gender = gender;
+            return obj;
+        }
+
+        let obj1 = createPerson("John", 30, "male");
+        let obj2 = createPerson("Mary", 25, "female");
+        console.log(obj1);
+        console.log(obj2);
+
+        // 使用 Prototype 來建立物件
+        // 1. 第一個字母大寫
+        // 2. 新建立的物件this建構子生成
+        // 3. 不需要 return 保留字
+
+        function Person(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+
+            // 方式一：
+            // 每一次實體化，都會增加一個函數，會耗效能
+            // this.sayName = function () {
+            //     return 'hello';
+            // };
+            // 方式二：將函數獨立出來
+            // this.sayName = fun;
+        }
+
+        // function fun() {
+        //     return 'hello';
+        // }
+
+        let personA = new Person("Tom", 28, "male");
+        let personB = new Person("Lucy", 22, "female");
+        console.log(personA);
+        console.log(personB);
+
+        // 原型物件新增屬性 prototype
+        /* 在原本原型物件上新增屬性或方法，所有由此建構子建立的物件都會繼承這些屬性或方法
+        */
+        Person.prototype.address = "Taipei City";
+        console.log(personA.address);
+        console.log(personB.address);
+
+        // 方式三：直接在原型物件上新增方法
+        Person.prototype.sayName = function () {
+            return 'hello';
+        };
+
+        console.log(personA.sayName());
+
+        // instanceof 用來判斷物件是否為某個建構子的實例
+        console.log(personA instanceof Person); // true
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab06</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>this</h1>
+    </header>
+    <div class="container"></div>
+    <script>
+        // javascript code
+        /*
+            this指向一個物件
+            依照上下文來決定 this是誰
+
+            情境    指向
+            全域環境 window物件(全域物件)
+            函數 window物件(全域物件)
+            物件方法 該物件
+            事件監聽 該觸發事件的元素
+            建構子 建立實體
+            call/apply 參數指定物件
+        */
+        console.log(this);
+        var name = '全域的name';
+        console.log(this.name);
+
+        function fun() {
+            console.log(this);
+            console.log(this.name);
+        }
+        fun();//window物件,全域的name
+
+        var obj = {
+            name: "gary",
+            sayName: fun
+        }
+        obj.sayName();//obj,gary
+
+        // 一般函數 箭頭函數差別
+        let obj2 = {
+            name: 'object2',
+            print: function () {
+                console.log(this);//obj2
+                function printAgain() {
+                    console.log(this)//window
+                }
+                printAgain();
+            }
+        }
+        obj2.print();//obj2,window
+
+        let obj3 = {
+            name: 'object3',
+            print: function () {
+                console.log(this);//obj3
+                /*
+                     箭頭函數this 並沒有自己的this值
+                    他會往外找函數繼承 如果沒有window物件
+                */
+                var printAgain = () => console.log(this);
+                printAgain()//obj3
+            }
+        }
+        obj3.print();//obj3,obj3
+    </script>
+</body>
+
+</html>

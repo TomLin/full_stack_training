@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expression</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Regular Expression</h1>
+    </header>
+    <div class="class"></div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        // 寫法一
+        // new RegExp("pattern", "flags");
+
+        new RegExp("abc", "i"); // i 忽略大小寫
+        new RegExp("abc", "g"); // g 全域搜尋(找出所有符合的，而不是只有第一個)
+
+        // 寫法二
+        // new RegExp(/pattern/flags);
+        var reg01 = new RegExp(/a|b|c/i);
+        var reg02 = new RegExp(/[abc]/g);
+        var reg03 = new RegExp(/[^abc]/g); // ^ 代表取得不包含 abc 的字元
+        var reg04 = new RegExp(/ab{3}/g); // b{3} 代表 b 出現 3 次
+        var reg05 = new RegExp(/ab{2,4}/g); // b{2,4} 代表 b 出現 2~4 次
+        var reg06 = new RegExp(/ab+c/g); // b+ 代表 b 出現 1 次以上
+        var reg07 = new RegExp(/ab*c/g); // b* 代表 b 出現 0 次以上
+        var reg08 = new RegExp(/ab?c/g); // b? 代表 b 出現 0 或 1 次
+        var reg09 = new RegExp(/^ab/g); // ^ 開頭
+        var reg10 = new RegExp(/ab$/g); // $ 結尾
+
+        // 台灣手機號碼
+        var reg11 = new RegExp(/^09\d{2}-?\d{3}-?\d{3}$/g);
+
+        // 台灣身份證字號
+        var reg12 = new RegExp(/^[A-Z][12]\d{8}$/g);
+
+        console.log('手機號碼驗證:');
+        console.log("09A2345678".match(reg11));
+        console.log("0912-345-678".match(reg11));
+        console.log("0912345678".match(reg11));
+        console.log('身份證字號驗證:');
+        console.log("A123456789".match(reg12));
+        console.log("B223456789".match(reg12));
+        console.log("C323456789".match(reg12));
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

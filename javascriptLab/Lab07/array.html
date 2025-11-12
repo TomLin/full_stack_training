@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Array</h1>
+    </header>
+    <div class="class"></div>
+    <script>
+        // javascript 程式碼寫在這裡
+        let arr1 = new Array(1, 2, 3, 4, 5);
+        console.log(arr1);
+        console.log(arr1[1]);
+
+        // length
+        console.log(arr1.length);
+        arr1[10] = 100;
+        console.log(arr1);
+        console.log(arr1[8]); // 未設定的陣列元素會是 undefined
+
+        // arr 最後一筆增加值
+        arr1[arr1.length] = 200;
+        console.log(arr1);
+
+        // 第二種建立陣列方式
+        // arr 可以放不同型態的資料，但不建議這樣做
+        let arr2 = [10, '2', true, {}, function () { }];
+        console.log(arr2);
+
+        // 陣列常用方法
+        // 下面的這些都是破壞式的方法，會改變原本的陣列內容
+        arr2.push(300); // 在陣列最後面增加一個元素
+        console.log(arr2);
+        arr2.pop(); // 移除陣列最後一個元素
+        console.log(arr2);
+        arr2.unshift('開始'); // 在陣列最前面增加一個元素
+        console.log(arr2);
+        arr2.shift(); // 移除陣列最前面一個元素
+        console.log(arr2);
+
+        // join(參數)
+        // 將陣列元素用參數連接起來，回傳一個字串(預設)
+        // 此方法不會改變原本陣列內容
+        let arrStr = arr2.join(' @ ');
+        console.log(arrStr);
+
+        // indexOf()
+        // 回傳參數在陣列中的位置，找不到回傳 -1
+        console.log(arr2.indexOf(true));
+        console.log(arr2.indexOf('不存在的值'));
+
+        /*
+        slice(開始位置, 結束位置)
+        回傳一個新的陣列，包含開始位置，但不包含結束位置
+        此方法不會改變原本陣列內容
+
+        splice(開始位置, 刪除數量, 新增元素1, 新增元素2, ...)
+        從陣列中刪除或新增元素，會改變原本陣列內容(破壞式方式)
+        1. 從開始位置開始
+        2. 刪除數量
+        3. 新增元素(傳遞新元素)，可省略
+        */
+
+        let arrSlice = arr1.slice(1, 4);
+        console.log(arrSlice);
+        console.log(arr1);
+        arr1.splice(2, 3, 'A', 'B');
+        console.log(arr1);
+
+        // foreach() 陣列迭代方法
+        arr1.forEach(function (value, index) {
+            console.log('index:', index, 'value:', value);
+        });
+
+
+
+        // 解構賦值
+        /* 傳統寫法
+        let a = arr3[0];
+        let b = arr3[1];
+        let c = arr3[2];
+        
+        */
+        let arr3 = [100, 200, 300];
+        let [a, b, c] = arr3;
+        console.log(a, b, c);
+
+        // 物件解構賦值
+        let person = {
+            name: 'John',
+            age: 30
+        }
+        let { name, age } = person;
+        console.log(name, age);
+
+        // 設定預設值
+        let person01 = {
+            name: 'Mary',
+            age: 25
+        }
+
+        // TODO: 不理解
+        let { address = 'Taipei', age1 } = person01;
+        console.log(address, age1); // Taipei undefined
+
+        // 交換變數值
+        let [x, ...y] = [10, 20, 30, 40, 50];
+        console.log('交換前:', x, y);
+        [x, y] = [y, x];
+        console.log('交換後:', x, y);
+
+        // 上面的傳統寫法
+        /*
+        let temp = x;
+        x = y;
+        y = temp;
+        console.log('交換後(傳統寫法):', x, y);
+        */
+
+        // 物件參數解構賦值
+        function greet({ name, age }) {
+            console.log(`Hello, my name is ${name}, I'm ${age} years old.`);
+        }
+        greet({ age: 28, name: 'Tom' });
+
+
+    </script>
+</body>
+
+</html>

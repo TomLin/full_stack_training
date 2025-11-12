@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab05</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>函數</h1>
+    </header>
+    <div class="container"></div>
+    <script>
+        // javascript code
+        /*
+            function 也是個物件
+                封裝程式碼 需要時調用
+                封裝程式碼不會立即執行
+        */
+        // 函數創建方式一 
+        /*
+            function 函數名稱(參數1,參數2...){封裝程式碼}
+        */
+        function fun1() {
+            console.log('hello1');
+        }
+        // 調用函數 函數名稱+()
+        fun1();
+
+        // 函數創建方式二
+        let fun2 = function () {
+            console.log('hello2');
+        }
+        fun2();
+
+        // 函數創建方式三 不建議此方法
+        // 雙引號 " 裡面的程式碼 " 是全域範圍
+        // 外面的會影響裡面，裡面的也會影響外面
+        let fun3 = new Function("console.log('hello3')");
+        fun3();
+
+        // 參數
+        function sum(x, y) {
+            console.log(x + y);
+        }
+        /*
+            1.調用參數時 不會檢查參數型別
+                如果需要必須對參數檢查
+                注意接收到非法參數
+            2.調用參數時 不會檢查數量
+        */
+        sum(1, 1);
+        sum(1, 'a'); // 回傳會變成 1a
+        sum(1, 2, 3); // 多餘參數不會影響
+        sum(1); // 少參數，會變成 1 + undefined, 變成回傳 NaN
+
+        function sayHello(name, age, gender, address) {
+            console.log(`我是${name},今年${age},性別是${gender},地址是${address}`);
+        }
+
+        // JavaScript沒有 named parameters 的概念, 只能靠參數順序
+        sayHello('Gary', 18, 'male', '第三教室');
+        sayHello('Gary', 'male', 18, '第三教室'); // 參數順序錯誤，回傳的字串結果也會錯誤
+        // 參數變多 傳遞時就可能會出錯
+
+
+        let objA = {
+            name: "gary",
+            age: 18,
+            gender: 'male',
+            address: '第三教室'
+        }
+
+        //建議，可以考慮傳遞物件
+        // 這樣參數順序就不重要了
+        // 也比較不容易因為順序，而出錯
+        // 需要的資訊，就由物件裡面去讀取
+        // 參數數量有沒有缺
+        // 參數型別正不正確
+        // 都可以做檢查
+        function sayHello2(obj) {
+            console.log(`我是${obj.name},今年${obj.age},性別是${obj.gender},地址是${obj.address}`);
+        }
+        sayHello2(objA);
+        // 另一種寫法會是: sayHello2({name: "gary", age: 18, gender: "male", address: "第三教室"}) 直接不宣告，傳物件
+
+
+        // 返回值 不寫返回值就回傳undefined
+        function sum2(x, y, z) {
+            let answer = x + y + z;
+            return answer;
+            //return後語句不會執行
+            console.log('123');
+        }
+        let result = sum2(1, 2, 3);
+        console.log(result);
+
+        // 判斷是否偶數的函數
+        function isEven(num) {
+            if (num % 2 == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        console.log(isEven(5));
+        console.log(isEven(6));
+
+        /*
+            立即執行函數
+            匿名函數
+            用()包住整體函數 只會執行一次
+            注意要加分號
+        */
+
+        (function () {
+            console.log('匿名函數');
+        })();
+
+        (function (a, b) {
+            console.log(a);
+            console.log(b);
+        })('FUEN47', 'javascript');
+
+        /*
+            箭頭函數
+                1. 若本體只有單行敘述可以省略{}
+                2. 若只有一個參數 可以省略()
+                3. 沒有參數()保留
+
+                箭頭函數沒有自己的 this，會繼承外層的 this，一直找到 window 物件為止
+
+        */
+        // 基本寫法
+        // 三角形面積
+        let getTriangle = (base, height) => {
+            return base * height / 2;
+        }
+        let getTriangle2 = (base, height) => base * height / 2;
+
+        let getCircle = radius => radius * radius * Math.PI;
+
+        let show = () => console.log('arrow function');
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab09</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .wrapper {
+            width: 800px;
+            height: 400px;
+            background-color: lightgray;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #div1 {
+            width: 500px;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid black;
+            background-color: lightblue;
+        }
+
+        p {
+            background-color: lightcoral;
+        }
+
+        span {
+            background-color: lightgreen;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>event物件</h1>
+    </header>
+    <div class="container">
+        <div class="wrapper">
+            <div class="box"></div>
+        </div>
+        <hr>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+        <hr>
+        <div id="div1">
+            div element
+            <p>
+                p element
+                <span>span element</span>
+            </p>
+        </div>
+    </div>
+    <script>
+        // javascript code
+        /*
+            event物件
+                事件物件封裝一些跟事件有關的屬性資訊
+                keyCode
+                type
+                which
+                pageX
+                pageY
+                target
+        */
+        document.getElementById('textarea')
+            .addEventListener('mousemove', function (event) {
+                // console.log(event.type);
+                // console.log(event.target);
+                console.log(`x=${event.pageX},y=${event.pageY}`);
+            })
+
+        // 方塊移動
+        let box = document.querySelector('.box');
+        let boxStyle = window.getComputedStyle(box);
+        document.onkeydown = function (event) {
+            /*
+                上 38 top offsetTop -
+                下 40 top offsetTop +
+                左 37 left offsetLeft -
+                右 39 left offsetLeft +
+
+                offsetTop/offsetLeft 元素本身相對父元素垂直/水平偏移位置
+            */
+
+            switch (event.keyCode) {
+                case 39:
+                    // console.log(box.style.left);
+                    // console.log(boxStyle.left);
+                    if (parseInt(boxStyle.left) < 700) {
+                        box.style.left = box.offsetLeft + 30 + 'px';
+                    } else {
+                        box.style.left = '700px';
+                    }
+                    break;
+                case 37:
+                    if (parseInt(boxStyle.left) > 0) {
+                        box.style.left = box.offsetLeft - 30 + 'px';
+                    } else {
+                        box.style.left = '0px';
+                    }
+                    break;
+                case 38:
+                    if (parseInt(boxStyle.top) > 0) {
+                        box.style.top = box.offsetTop - 30 + 'px';
+                    } else {
+                        box.style.top = '0px';
+                    }
+                    break;
+                case 40:
+                    if (parseInt(boxStyle.top) < 300) {
+                        box.style.top = box.offsetTop + 30 + 'px';
+                    } else {
+                        box.style.top = '300px';
+                    }
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

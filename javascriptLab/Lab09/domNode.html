@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Node</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Dom Node 尋訪元素節點</h1>
+    </header>
+    <div class="class">
+        <ul id="city">
+            <li>台北</li>
+            <li id="kh">高雄</li>
+            <li>台中</li>
+        </ul>
+        <hr>
+        <button class="btn">取得 #kh(id) 節點</button>
+        <button class="btn">設定 #kh(id) 節點</button>
+        <button class="btn">取得 li 文字節點</button>
+        <button class="btn">新增元素節點 appendChild() </button>
+        <button class="btn">新增元素節點 insertBefore() </button>
+        <button class="btn">新增元素節點 prepend() </button>
+        <button class="btn">移除元素節點 removeChild() </button>
+        <button class="btn">尋訪元素節點 nextElementSibling() </button>
+        <button class="btn">尋訪元素節點 previousElementSibling() </button>
+        <button class="btn">尋訪元素節點 parentNode() </button>
+        <button class="btn">尋訪元素節點 childNode() </button>
+
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+        window.onload = function () {
+            // 取得按鈕元素
+            var btns = document.querySelectorAll(".btn");
+
+            let kh = document.getElementById("kh");
+            btns[0].addEventListener("click", function () {
+                // innerHTML 取得文字 標籤
+                console.log("innerHTML: " + kh.innerHTML);
+            });
+
+            btns[1].addEventListener("click", function () {
+                // 設定文字
+                kh.innerHTML = '<h1>高雄市</h1>';
+            });
+
+            btns[2].addEventListener("click", function () {
+                // 取得 li 文字節點
+                let liList = document.querySelectorAll("li");
+                console.log(liList);
+
+                for (let i = 0; i < liList.length; i++) {
+                    console.log("li " + i + " 文字節點: " + liList[i].innerHTML);
+                }
+
+            });
+
+            // 插入元素節點 appendChild()
+            // 指定父元素，插入子元素
+            let ul = document.getElementById("city");
+
+            btns[3].onclick = function () {
+                // document.createElement('tagName') 新增元素
+                // 建立一個新的 li 元素節點
+                let newLi = document.createElement("li");
+                newLi.innerHTML = "台東";
+                ul.appendChild(newLi);
+            };
+
+            // insertBefore(element, referenceNode)
+            btns[4].onclick = function () {
+                let li = document.createElement("li");
+                li.innerHTML = "新北";
+
+                ul.insertBefore(li, kh);
+            };
+
+            // prepend() 在父元素的最前面新增子元素
+            btns[5].onclick = function () {
+                let li = document.createElement("li");
+                li.innerHTML = "基隆";
+                ul.prepend(li);
+            };
+
+            // removeChild() 刪除子元素
+            btns[6].onclick = function () {
+                ul.removeChild(ul.lastElementChild);
+            };
+
+            // nextElementSibling() 下一個元素節點
+            btns[7].addEventListener("click", function () {
+                let nextLi = kh.nextElementSibling;
+                nextLi.innerHTML = "我是下一個元素節點";
+            });
+
+            // previousElementSibling() 上一個元素節點
+            btns[8].addEventListener("click", function () {
+                let prevLi = kh.previousElementSibling;
+                prevLi.innerHTML = "我是上一個元素節點";
+            });
+
+            // parentNode() 父元素節點
+            btns[9].addEventListener("click", function () {
+                let ulParent = ul.parentNode;
+                console.log("parentNode: ", ulParent);
+            });
+
+            // childNodes() 子元素節點
+            btns[10].addEventListener("click", () => {
+                console.log("children: ", ul.children); // HTML Collection
+                console.log("childNodes: ", ul.childNodes); // Node List
+
+            });
+
+        };
+    </script>
+</body>
+
+</html>

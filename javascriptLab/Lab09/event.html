@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+        // onload 事件會在頁面載入完成後執行
+        window.onload = function () {
+            console.log("網頁載入完成");
+
+            let btn2 = document.getElementById("btn2");
+            btn2.onclick = function () {
+                console.log("click button02 - onload");
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>綁定 Event (event binding)</h1>
+    </header>
+    <div class="class">
+        <!-- 第一種綁定事件 -->
+        <button id="btn1" onclick="console.log('click button01')">button01</button>
+        <button id="btn2">button02</button>
+        <button id="btn3">button03</button>
+
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        // 有時也會在這裡寫 window.onload = function () { ... }
+        // 把程式碼放在這裡，等到 HTML 元素都載入後才執行
+        // 因為 script 標籤是在 body 的最後面
+        // 這樣是雙重保障
+
+
+        // 第二種綁定事件，只能綁定一個事件處理器，會覆蓋前一個
+        let btn2 = document.getElementById("btn2");
+        btn2.onclick = function () {
+            console.log("click button02 - 1");
+        };
+
+        btn2.onclick = function () {
+            console.log("click button02 - 2");
+        };
+
+        // 第三種綁定事件，可以綁定多個事件處理器
+        // addEventListener('事件名稱', 事件處理器函式)
+        document.getElementById("btn3")
+            .addEventListener('click', function () {
+                console.log("click button03 - 1");
+            });
+
+        document.getElementById("btn3")
+            .addEventListener('click', function () {
+                console.log("click button03 - 2");
+            });
+    </script>
+</body>
+
+</html>

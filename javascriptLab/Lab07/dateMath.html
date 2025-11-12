@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Math</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Date Math</h1>
+    </header>
+    <div class="class"></div>
+    <script>
+        // javascript 程式碼寫在這裡
+        // Date 物件
+        // 當前時間
+        let now = new Date();
+        console.log("now:", now);
+
+        // 指定時間
+        let time = new Date("2024-12-31 23:59:59");
+        console.log("time:", time);
+
+        // 幾號
+        let date = now.getDate();
+        console.log("date:", date);
+
+        // 星期幾 (0: 星期日, 1: 星期一, ..., 6: 星期六)
+        let day = now.getDay();
+        console.log("day:", day);
+
+        // 幾月 (0: 一月, 1: 二月, ..., 11: 十二月)
+        let month = now.getMonth();
+        console.log("month:", month);
+
+        // 幾年
+        let year = now.getFullYear();
+        console.log("year:", year);
+
+        // 西元年轉民國年 method
+        function toROCYear(myDate) {
+            let rocYear = myDate.getFullYear() - 1911;
+            return `西元年 ${myDate.getFullYear()} 是民國 ${rocYear} 年`;
+        }
+        console.log(toROCYear(now));
+
+
+        // Math 物件
+        // 靜態類方法，不用實體物件
+        console.log("Math.PI:", Math.PI);
+
+        // 四捨五入
+        console.log("Math.round(4.5):", Math.round(4.5));
+        console.log("Math.round(4.4):", Math.round(4.4));
+
+        // 無條件進位
+        console.log("Math.ceil(4.1):", Math.ceil(4.1));
+        console.log("Math.ceil(4.9):", Math.ceil(4.9));
+
+        // 無條件捨去
+        console.log("Math.floor(4.9):", Math.floor(4.9));
+        console.log("Math.floor(4.1):", Math.floor(4.1));
+
+        // random 產生 0~1 之間的亂數
+        console.log("Math.random():", Math.random());
+        console.log("Math.random() 乘以 10:", Math.random() * 10);
+
+        // 產生指定範圍的亂數函式
+        function randomIntegerBetween(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        console.log("Random integer between 5 and 15:", randomIntegerBetween(5, 15));
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
