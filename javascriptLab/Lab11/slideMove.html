@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab11</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background-color: red;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* ul樣式 */
+        .slide-imgs-ul {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            left: 0px;
+        }
+
+        /* li樣式 */
+        .slide-imgs-ul li {
+            width: 800px;
+            height: 400px;
+        }
+
+        /* img */
+        .slide-imgs-ul li img {
+            width: 800px;
+            height: 400px;
+            /* 調整內容比例大小 原圖多餘的圖會被裁切 */
+            object-fit: cover;
+        }
+
+        /* 分頁ul樣式 */
+        .pages {
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            bottom: 10px;
+            display: flex;
+            /* background-color: red; */
+            width: 100%;
+            /* 主軸置中 */
+            justify-content: center;
+        }
+
+        .pages li {
+            border: 1px solid #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        .arrow {
+            position: absolute;
+            z-index: 1;
+            font-size: 36px;
+            color: #fff;
+            /* background-color: red; */
+            width: 42px;
+            height: 100%;
+            display: flex;
+            /* 次軸置中 */
+            align-items: center;
+            /* 主軸置中 */
+            justify-content: center;
+            opacity: .6;
+            cursor: pointer;
+        }
+
+        .arrow:hover {
+            opacity: 1;
+        }
+
+        .right {
+            right: 0
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>廣告輪播</h1>
+    </header>
+    <div class="container">
+        <div class="wrapper">
+            <a class="arrow" id="arrowLeft"><i class="fa-solid fa-circle-chevron-left"></i></a>
+            <a class="arrow right" id="arrowRight"><i class="fa-solid fa-circle-chevron-right"></i></a>
+            <ul class="slide-imgs-ul">
+                <li><img src="../imgs/view1.jpg" alt=""></li>
+                <li><img src="../imgs/view2.jpg" alt=""></li>
+                <li><img src="../imgs/view3.jpg" alt=""></li>
+                <li><img src="../imgs/view4.jpg" alt=""></li>
+                <li><img src="../imgs/view5.jpg" alt=""></li>
+            </ul>
+            <ul class="pages">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // javascript code
+        /*
+            1. 設定整體輪播範圍
+            2. 設定五張圖片
+                測試移動邏輯
+            3. 設定分頁樣式
+            4. 分頁移動
+                分頁換色
+            5. 設定箭頭樣式
+            6. 箭頭移動
+            7. 輪播功能
+        */
+        let pagesLi = document.querySelectorAll('.pages li');
+        // console.log(pagesLi);
+        pagesLi[0].style.backgroundColor = 'white';
+        let index = 0;
+        for (let i = 0; i < pagesLi.length; i++) {
+            // 分頁移動
+            pagesLi[i].addEventListener('mouseenter', function () {
+                // document.querySelector('.slide-imgs-ul').style.left = '-800px';
+                index = i;
+                // 圖片移動邏輯
+                // let slideMove = -800 * i;
+                // document.querySelector('.slide-imgs-ul').style.left = slideMove + 'px';
+                // for (let j = 0; j < pagesLi.length; j++) {
+                //     pagesLi[j].style.backgroundColor = '';
+                // }
+                // pagesLi[i].style.backgroundColor = 'white';
+                moveImg();
+            })
+        }
+
+        // 右邊箭頭移動
+        document.getElementById('arrowRight').onclick = () => {
+            index++;
+            if (index >= 5) {
+                index = 0;
+            }
+            // 圖片移動邏輯
+            // let slideMove = -800 * index;
+            // document.querySelector('.slide-imgs-ul').style.left = slideMove + 'px';
+            // for (let j = 0; j < pagesLi.length; j++) {
+            //     pagesLi[j].style.backgroundColor = '';
+            // }
+            // pagesLi[index].style.backgroundColor = 'white';
+            moveImg();
+        }
+
+        // 左邊箭頭移動
+        document.getElementById('arrowLeft').onclick = () => {
+            index--;
+            if (index < 0) {
+                index = 4;
+            }
+            // 圖片移動邏輯
+            // let slideMove = -800 * index;
+            // document.querySelector('.slide-imgs-ul').style.left = slideMove + 'px';
+            // for (let j = 0; j < pagesLi.length; j++) {
+            //     pagesLi[j].style.backgroundColor = '';
+            // }
+            // pagesLi[index].style.backgroundColor = 'white';
+            moveImg();
+        }
+
+        function moveImg() {
+            // 圖片移動邏輯
+            let slideMove = -800 * index;
+            document.querySelector('.slide-imgs-ul').style.left = slideMove + 'px';
+            for (let j = 0; j < pagesLi.length; j++) {
+                pagesLi[j].style.backgroundColor = '';
+            }
+            pagesLi[index].style.backgroundColor = 'white';
+        }
+
+        // 輪播
+        setInterval(function () {
+            index++;
+            if (index >= 5) {
+                index = 0;
+            }
+            moveImg();
+        }, 2000)
+    </script>
+</body>
+
+</html>

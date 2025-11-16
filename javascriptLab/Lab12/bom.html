@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab12</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>瀏覽器物件</h1>
+    </header>
+    <div class="container">
+        <button id="alert">alert</button>
+        <button id="confirm">confirm</button>
+        <button id="prompt">prompt</button>
+        <hr>
+        key: <input type="text" id="key">
+        value: <input type="text" id="value">
+        <button id="btn">送出</button>
+        <br>
+        取出localStorage: <input type="text" id="get">
+        <br>
+        指定刪除localStorage: <input type="text" id="delete">
+        <br>
+        <button id="clear">clear</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // javascript code
+        /*
+            BOM瀏覽器物件
+                window物件 全域物件
+                    window.console.log
+                    window.alert
+                    window.confirm
+                    window.prompt
+                    window.time
+                    window.timeEnd
+                    window.setInterval
+                    window.setTimeout
+                    window.localStorage 
+                        資料暫存瀏覽器的物件 直到使用者清除
+                        setItem('key','value');
+                        getItem('key')
+                        removeItem('key')
+                        clear()
+
+                history 瀏覽器歷史訊息
+                location 瀏覽器url相關資訊
+                naviagtor 當前瀏覽器資訊
+        */
+
+        // 儲存localStorage
+        document.getElementById('btn').onclick = () => {
+            let key = document.getElementById('key').value;
+            let value = document.getElementById('value').value;
+            localStorage.setItem(key, value);
+        }
+        // 取出localStorage
+        document.getElementById('get').onblur = () => {
+            let key = document.getElementById('get').value;
+            // console.log(key);
+            alert(`value:${localStorage.getItem(key)}`);
+        }
+        // 指定刪除localStorage
+        document.getElementById('delete').onblur = () => {
+            let key = document.getElementById('delete').value;
+            localStorage.removeItem(key);
+            alert(`刪除:${key}`)
+        }
+        // 清除全部localStorage
+        document.getElementById('clear').onclick = () => {
+            localStorage.clear();
+        }
+
+        document.getElementById('alert').onclick = () => {
+            // window.alert('字串') 跳出警告視窗
+            // alert('hello javascript');
+            Swal.fire({
+                title: "The Internet?",
+                text: "That thing is still around?",
+                icon: "warning"
+            });
+        }
+        document.getElementById('confirm').onclick = () => {
+            // window.confirm('字串') 選擇類型跳出視窗 回傳boolean值
+            if (confirm('測試成功嗎?')) {
+                console.log('測試成功');
+            } else {
+                console.log('測試失敗')
+            }
+        }
+        document.getElementById('prompt').onclick = () => {
+            // window.prompt('字串','預設文字') 輸入類型跳出視窗
+            let value = prompt('請輸入姓名', '預設文字');
+            console.log(value);
+        }
+    </script>
+</body>
+
+</html>

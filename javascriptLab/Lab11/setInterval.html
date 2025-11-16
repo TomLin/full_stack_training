@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab11</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>定時器</h1>
+    </header>
+    <div class="container">
+        <h3 id="h3">1</h3>
+        <hr>
+        <button id="slideUpBtn">slideUp</button>
+        <button id="slideDownBtn">slideDown</button>
+        <button class="btn">flash</button>
+        <button class="btn">jello</button>
+        <button class="btn">heartBeat</button>
+        <!-- <div class="box animate__animated animate__bounce"></div> -->
+        <div class="box"></div>
+
+    </div>
+    <script>
+        // javascript code
+        /*
+            開啟一個定時器
+                可以設定一個函數 經過一段時間執行一次
+            setInterval()
+                1. 參數 執行函數
+                2. 參數 毫秒ms
+            回傳number類型變數 定時器名稱
+
+            關閉定時器
+            clearInterval(定時器名稱)
+        */
+        let i = 2;
+        // setInterval(function () {
+        //     document.getElementById('h3').innerHTML = i++;
+        // }, 1000);
+
+        let timer = setInterval(displayCount, 1000);
+        function displayCount() {
+            document.getElementById('h3').innerHTML = i++;
+            if (i == 11) {
+                clearInterval(timer);
+            }
+        }
+
+        let box = document.querySelector('.box');
+        let boxStyle = window.getComputedStyle(box);
+        // 往上消失
+        document.getElementById('slideUpBtn').addEventListener('click', () => {
+            let timer = setInterval(slideUp, 20);
+            function slideUp() {
+                let newHeight = parseInt(boxStyle.height) - 5
+                if (newHeight <= 0) {
+                    clearInterval(timer);
+                }
+                box.style.height = newHeight + 'px';
+            }
+        })
+        // 往下延伸
+        document.getElementById('slideDownBtn').addEventListener('click', function () {
+            let timer = setInterval(slideDown, 50);
+            function slideDown() {
+                let newHeight = parseInt(boxStyle.height) + 5;
+                if (newHeight >= 200) {
+                    clearInterval(timer);
+                }
+                box.style.height = newHeight + 'px';
+            }
+        })
+
+        /*
+            setTimeout()
+                經過指定時間 執行函數
+                只會執行一次
+        */
+        setTimeout(function () {
+            console.log('三秒後說hello');
+        }, 3000);
+
+        /*
+            計時器
+            console.time('計時器名稱') 開啟    
+            console.timeEnd('計時器名稱') 結束    
+        */
+        console.time('2的100000次方所花費時間');
+        Math.pow(2, 100000);
+        console.timeEnd('2的100000次方所花費時間');
+
+        //animateCSS
+        const animateCSS = (element, animation, prefix = 'animate__') =>
+            // We create a Promise and return it
+            new Promise((resolve, reject) => {
+                const animationName = `${prefix}${animation}`;
+                const node = document.querySelector(element);
+
+                node.classList.add(`${prefix}animated`, animationName);
+
+                // When the animation ends, we clean the classes and resolve the Promise
+                function handleAnimationEnd(event) {
+                    event.stopPropagation();
+                    node.classList.remove(`${prefix}animated`, animationName);
+                    resolve('Animation ended');
+                }
+
+                node.addEventListener('animationend', handleAnimationEnd, { once: true });
+            });
+
+        document.querySelector('.btn').onclick = () => {
+            animateCSS('.box', 'flash');
+        }
+        let btns = document.querySelectorAll('.btn');
+        for (let btn of btns) {
+            btn.onclick = () => {
+                animateCSS('.box', btn.innerHTML)
+            }
+        }
+    </script>
+</body>
+
+</html>

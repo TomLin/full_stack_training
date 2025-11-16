@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lab09</title>
+    <!-- 下面是 css icon 的外掛，有許多icon可以下載(來源是fontawesome)，透過CDN的方式引入 -->
+    <!-- You don’t download the CSS file yourself—the browser gets it from the CDN(content delivery network). -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         body {
             font-size: 17px;
@@ -44,6 +47,9 @@
             <input type="text" placeholder="請輸入姓名" id="inputName">
             <input type="text" placeholder="請輸入內容" id="inputContent">
             <button id="addButton">+</button>
+            <!-- fontawesome 是使用i tag來把icon載入，這個i tag原本是拿來做斜體字的, -->
+            <!-- 但是現在被用來顯示圖示，記得它就像是文字一樣，要放在文字區塊 -->
+            <button><i class="fa-solid fa-face-smile"></i></button>
             <table>
                 <thead>
                     <tr>

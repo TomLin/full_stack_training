@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>changeStar</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Change Star</h1>
+    </header>
+    <div class="container"></div>
+    <img src="../imgs/star.gif" alt="" class="starImg">
+    <img src="../imgs/star.gif" alt="" class="starImg">
+    <img src="../imgs/star.gif" alt="" class="starImg">
+    <img src="../imgs/star.gif" alt="" class="starImg">
+    <img src="../imgs/star.gif" alt="" class="starImg">
+    <br>
+    <h2 id="starMsgH2">目前0顆星</h2>
+    <button id="resetStarBtn">重置星星功能</button>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        /*
+            1. 星星換色
+                滑鼠移到星星上時，該星星和前面的星星變色
+                移出時，恢復原本顏色
+                移動到該星星時，連動h2 tag顯示目前幾顆星
+            2. 使用者最後確定星星數量點擊功能
+                固定星星數量並連動h2 tag顯示目前幾顆星
+            3. 重製星星功能
+        */
+
+        // 取得所有星星元素
+        let stars = document.querySelectorAll('img');
+        let flag = true; // 換色功能是否開啟
+
+        for (let i = 0; i < stars.length; i++) {
+            // 星星移入換色
+            stars[i].addEventListener('mouseover', function () {
+                // stars[i].src = '../imgs/chngstar.gif';
+
+                // 當點擊後，flag 變成 false 就不執行換色功能
+                if (flag) {
+
+                    for (let j = 0; j <= i; j++) {
+                        stars[j].src = '../imgs/chngstar.gif';
+                    }
+                    document.getElementById('starMsgH2').innerText = `目前 ${i + 1} 顆星`;
+                }
+            });
+
+            // 星星移出恢復原本顏色
+            stars[i].addEventListener('mouseout', function () {
+                // stars[i].src = '../imgs/star.gif';
+
+                // JavaScript 單行時不需要加大括號
+                if (flag) resetStars();
+            });
+
+            // 點擊功能
+            stars[i].addEventListener('click', function () {
+                if (flag) {
+                    flag = false;
+                    document.getElementById('starMsgH2').innerHTML = `最後選擇 ${i + 1} 顆星`;
+                }
+            });
+        }
+
+        // 重製星星功能
+        document.getElementById('resetStarBtn').addEventListener('click', function () {
+            resetStars();
+            flag = true;
+
+        });
+
+        function resetStars() {
+            for (let k = 0; k < stars.length; k++) {
+                stars[k].src = '../imgs/star.gif';
+            }
+            document.getElementById('starMsgH2').innerText = `目前 0 顆星`;
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

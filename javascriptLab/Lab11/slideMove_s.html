@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlideMove</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background-color: lightgoldenrodyellow;
+            margin: 0 auto;
+            /* 隱藏子元素超出父元素區域的部分 */
+            overflow: hidden;
+
+        }
+
+        /* ul 樣式 */
+        .slide-imgs-ul {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            /* 移除 ul 預設的項目符號 */
+            list-style: none;
+            display: flex;
+            left: 0;
+        }
+
+        /* li 樣式 */
+        .slide-imgs-ul li {
+            width: 800px;
+            height: 400px;
+        }
+
+        /* img 樣式 */
+        .slide-imgs-ul li img {
+            width: 800px;
+            height: 400px;
+            /* 調整內容比例大小，讓圖片不變形且填滿整個區域，但會被裁切 */
+            object-fit: cover;
+        }
+
+        /* CSS 樣式有 flexbox 的話
+            With display: flex:
+
+            假設原本是 div A, B, C 會是 vertical stack (column direction by default).
+
+            有了 flexbox 之後，
+            Items (A, B, C) align horizontally (row direction by default).
+
+            You can center them with justify-content and align-items.
+
+            You can add spacing easily with gap.
+
+            You can switch to vertical direction using flex-direction: column. 
+            
+        */
+
+        /* 分頁ul樣式 */
+        .pages {
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            bottom: 10px;
+            display: flex;
+            background-color: grey;
+            width: 100%;
+            /* 主軸置中(水平線) */
+            justify-content: center;
+        }
+
+        .pages li {
+            border: 1px solid white;
+            width: 20px;
+            height: 20px;
+            /* 變成圓形 */
+            border-radius: 50%;
+            margin: 0 5px;
+
+        }
+
+        .arrow {
+            position: absolute;
+            /* z-index 權重，在多個元素重疊時，數字越大越靠上 */
+            z-index: 1;
+            font-size: 36px;
+            color: white;
+            background-color: red;
+            width: 42px;
+            height: 100%;
+            display: flex;
+            /* 主軸置中(水平線) */
+            justify-content: center;
+            /* 次軸置中(垂直線) */
+            align-items: center;
+            /* opacity 不透明度 */
+            opacity: .6;
+            /* cursor 控制鼠標的樣式 */
+            cursor: pointer;
+        }
+
+        .arrow:hover {
+            opacity: 1;
+        }
+
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Demo - SlideMove</h1>
+    </header>
+    <div class="container">
+        <div class="wrapper">
+            <!-- 這裡的 a tag 不是超連結，所以把 rel 之類的屬性拿掉 -->
+            <a class="arrow"><i class="fa-regular fa-circle-left"></i></a>
+            <a class="arrow right" id="arrowRight"><i class="fa-regular fa-circle-right"></i></a>
+            <ul class="slide-imgs-ul">
+                <li><img src="../imgs/view01.png" alt=""></li>
+                <li><img src="../imgs/view02.png" alt=""></li>
+                <li><img src="../imgs/view03.png" alt=""></li>
+                <li><img src="../imgs/view04.png" alt=""></li>
+                <li><img src="../imgs/view05.png" alt=""></li>
+            </ul>
+            <ul class="pages">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        /*
+            1. 設定整體輪播圖的範圍
+            2. 設定5張圖片
+                測試移動邏輯
+            3. 設定分頁樣式
+            4. 分頁移動
+                分頁換色
+            5. 設定箭頭樣式
+
+        */
+
+        // 測試移動邏輯
+        // document.querySelector('.slide-imgs-ul').style.left = '-800px';
+        let pagesLi = document.querySelectorAll('.pages li');
+        // console.log(pagesLi);
+
+        // 
+        let index = 0; // 把目前第幾個bullet point 的索引值，拿給箭頭使用
+        // 一開始載入時，就將第一個li 的 bullet point 設成白色
+        pagesLi[0].style.backgroundColor = 'white';
+        for (let i = 0; i < pagesLi.length; i++) {
+            pagesLi[i].addEventListener('mouseover', function () {
+                index = i;
+
+                // 圖片移動邏輯
+                // let slideMove = -800 * i;
+                // document.querySelector('.slide-imgs-ul').style.left = `${slideMove}px`;
+
+                // for (let j = 0; j < pagesLi.length; j++) {
+                //     pagesLi[j].style.backgroundColor = ''; // 其它 li 的背景色清空
+                // }
+                // pagesLi[i].style.backgroundColor = 'white';
+                moveImg();
+            });
+        }
+
+        // 參考網頁 (廣告輪播的套件)
+        // https://sachinchoolur.github.io/lightslider/
+
+
+        // 右箭頭功能
+        // 下面的 .arrow.right 代表 class 同時有 arrow 跟 right
+        // 如果寫成 .arrow .right 代表的是 arrow class 底下的 right 這一個 class (他們有 parent child 的關係)
+        document.querySelector('.arrow.right').addEventListener('click', function () {
+            index++;
+            if (index >= 5) {
+                index = 0;
+            }
+
+            moveImg();
+
+            /*
+            // 移動圖片
+            let slideMove = -800 * index; // 每次圖片會往左移動800px
+            document.querySelector('.slide-imgs-ul').style.left = `${slideMove}px`;
+            // 換分頁顏色
+            for (let j = 0; j < pagesLi.length; j++) {
+                pagesLi[j].style.backgroundColor = ''; // 其它 li 的背景色清空
+            }
+            pagesLi[index].style.backgroundColor = 'white';
+            */
+        }
+        );
+
+        // 左箭頭功能
+        document.querySelector('.arrow').addEventListener('click', function () {
+            index--;
+            if (index < 0) {
+                index = 4;
+            }
+
+            moveImg();
+
+            /*
+            // 移動圖片
+            let slideMove = -800 * index;
+            document.querySelector('.slide-imgs-ul').style.left = `${slideMove}px`;
+            // 換分頁顏色
+            for (let j = 0; j < pagesLi.length; j++) {
+                pagesLi[j].style.backgroundColor = ''; // 其它 li 的背景色清空
+            }
+            pagesLi[index].style.backgroundColor = 'white';
+            */
+        }
+        );
+
+        function moveImg() {
+            // 圖片移動邏輯
+            let slideMove = -800 * index;
+            document.querySelector('.slide-imgs-ul').style.left = slideMove + 'px';
+            for (let j = 0; j < pagesLi.length; j++) {
+                pagesLi[j].style.backgroundColor = '';
+            }
+            pagesLi[index].style.backgroundColor = 'white';
+        }
+
+        // 自動輪播功能
+        setInterval(() => {
+            index++;
+            if (index >= 5) {
+                index = 0;
+            }
+            moveImg();
+        }, 3000);
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

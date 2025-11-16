@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab10</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>星星評分</h1>
+    </header>
+    <div class="container">
+        <img src="../imgs/star.gif" alt="" class="starImg">
+        <img src="../imgs/star.gif" alt="" class="starImg">
+        <img src="../imgs/star.gif" alt="" class="starImg">
+        <img src="../imgs/star.gif" alt="" class="starImg">
+        <img src="../imgs/star.gif" alt="" class="starImg">
+        <br>
+        <h2 id="starMsgH2">目前0顆星</h2>
+        <button id="resetStarBtn">重製星星</button>
+    </div>
+    <script>
+        // javascript code
+        /*
+            1. 星星換色
+                滑鼠移入時星星換色 移出再換回白色星星
+                移動邏輯為移動到該顆星星時1-該顆星星換色 依此類推並連動h2標籤星星數量
+            2. 使用者最後確定星星數量點擊功能
+                固定星星數量並連動h2標籤更改
+            3. 重製星星功能
+        */
+        let starImg = document.querySelectorAll('.starImg');
+        // console.log(starImg);
+        let flag = true;
+        for (let i = 0; i < starImg.length; i++) {
+            // 星星移入換色
+            starImg[i].addEventListener('mouseover', function () {
+                // starImg[i].src = '../imgs/chngstar.gif';
+                if (flag) {
+
+                    for (let j = 0; j <= i; j++) {
+                        starImg[j].src = '../imgs/chngstar.gif';
+                    }
+                    document.getElementById('starMsgH2').innerHTML = `目前${i + 1}顆星`;
+                }
+            })
+            // 星星移出換色
+            starImg[i].addEventListener('mouseout', function () {
+                // starImg[i].src = '../imgs/star.gif';
+                if (flag) {
+
+                    // for (let k = 0; k < starImg.length; k++) {
+                    //     starImg[k].src = '../imgs/star.gif';
+                    // }
+                    // document.getElementById('starMsgH2').innerHTML = `目前0顆星`;
+                    resetStar();
+                }
+            })
+
+            // 點擊功能
+            starImg[i].addEventListener('click', function () {
+                // console.log('click');
+                if (flag) {
+                    flag = false;
+                    document.getElementById('starMsgH2').innerHTML =
+                        `最後選擇${i + 1}顆星`;
+                }
+            })
+        }
+
+        // 重製星星
+        document.getElementById('resetStarBtn').addEventListener('click', () => {
+            resetStar();
+            flag = true;
+        })
+
+        function resetStar() {
+            for (let k = 0; k < starImg.length; k++) {
+                starImg[k].src = '../imgs/star.gif';
+            }
+            document.getElementById('starMsgH2').innerHTML = `目前0顆星`;
+        }
+    </script>
+</body>
+
+</html>

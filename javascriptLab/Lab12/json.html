@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab12</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>JSON</h1>
+    </header>
+    <div class="container"></div>
+    <script>
+        // javascript code
+        /*
+            JSON
+                javascript文件表示法
+                屬性名稱要加雙引號 "屬性名稱"
+                JSON.parse()
+                    JSON資料轉換成javascript物件
+                        string number boolean object array
+                JSON.stringfy()
+                    javascript物件JSON資料
+        */
+        let json1 = `{
+                    "name": "Madame Uppercut",
+                    "age": 39,
+                    "bool":true,
+                    "secretIdentity": "Jane Wilson",
+                    "powers": [
+                    "Million tonne punch",
+                    "Damage resistance",
+                    "Superhuman reflexes"
+                    ]
+                    }`;
+        // JSON.parse()
+        let obj1 = JSON.parse(json1);
+        console.log(obj1);
+        console.log(obj1.name)
+        console.log(obj1.powers[1]);
+
+        obj1.name = "gary";
+        obj1.bool = false;
+        obj1.powers[obj1.powers.length] = "C#";
+
+        // JSON.stringfy()
+        let json2 = JSON.stringify(obj1);
+        console.log(json2);
+
+        let json3 = `[{
+                "name": "Molecule Man",
+                "age": 29,
+                "secretIdentity": "Dan Jukes",
+                "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+                },
+                {
+                "name": "Madame Uppercut",
+                "age": 39,
+                "secretIdentity": "Jane Wilson",
+                "powers": ["Million tonne punch","Damage resistance",
+                "Superhuman reflexes"]
+                }]`;
+        let obj2 = JSON.parse(json3);
+        console.log(obj2);
+        console.log(obj2[1].name);
+        console.log(obj2[1].powers[2]);
+
+        // 解構賦值
+        // 複製
+        let arr = ['a', 'b', 'c'];
+        let arrcopy = [...arr];
+        console.log(arr);
+        console.log(arrcopy);
+        console.log(arr === arrcopy);//false
+
+        //  淺層複製
+        let arr2 = [{ name: 'gary', age: 18 }, 'a', 'b', 'c'];
+        let arr2copy = [...arr2];
+        console.log(arr2)
+        console.log(arr2copy)
+        console.log('-----------------------------')
+        arr2copy[0].name = 'jerry';
+        console.log(arr2);
+        console.log(arr2copy);
+        console.log('-----------------------------2')
+        // 深層複製
+        let arr3 = [{ name: 'gary1', age: 18 }, 'a', 'b', 'c']
+        let arr3copy = JSON.parse(JSON.stringify(arr3));
+        console.log(arr3);
+        console.log(arr3copy);
+        console.log('-----------------------------2')
+        arr3copy[0].name = 'jerry1';
+        console.log(arr3);
+        console.log(arr3copy);
+
+
+    </script>
+</body>
+
+</html>

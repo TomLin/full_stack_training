@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DemoAjax</title>
+    <!-- 根據官方set up，同時需要 css and js 兩個物件 -->
+    <link rel="stylesheet" href="../plugIns/vegas-master/dist/vegas.min.css">
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Demo - Ajax非同步請求</h1>
+    </header>
+    <div class="container">
+        <button id="ajax">Ajax Click Me</button>
+        <hr>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>縣市</th>
+                    <th>天氣狀態</th>
+                    <th>時間</th>
+                </tr>
+            </thead>
+            <!-- 回傳的資料，就會在這裡呈現，附在 tbody 裡面 -->
+            <tbody></tbody>
+        </table>
+    </div>
+    <!-- vegas 背景輪播插件的設定 -->
+    <!-- https://vegas.jaysalvat.com/documentation/setup/ -->
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <!-- 根據官方set up，同時需要 css and js 兩個物件 -->
+    <script src="../plugIns/vegas-master/dist/vegas.min.js"></script>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        // 補充 MVC 架構
+        /*
+            MVC
+                model: 資料 (資料庫、API)
+                view: 畫面呈現 (HTML、CSS)
+                controller: 控制邏輯 (JavaScript) 寫在後台，會有個URL去連接資料庫或是API，取得資料後，回傳給前端
+        */
+
+
+        /*
+            AJAX: Asynchronous JavaScript And XML
+            非同步請求
+            1. 非同步: 不會等待回應結果 直接往下執行
+            2. 同步: 會等待回應結果 才會往下執行
+
+            XMLHttpRequest (原始是用XML的物件來做，現在大部分是用JSON格式來做)
+
+            在jQuery，會使用 $.ajax() 來做非同步請求
+            在JavaScript, 會使用 fetch API 或是 axios API 來做非同步請求
+
+
+            // 下面介紹 fetch API (built in JavaScript feature)
+
+            fetch API
+            fetch(url, [options])
+            1. url: 必須要輸入參數 訪問對象或是請求對象
+            2. options: 其他選項 (
+                method: GET, POST, PUT, DELETE
+                headers: headers 物件
+                body: JSON.stringify(data);
+                mode
+                cache
+                credentials
+                redirect
+                referrer
+                integrity)
+            3. 回傳一個 Promise 物件
+
+            // 單純請求
+            fetch(url) 預設是 GET 方法
+
+            // 附帶資料請求
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data)
+                headers: {
+                    'Content-Type': 'application/json'
+                } headers 物件，可設可不設
+            })
+
+            方法:
+                then(): 處理成功 繼續執行下一個 then()
+                catch(): 處理失敗
+                json(): 轉成 json 格式
+                text(): 轉成字串格式
+
+        */
+
+        // 中央氣象局的開放資料API
+        // 只需要在 authorization 後面帶上你的API金鑰就可以使用
+        // 它還有提供相關的回傳資料格式設定，
+        // 例如 limit, offset, format 等
+        // 資料來源範例：https://opendata.cwa.gov.tw/dist/opendata-swagger.html#/%E9%A0%90%E5%A0%B1/get_v1_rest_datastore_F_C0032_001
+
+        // request url，提供 response body 資料
+        // 請求成功 200
+        // 請求失敗 4xx 5xx
+        let url = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-BB672851-5F02-497F-84B1-F76358D9D28E';
+
+        document.getElementById('ajax').onclick = () => {
+            fetch(url)
+                .then(function (response) {
+                    console.log(response);
+                    console.log(`--------------------------------1`);
+                    return response.json(); // 用 response 的 api 轉成 json 格式
+                })
+                .then(function (jsonData) {
+                    console.log(jsonData);
+                    console.log(`--------------------------------2`);
+
+                    // 觀察資料結構
+                    // 外面有一些方便看json 格式的工具
+                    console.log(jsonData.records.location[0].locationName);
+                    console.log(`--------------------------------3`);
+                    console.log(jsonData.records.location[0].weatherElement[0]);
+                    console.log(`--------------------------------4`);
+                    console.log(jsonData.records.location[0].weatherElement[0].time[0].parameter.parameterName);
+                    console.log(`--------------------------------5`);
+                    console.log(jsonData.records.location[0].weatherElement[0].time[0].startTime);
+                    console.log(`--------------------------------6`);
+
+                    for (let i = 0; i < 21; i++) {
+                        let tr = document.createElement('tr');
+                        let td1 = document.createElement('td');
+                        let td2 = document.createElement('td');
+                        let td3 = document.createElement('td');
+                        td1.innerHTML = jsonData.records.location[i].locationName;
+                        td2.innerHTML = jsonData.records.location[i].weatherElement[0].time[0].parameter.parameterName;
+                        td3.innerHTML = jsonData.records.location[i].weatherElement[0].time[0].startTime;
+
+
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        document.querySelector('#myTable tbody').appendChild(tr);
+                    }
+
+                })
+        };
+
+
+        // 參考 vegas 背景輪播插件的官方說明文件，使用程式碼
+        $("#example, body").vegas({
+            slides: [
+                { src: "../imgs/view01.png" },
+                { src: "../imgs/view02.png" },
+                { src: "../imgs/view03.png" },
+                { src: "../imgs/view04.png" }
+            ],
+            transition: 'slideRight2' // 切換動畫效果
+        });
+
+    </script>
+</body>
+
+</html>

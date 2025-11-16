@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab12</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AJAX非同步請求</h1>
+    </header>
+    <div class="container">
+        <button id="ajax">ajax</button>
+        <hr>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>縣市</th>
+                    <th>天氣狀態</th>
+                    <th>時間</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // javascript code
+        /*  
+            MVC
+                model
+                view
+                controller
+
+            fetch api
+            fetch(url,[options])
+                url:必須要輸入參數 訪問對象或是請求對象
+                method:GET/POST PUT DELETE
+                body:JSON.stringfy(data);
+                headers:headers物件
+            
+            // 單純請求
+                fetch(url)
+            // 附帶資料請求
+                fetch(url,{
+                    method:POST,
+                    body:JSON.stringfy(data)
+                })
+            
+            方法
+                then()
+                    處理成功 繼續執行下一個then()
+                catch()
+                    處理失敗
+                json()
+                    轉成json
+                text()
+                    轉成字串
+        */
+        let url = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-BB672851-5F02-497F-84B1-F76358D9D28E';
+
+        document.getElementById('ajax').onclick = () => {
+            fetch(url).then(function (response) {
+                console.log(response);
+                return response.json()
+            }).then(function (jsonData) {
+                // console.log(jsonData);
+                // console.log(jsonData.records.location[0].weatherElement[0].time[0].parameter.parameterName);
+                // console.log(jsonData.records.location[0].weatherElement[0].time[0].startTime);
+                for (let i = 0; i <= 21; i++) {
+                    console.log(jsonData.records.location[i].locationName);
+                    let tr = document.createElement('tr');
+                    let td1 = document.createElement('td');
+                    let td2 = document.createElement('td');
+                    let td3 = document.createElement('td');
+                    td1.innerHTML = jsonData.records.location[i].locationName;
+                    td2.innerHTML = jsonData.records.location[i].weatherElement[0].time[0].parameter.parameterName;
+                    td3.innerHTML = jsonData.records.location[i].weatherElement[0].time[0].startTime;
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    tr.appendChild(td3);
+                    document.querySelector('tbody').appendChild(tr);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

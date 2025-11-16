@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interval</title>
+    <!-- Animate.css 動畫效果, 使用CDN讓browser來下載樣式 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Set Interval</h1>
+    </header>
+    <div class="container">
+        <h3 id="h3">1</h3>
+        <hr>
+        <button id="slideUpBtn">slideUp</button>
+        <button id="slideDownBtn">slideDown</button>
+        <button class="btn">flash</button>
+        <button class="btn">jello</button>
+        <button class="btn">heartBeat</button>
+        <!-- 記得要貼兩段，一個是 animate__animated  -->
+        <!-- 另一個是 animate__suffix -->
+        <!-- <button class="box animate__animated animate__bounce" id="animateBtn">Animate - Flash the box</button> -->
+        <div class="box"></div>
+
+    </div>
+    <script>
+        // javascript 程式碼寫在這裡
+
+        /*
+            開啟一個定時器
+            window.setInterval() 屬於window 物件的方法
+                可以設定一個函數 經過一段時間執行一次
+            setInterval()
+                參數1: 要執行的函數
+                參數2: 間隔時間(毫秒)
+
+            關閉定時器
+                clearInterval(定時器的變數名稱)
+        */
+
+        let i = 2;
+
+        // setInterval(function () {
+        //     document.getElementById('h3').innerText = i++;
+        // }, 1000);
+
+        let timer = setInterval(displayCount, 1000);
+
+        function displayCount() {
+            document.getElementById('h3').innerText = i++;
+            if (i == 11) {
+                clearInterval(timer);
+            }
+        }
+
+
+        let box = document.querySelector('.box');
+
+        // 取得 box 的樣式物件
+        // 不要直接從 box.style 取得，會取得不到預設值
+        // 要用 window.getComputedStyle(元素) 取得
+        // box.style 只會取得在 tag 上有設定的 style 屬性
+        // 用 css 樣式表設定的樣式，會取得不到
+        let boxStyle = window.getComputedStyle(box);
+
+        // 往上消失
+        document.getElementById('slideUpBtn').addEventListener('click', () => {
+            let timer = setInterval(slideUp, 200);
+
+            function slideUp() {
+                let newHeight = parseInt(boxStyle.height) - 3;
+                if (newHeight <= 0) {
+                    clearInterval(timer);
+                } else {
+                    box.style.height = newHeight + 'px';
+                }
+            }
+
+        });
+
+        // 往下延伸
+        document.getElementById('slideDownBtn').addEventListener('click', () => {
+            let timer = setInterval(slideDown, 200);
+
+            function slideDown() {
+                let newHeight = parseInt(boxStyle.height) + 3;
+                if (newHeight >= 200) {
+                    clearInterval(timer);
+                } else {
+                    box.style.height = newHeight + 'px';
+                }
+            }
+        });
+
+        /*
+            setTimeout()
+                經過指定時間 執行函數
+                只會執行一次
+        */
+
+        setTimeout(function () {
+            console.log("3秒後 say hello ！");
+        }, 3000);
+
+        /*
+            計時器
+            當console 這個物件來的
+            console.time('計時器名稱') 開啟
+            console.timeEnd('計時器名稱') 關閉
+            計時器名稱要一樣
+
+        */
+
+        console.time('2的1000000次方所花費的時間');
+        Math.pow(2, 1000000);
+        console.timeEnd('2的1000000次方所花費的時間');
+
+        // Animate.css 動畫效果
+        document.querySelector('.btn').addEventListener('click', () => {
+            // 參數一：選擇器
+            // 參數二：動畫名稱 (不需要前綴的 animate__)
+            animateCSS('.box', 'flash');
+        });
+
+        // 用同一個class的方式，跑for loop 來綁定多個按鈕事件
+        let btns = document.querySelectorAll('.btn');
+        for (let btn of btns) {
+            btn.onclick = () => {
+                // 直接用 btn.innerText 取得按鈕上的文字
+                // 這樣就可以直接當作動畫名稱使用
+                animateCSS('.box', btn.innerText);
+            }
+        };
+
+        // Animate.css 動畫函式
+        const animateCSS = (element, animation, prefix = 'animate__') =>
+            // We create a Promise and return it
+            new Promise((resolve, reject) => {
+                const animationName = `${prefix}${animation}`;
+                const node = document.querySelector(element);
+
+                node.classList.add(`${prefix}animated`, animationName);
+
+                // When the animation ends, we clean the classes and resolve the Promise
+                function handleAnimationEnd(event) {
+                    event.stopPropagation();
+                    node.classList.remove(`${prefix}animated`, animationName);
+                    resolve('Animation ended');
+                }
+
+                node.addEventListener('animationend', handleAnimationEnd, { once: true });
+            });
+
+
+    </script>
+</body>
+
+</html>

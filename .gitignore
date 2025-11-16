@@ -1,6 +1,8 @@
 # Ignore files under .vs/
 .vs/
 */.vs/
+.vscode/
+*/.vscode/
 
 
 

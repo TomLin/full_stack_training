@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab09</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+            /* 內距 */
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        table {
+            width: 400px;
+            border: 2px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>記事本</h1>
+    </header>
+    <div class="container">
+        <div>
+            <input type="text" placeholder="請輸入姓名" id="inputName">
+            <input type="text" placeholder="請輸入內容" id="inputContent">
+            <button id="addBtn">+</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>內容</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>Gary</td>
+                        <td>javascript</td>
+                        <td><button>delete</button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        // javascript code
+        /*
+            1. 使用者在input輸入後 按下add button新增到tbody
+            2. tbody該列tr中的button delete刪除該列
+        */
+        document.getElementById('addBtn').onclick = () => {
+            let name = document.getElementById('inputName').value;
+            let content = document.getElementById('inputContent').value;
+            // console.log(name, content);
+            let tr = document.createElement('tr');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            let td3 = document.createElement('td');
+            let button = document.createElement('button');
+            td1.innerHTML = name;
+            td2.innerHTML = content;
+            button.innerHTML = 'delete';
+            button.onclick = deleteData;
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            td3.appendChild(button);
+            tr.appendChild(td3);
+            document.querySelector('tbody').appendChild(tr);
+        }
+        function deleteData() {
+            // console.log(this);
+            // console.log(this.parentNode.parentNode);
+            document.querySelector('tbody').removeChild(this.parentNode.parentNode);
+        }
+
+    </script>
+</body>
+
+</html>

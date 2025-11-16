@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: yellow;
+
+            /* 內距 */
+            padding: 20px;
+
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            /* 會依照父元素(假設是100px)就會設成 90px */
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Demo - BOM</h1>
+    </header>
+    <div class="container">
+        <button id="alert">Show Alert</button>
+        <button id="confirm">Show Confirm</button>
+        <button id="prompt">Show Prompt</button>
+        <hr>
+        key: <input type="text" name="" id="key">
+        value: <input type="text" name="" id="value">
+        <button id="btn">Save to localStorage</button>
+        <br>
+        取出localStorage: <input type="text" id="get">
+        <br>
+        指定key清除localStorage: <input type="text" id="delete">
+        <br>
+        清除全部localStorage<button id="clear">Clear</button>
+        <br>
+        <!-- 這邊是在超連結中，使用 javascript -->
+        <a href="javascript:history.back()">上一頁</a>
+        <a href="javascript:history.forward()">下一頁</a>
+    </div>
+    <!-- HTML 可以有多個 script 區塊，依照先後執行 -->
+    <!-- 使用第三方的程式碼<script 區域>，都貼在自己寫的程式碼前面 -->
+    <!-- 下面一行是第三方的可愛版alert程式碼 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // javascript 程式碼寫在這裡
+        /*
+            BOM (Browser Object Model)
+            1. window 物件 (全域物件)
+                    window.console.log("Hello BOM");
+                    window.alert("Hello BOM");
+                    window.confirm
+                    window.prompt
+                    window.time
+                    window.timeout
+                    window.setInterval
+                    window.setTimeout
+                    window.localStorage
+                        資料暫存browser的物件，直到使用者清除
+                        setItem('key','value');
+                        getItem('key')
+                        removeItem('key')
+                        clear()
+            2. history 物件 (瀏覽紀錄)
+            3. location 物件 (網址列URL資訊)
+            4. navigator 物件 (當前瀏覽器資訊)
+        */
+
+
+        // 第三方，可愛的 alert
+        // https://sweetalert2.github.io/
+
+        document.getElementById('alert').onclick = () => {
+            // window.alert("Hello BOM");
+            // 下面改用第三方的 sweetalert2
+            Swal.fire({
+                title: "The Internet?",
+                text: "That thing is still around?",
+                icon: "warning"
+            });
+        };
+
+        document.getElementById('confirm').onclick = () => {
+            // 回傳 true / false
+            if (confirm("測試成功嗎？")) {
+                console.log("測試成功");
+            } else {
+                console.log("測試失敗");
+            }
+        }
+
+        document.getElementById('prompt').onclick = () => {
+            // window.prompt('字串','預設文字') 輸入類型跳出視窗
+            let value = prompt('請輸入姓名', '預設文字');
+            console.log(value);
+        }
+
+        // localStorage 在browser上面查看
+        // 可以到 Chrome 開發者工具 -> Application -> Local Storage 查看
+
+        // 儲存 localStorage 範例
+        document.getElementById('btn').onclick = () => {
+            let k = document.getElementById('key').value;
+            let v = document.getElementById('value').value;
+            // 存入 localStorage
+            localStorage.setItem(k, v);
+            console.log("已存入 localStorage");
+        };
+
+        // 取出 localStorage
+        // onblur 離開輸入框的事件
+        document.getElementById('get').onblur = () => {
+            let k = document.getElementById('get').value;
+            console.log(`key: ${k}`);
+            alert(`value: ${localStorage.getItem(k)}`);
+        }
+
+        // 清除指定的 localStorage
+        document.getElementById('delete').onblur = () => {
+            let k = document.getElementById('delete').value;
+            localStorage.removeItem(k);
+            console.log(`已刪除 key: ${k} 的 localStorage`);
+            alert(`已刪除 key: ${k} 的 localStorage`);
+        };
+
+        // 清除全部localStorage
+        document.getElementById('clear').onclick = () => {
+            localStorage.clear();
+        }
+
+        console.log(navigator);
+        console.log(navigator.language);
+        console.log(location);
+        console.log(history);
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
