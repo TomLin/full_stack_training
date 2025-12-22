@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="container" style="width:40%;">
+    <h3 class="mb-3 text-center">查詢員工</h3>
+    <div class="form-floating mb-3">
+        <input id="firstName" class="form-control" placeholder="" />
+        <label class="form-label">FirstName</label>
+    </div>
+    <div id="result" class="mb-3">
+
+    </div>
+</div>
+
+
+@section Scripts 
+{
+    <script>
+        var baseAddress = "https://localhost:7115";  // developing env uri
+        $("#firstName").on("keyup", () => {
+            // alert("keyup");
+            var firstName = $("#firstName").val();
+            var p=`FirstName=${firstName}`;
+            $.ajax({
+                type: "POST",
+                url: `${baseAddress}/Ajax/CheckName`,
+                data: p
+            
+            })
+            .done(data => {
+                if (data == "true") {
+                    $("#result").text("查有此員工").removeClass("text-danger").addClass("text-success");
+
+                }
+                else {
+                    $("#result").text("查無此員工").removeClass("text-success").addClass("text-danger");
+
+                }
+            })
+            .fail( err=> {
+                alert(err.statusText);
+            });
+
+        });
+
+    </script>
+}

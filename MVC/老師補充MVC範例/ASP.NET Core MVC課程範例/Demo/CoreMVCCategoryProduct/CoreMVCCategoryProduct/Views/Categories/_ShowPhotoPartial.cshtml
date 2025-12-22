@@ -1,0 +1,5 @@
+﻿@model Category
+
+<img src="@Url.Action("GetPicture", "Categories",
+	    new {id=Model.CategoryId})" style="width:320px;height:240px" title="@Model.CategoryName" />
+        

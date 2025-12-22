@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Customers</h1>
+
+<div class="container">
+    <div class="mb-3">
+        <label class="form-label">客戶:</label>
+    </div>
+    <div class="mb-3">
+        <select id="customers" asp-items="@ViewBag.Customers" class="form-control">
+            <option>--請選擇--</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <div id="ordersSelect"></div>
+    </div>
+    <div class="mb-3">
+        <div id="orderDetailsTable"></div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $("#customers").on("change", ()=>{
+            if (customers.value != '--請選擇--'){
+                $.ajax({
+                    type: "GET",
+                    url: `@Url.Action("Orders","Customers")/${customers.value}`
+                }).done(data => {
+                    //alert(JSON.stringify(data));
+                    $("#ordersSelect").html(data);
+                    //====================
+                    $("#orders").on("change", () => {
+                        if (customers.value != '--請選擇--') {
+                            $.ajax({
+                                type: "GET",
+                                url: `@Url.Action("OrderDetails","Customers")/${orders.value}`
+                            }).done(data => {
+                                //alert(JSON.stringify(data));
+                                $("#orderDetailsTable").html(data);
+                            }).fail(err => {
+                                alert(`${err.statusCode}:${err.statusText}`);
+                            });
+                        }
+                        else {
+                            $("#orderDetailsTable").html("");
+                        }
+
+                    });
+                    //====================
+                }).fail(err => {
+                    alert(`${err.statusCode}:${err.statusText}`);
+                });
+            }
+            else{
+                $("#ordersSelect").html("");
+            }
+        });
+    </script>
+}

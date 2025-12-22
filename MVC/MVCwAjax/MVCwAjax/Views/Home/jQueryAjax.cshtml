@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<button id="getGreetAsync" class="btn btn-primary">getGreet-非同步操作</button>
+<button id="postGreetAsync" class="btn btn-primary">postGreet-非同步操作</button>
+<img id="process" src="/imgs/Walk.gif" alt="" title="請稍候" style="display:none"/>
+<div id="result"></div>
+
+
+@* Scripts section for jQuery Ajax *@
+@section Scripts 
+{
+    <script>
+
+        var baseAddress = "https://localhost:7115"; // developing uri
+        // var baseAddress = "https://xxxx"; // staging uri
+        // var baseAddress = "https://yyyyy"; // production uri 
+        // var baseAddress = "https://zzzz"; // cloud 
+
+        $("#getGreetAsync").on("click", function () {
+            // alert("getGreetAsync");
+
+            var p = encodeURI("Name=小明"); // encodeURI 適用於在中文字進行編碼時
+                                            // 如果是用 POST 方法，就不需要編碼，因為KeyValue是儲存在body而不是uri上頭
+            
+            $("#process").show(); // 讓gif檔顯示出來
+            $.ajax({
+                type: "GET",
+                url: `${baseAddress}/Ajax/Greet?${p}`
+                // async: false,  // 這裡的寫法，是不用async的方式，gif 動畫還來不及 show 出來，資源就被卡死了
+                // timeout: 5000
+            })
+            .done(function(data) {
+                alert(data);
+                $("#process").hide();
+            })
+            .fail(function(err) {
+                alert(err.statusText);
+                $("process").hide();
+            });
+
+            
+
+        })
+
+
+        $("#postGreetAsync").on("click", () => {
+            // alert("postGreetAsync");
+
+            var p = "Name=小強"; // POST 方法, 中文不需要 encodeURI，因為KeyValue是儲存在body而不是uri上頭, 在uri 的中文，是ASCII
+            $("#process").show(); // 讓gif檔顯示出來
+            $.ajax({
+                type: "POST",
+                url: `${baseAddress}/Ajax/PostGreet`,
+                data: p
+                /* contentType 在這裡可以省略，
+                    或是使用 contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+                    
+                    在傳送以下的資料格式： Name=Tom&Location=KH 等型式，就可以省略 contentType 參數，
+                    如果是傳送JSON的物件，就需要指定contentType: application/json
+                
+                
+                */
+            }).done(data => {
+                $("#process").hide();
+                $("#result").text(data); // 顯示在 div 裡面
+            }).fail(err => {
+                $("#process").hide();
+                alert(err.statusText); // 顯示錯誤訊息
+            });
+        });
+        
+        
+ 
+    </script>
+}

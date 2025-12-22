@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CoreMVCChart.Controllers.CustomerCount>
+
+@{
+    ViewData["Title"] = "ECharts";
+}
+@section Styles
+{
+    <style>
+        #chart {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            overflow: hidden;
+        }
+    </style>
+}
+<h1>ECharts</h1>
+
+<table>
+    <tr>
+        <td style ="vertical-align:top">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Country)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Count)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Country)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Count)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </td>
+        <td style="vertical-align:top">
+            <div id="chart"></div>
+        </td>
+    </tr>
+</table>
+@section Scripts
+{
+    <script src="~/lib/echarts.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var myChart = echarts.init(document.getElementById('chart'), null, {
+                renderer: 'canvas',
+                useDirtyRect: false
+            });
+            myChart.setOption(@Html.Raw(@ViewBag.Options));
+        });
+    </script>
+}

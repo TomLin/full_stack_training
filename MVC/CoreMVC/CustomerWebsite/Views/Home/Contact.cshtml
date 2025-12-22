@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model ContactViewModel
+
+@{
+
+}
+
+
+<form asp-controller="Home" asp-action="Contact" method="post">
+    <div class="container" style="width: 60%;">
+        <h3 class="mb-3 text-center">聯絡資訊</h3>
+        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+        <div class="mb-3 form-floating">
+            @* asp-for 用來做雙向繫結 two-way data binding *@
+            <input required class="form-control" asp-for="Name" placeholder="" />  @* 這裡的 asp-for render 到 html 之後，就會變成 id="Name" name="Name" *@
+            <label class="form-lable" asp-for="Name">@Html.DisplayNameFor(model => model.Name)</label>  @* 這裡的 asp-for render 到 html 之後，就會變成 for="Name" *@
+            <span class="text-danger" asp-validation-for="Name"></span> @* 這裡會顯示 Name 的驗證錯誤訊息 *@
+        </div>
+        <div class="mb-3 form-floating">
+            <input class="form-control" asp-for="Email" placeholder="" />
+            <label class="form-lable" asp-for="Email">@Html.DisplayNameFor(model => model.Email)</label>
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="mb-3 form-floating">
+            <input class="form-control" asp-for="Phone" placeholder="" />
+            <label class="form-lable" asp-for="Phone">@Html.DisplayNameFor(model => model.Phone)</label>
+            <span class="text-danger" asp-validation-for="Phone"></span>
+        </div>
+        <div class="mb-3"></div>
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">提交</button>
+        </div>
+
+    </div>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

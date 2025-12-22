@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>商品種類</h1>
+
+@section styles
+    {
+    <link href="~/lib/jqueryui/themes/humanity/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jtable.2.4.0/themes/metro/green/jtable.css" rel="stylesheet" />
+}
+<div style="width:50%;margin-left:auto;margin-right:0px">
+    <label class="form-label">篩選</label>
+    <select id="CategoryName" class="form-control" asp-items="ViewBag.CategoryName">
+        <option>--商品種類篩選--</option>
+    </select>
+</div>
+
+<div id="CategoriesTableContainer"></div>
+
+@section scripts
+{
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/lib/jtable.2.4.0/jquery.jtable.min.js"></script>
+    <script src="~/lib/jtable.2.4.0/localization/jquery.jtable.zh-TW.js"></script>
+    <script>
+        var AntiForgeryToken = '@Html.AntiForgeryToken()';
+        $(document).ready(function () {
+            $('#CategoriesTableContainer').jtable({
+                title: '產品種類清單',
+                paging: true,
+                pageSize: 5,
+                sorting: true,
+                defaultSorting: 'CategoryId ASC',
+                actions: {
+                    //AntiForgeryToken可以透過多準備一個__AFT__欄位達成, 但對Delete無效
+                    listAction: '@Url.Action("List", "Categories")',
+                    //deleteAction: '@Url.Action("Delete", "Categories")',
+                    updateAction: '@Url.Action("Update", "Categories")',
+                    createAction: '@Url.Action("Create", "Categories")'
+                },
+            fields: {
+            Details: {
+                title: '產品',
+                width: '10%',
+                sorting: false,
+                edit: false,
+                create: false,
+                listClass: 'child-opener-image-column',
+                display: function (masterRecord) {
+                    var $img = $('<img src="@Url.Content("~/images/Expand.png")" title="檢視產品圖案" />');
+                    $img.click(function () {
+                        var src = $(this).attr('src');
+                        if (src == '@Url.Content("~/images/Expand.png")') {
+                            $(this).attr('src', '@Url.Content("~/images/Collapse.png")');
+                            $('#CategoriesTableContainer').jtable('openChildTable',
+                                $(this).closest('tr'), {
+                                title: masterRecord.record.CategoryName + '類型的產品',
+                                actions: {
+                                    listAction: '@Url.Action("GetProducts", "Categories")/' + masterRecord.record.CategoryId,
+                                },
+                                fields: {
+                                    ProductName: {
+                                        title: '產品名稱',
+                                        width: "15%",
+                                    },
+                                    CategoryId: {
+                                        title: "產品種類編號",
+                                        width: "10%",
+                                    },
+                                    SupplierId: {
+                                        title: "供應商編號",
+                                        width: "10%",
+                                    },
+                                    QuantityPerUnit: {
+                                        title: "每單位數量",
+                                        width: "20%",
+                                    },
+                                    UnitPrice: {
+                                        title: "產品單價",
+                                        width: "10%",
+                                    },
+                                    UnitsInStock: {
+                                        title: "庫存單位",
+                                        width: "15%",
+                                    },
+                                    UnitsOnOrder: {
+                                        title: "訂購單位",
+                                        width: "15%",
+                                    },
+                                    Discontinued: {
+                                        title: '持續',
+                                        width: '5%',
+                                        type: 'checkbox',
+                                        values: { 'false': '否', 'true': '是' },
+                                        defaultValue: 'true'
+                                    },
+                                }
+                            }, function (data) { data.childTable.jtable('load'); });
+                        }
+                        else {					//隱藏關聯記錄
+                            $('#CategoriesTableContainer').jtable('closeChildTable', $(this).closest('tr'));
+                            $(this).attr('src', '@Url.Content("~/images/Expand.png")');
+                        }
+                    });
+                    return $img;
+                }
+            },
+            CategoryId: {
+                key: true,
+                create: false,
+                edit: false,
+                list: true,
+                title: "產品編號",
+                width: '9%'
+            },
+            CategoryName: {
+                title: '產品種類',
+                width: '100%'
+            },
+            Description: {
+                title: '詳細說明',
+                width: '30%'
+            },
+            Picture: {
+                title: "產品類型圖案",
+                create: false,
+                edit: false,
+                width: "40%",
+                sorting: false,
+                display: function (masterData) {
+                    return `<img style="width:320px;height:240px" src="@Url.Action("GetPicture", "Categories")/${masterData.record.CategoryId}" title="${masterData.record.CategoryName}" />`;
+                },
+            },
+            __AFT__: {     			//AntiForgeryToken
+                create: true,
+                edit: true,
+                list: false,
+                input: function (data) {
+                    return AntiForgeryToken;
+                },
+            },
+            customDelete: {
+                title: '',
+                create: false,
+                edit: false,
+                width: '1%',
+                sorting: false,
+                display: function (data) {
+                    var $but = $('<button title="刪除記錄" class="jtable-command-button jtable-delete-command-button"></button>');
+                    $but.click(function () {
+                        var $dfd = $.Deferred();
+                        if (confirm('確定要刪除嗎?')) {
+                            $.ajax({
+                                url: '@Url.Action("Delete", "Categories")',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: {
+                                    CategoryId: data.record.CategoryId,
+                                    __RequestVerificationToken: $(AntiForgeryToken).val(),
+                                },
+                            }).done(function (data) {
+                                $dfd.resolve(data);
+                                $('#CategoriesTableContainer').jtable('deleteRecord', {
+                                    key: data.Record.CategoryId,
+                                    clientOnly: true
+                                });
+                            }).fail(function () {
+                                $dfd.reject();
+                            });
+                        }
+                    });
+                    return $but;
+                }
+            },
+        }
+                    });
+        //$('#CategoriesTableContainer').jtable('load');
+        $("#CategoryName").change(function (e) {
+            $('#CategoriesTableContainer').jtable('load', {
+                CategoryName: CategoryName.value,
+            });
+        });
+        $('#CategoryName').change();
+                });
+    </script>
+}
+

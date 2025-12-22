@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<button id="getRates" class="btn btn-warning">期交所匯率查詢</button>
+
+
+@section Scripts {
+    <script>
+
+        var baseAddress = "https://localhost:7115";
+
+        $("#getRates").on("click", () => {
+            // alert("期交所匯率查詢");
+
+            $.ajax({
+                // type: "GET",
+
+                /*
+
+                一般來說 browser, 只允許 Same-Origin Policy, SOP
+                這個機制的核心目的是 保護使用者的數據安全。瀏覽器儲存了使用者的許多敏感資訊（如 Cookies、Session ID）。
+                當你登入某個網站（例如銀行或 Email）後，瀏覽器會記住你的身份。
+                如果沒有同源政策限制，駭客可以輕易地利用你的身份去讀取你的隱私資料。
+                CORS 的角色： 由於現代網頁開發經常需要跨域（例如前後端分離、使用第三方 API），完全禁止跨域太不方便。
+                CORS 提供了一種受控的開放方式，讓伺服器可以明確指定「哪些網站是安全的」，瀏覽器才會放行。
+                
+                */
+
+                // url: "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates" // 示範創造一個 CORS (Cross Origin Resource Sharing) 的 error
+
+
+                // 下面的寫法，是自建代理程式，由自己的 Controller (C#) 去呼叫期交所的 API，不會產生 CORS 的問題
+                type: "POST",
+                url: `${baseAddress}/Home/GetRates`
+            
+            }).done(data => {
+                alert(data); // 顯示的是 data 的物件
+            }).fail(err => { // err 是 jqXHR (XMLHttpRequest) 物件，ajax 請求失敗時，會將失敗資訊，打包成物件，回傳
+                alert("Error: " + err.statusText);
+            });
+        });
+
+    </script>
+}

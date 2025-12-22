@@ -1,0 +1,126 @@
+﻿@model X.PagedList.IPagedList<Product>
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Styles
+{
+    <link href="~/css/PagedList.min.css" rel="stylesheet" />
+    <style>
+        .table {
+          --bs-table-bg: transparent;
+          --bs-table-accent-bg: transparent;
+          --bs-table-striped-color: #212529;
+          --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+          --bs-table-active-color: #212529;
+          --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+          --bs-table-hover-color: #219929;
+          --bs-table-hover-bg: rgba(128, 0, 128, 0.075);
+          width: 100%;
+          margin-bottom: 1rem;
+          color: #212529;
+          vertical-align: top;
+          border-color: #dee2e6;
+        }
+    </style>
+}
+<div class="mb-3 text-center">
+    <h1>@WebResource.Title</h1>
+</div>
+<div class="mb-3">
+    <table style="width:100%">
+        <tr>
+            <td>
+                <a asp-action="Create" class="btn btn-success">Create New</a>
+            </td>
+            <td>
+                <label class="form-label">篩選關鍵字:</label>
+                <form method="post" asp-action="Index" asp-controller="Products">
+                    <input id="searchString" name="searchString" class="form-control" type="text" placeholder="請輸入篩選關鍵字" value="@ViewBag.CurrentFilter" />
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-controller="Products"
+                   asp-route-sortOrder="@ViewBag.ProductNameSortParm"
+                   asp-route-currentFilter="@ViewBag.CurrentFilter">
+                    @WebResource.ProductName
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().SupplierId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().QuantityPerUnit)
+            </th>
+            <th>
+                <a asp-action="Index" asp-controller="Products"
+                   asp-route-sortOrder="@ViewBag.UnitPriceSortParm"
+                   asp-route-currentFilter="@ViewBag.CurrentFilter">
+                    UnitPrice
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UnitsInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UnitsOnOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ReorderLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Discontinued)
+            </th>
+            <th>編輯</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReorderLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discontinued)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+				<a class="btn btn-warning" asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+				<a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model,	page => Url.Action("Index",	new { page, sortOrder = ViewBag.CurrentSort,
+				currentFilter = ViewBag.CurrentFilter }))

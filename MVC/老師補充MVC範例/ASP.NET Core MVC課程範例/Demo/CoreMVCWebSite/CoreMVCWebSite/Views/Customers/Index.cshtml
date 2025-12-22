@@ -1,0 +1,112 @@
+﻿@model IEnumerable<CoreMVCWebSite.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@section Styles {
+    <style>
+        thead {
+            background-color: #830707;
+            color: antiquewhite;
+        }
+    </style>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fa-solid fa-pen"></i> 新增客戶</a>
+</p>
+<table id="CustomersTable" class="table table-striped table-hover" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fax)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fax)
+            </td>
+            <td>
+                    <a asp=controller="Customers" asp-action="Edit" asp-route-CustomerID="@item.CustomerId">Edit</a> |
+                    <a asp=controller="Customers" asp-action="Details" asp-route-CustomerID="@item.CustomerId">Details</a> |
+                    <a asp=controller="Customers" asp-action="Delete" asp-route-CustomerID="@item.CustomerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts
+    {
+    <script src="~/lib/jquery.freezeheader.min.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $("#CustomersTable").freezeHeader(
+                {
+                    'width': '100%',
+                    'height': '600px'
+                }
+            );
+        });
+    </script>
+}

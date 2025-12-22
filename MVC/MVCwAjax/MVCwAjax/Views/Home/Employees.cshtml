@@ -1,0 +1,144 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<button id="getEmployees" class="btn btn-success">查詢所有員工</button>
+<button id="getEmployee" class="btn btn-success">查詢員工</button>
+<button id="postEmployee" class="btn btn-success">新增員工</button>
+<button id="putEmployee" class="btn btn-success">修改員工</button>
+
+
+<div class="container">
+    <h3 class="mb-3 text-center">刪除員工</h3>
+    <div class="form-floating mb-3">
+        <input id="empId" class="form-control" placeholder=""/>
+        <label class="form-label">員工編號</label>
+    </div>
+    <div class="mb-3">
+        <button id="deleteEmployee" class="btn btn-danger">刪除員工</button>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+
+        // WebAPI 的 主要 port num.
+        var baseAddress = "https://localhost:7028"; // 結尾不要多加了斜線
+
+        $("#getEmployees").on("click", () => {
+            // 階段驗證(代表整體專題架構沒有問題)
+            // alert("getEmployees");
+
+            $.ajax({
+                url: `${baseAddress}/api/EmployeesAPI`,
+                type: 'GET',
+                dataType: 'json'
+            }).done(data => {
+                alert(JSON.stringify(data));
+
+            }).fail( error => {
+
+                alert("Error: " + error.status + " " + error.statusText);
+            });
+        });
+
+        $("#getEmployee").on("click", () => {
+            $.ajax({
+                url: `${baseAddress}/api/EmployeesAPI/1`, // 查詢員工編號為 1 的員工資料
+                type: 'GET'
+            }).done(data => {
+                alert(JSON.stringify(data));
+            }).fail(error => {
+                alert("Error: " + error.statusText);
+            });
+        });
+
+        $("#postEmployee").on("click", () => {
+
+            // 把要新增的員工資料，放在JSON物件中
+            var newEmployee = {
+
+                "EmployeeID": 0,
+                "FirstName": "Ping",
+                "LastName": "Chen",
+                "Title": "SRE"
+
+            };
+            $.ajax({
+                url: `${baseAddress}/api/EmployeesAPI`,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(newEmployee)
+            }).done(data => {
+                // alert(JSON.stringify(data));
+                if (data.ok) {
+                    alert("新增員工紀錄成功");
+                }
+                else {
+                    alert("新增員工紀錄失敗");
+                }
+
+            }).fail(error => {
+                alert(error.statusText);
+            });
+        });
+
+
+        $("#putEmployee").on("click", () => {
+
+            // 把要新增的員工資料，放在JSON物件中
+            var updateEmployee = {
+
+                "EmployeeID": 15,
+                "FirstName": "Jing",
+                "LastName": "Chen",
+                "Title": "SRE"
+
+            };
+
+            $.ajax({
+                url: `${baseAddress}/api/EmployeesAPI/15`, // 修改員工編號為 15 的員工資料
+                type: "PUT",
+                contentType: "application/json", 
+                data: JSON.stringify(updateEmployee)
+            }).done(data => {
+                // alert(JSON.stringify(data));
+                if (data.ok) {
+                    alert("更新員工紀錄成功");
+                }
+                else {
+                    alert("更新員工紀錄失敗");
+                }
+
+            }).fail(error => {
+                alert(error.statusText);
+            });
+
+        });
+
+        $("#deleteEmployee").on("click", () => {
+            
+            var empId = $("#empId").val();
+
+            $.ajax({
+                type: "DELETE",
+                url: `${baseAddress}/api/EmployeesAPI/${empId}`
+            }).done(data => {
+                if (data.ok) {
+                    alert("刪除員工紀錄成功");
+                }
+                else {
+                    alert("刪除員工失敗");
+                }
+            }).fail(err => {
+                alert(err.statusText);
+            });
+
+        });
+
+    </script>
+}

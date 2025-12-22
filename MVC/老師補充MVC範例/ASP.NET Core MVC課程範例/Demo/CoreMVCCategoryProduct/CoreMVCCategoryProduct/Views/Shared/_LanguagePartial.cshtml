@@ -1,0 +1,9 @@
+﻿@using CoreMVCCategoryProduct.Resources
+<ul class="nav navbar-nav navbar-right">
+    <li>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SetLanguage" asp-route-CultureName="en-US" asp-route-ReturnUrl="@Context.Request.Path">@WebResource.English</a>
+    </li>
+    <li>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SetLanguage" asp-route-CultureName="zh-TW" asp-route-ReturnUrl="@Context.Request.Path">@WebResource.Chinese</a>
+    </li>
+</ul>

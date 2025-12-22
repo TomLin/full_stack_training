@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CustomerOrdersVM>
+
+@{
+    ViewData["Title"] = "檢視客戶所有訂單";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                Orders
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    <partial name="_OrdersPartial" model="@item.Orders" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

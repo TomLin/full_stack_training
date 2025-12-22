@@ -1,0 +1,10 @@
+﻿@model Microsoft.AspNetCore.Http.IFormCollection
+
+@foreach(string key in Model.Keys)
+{
+    if (key== "__RequestVerificationToken")
+    {
+        continue;
+    }
+    <p>@($"題目:{key}, 答案:{ Model[key]}")</p>
+}

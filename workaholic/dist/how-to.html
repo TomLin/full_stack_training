@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Builder 101 - 在住宿中開啟你的冒險旅程，高可信度的打工換宿媒合平台">
+    <title>Builder 101 - 打工換宿媒合平台</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+    <!-- CDN: Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+    <!-- CDN: CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+    </style>
+  <script type="module" crossorigin="" src="./assets/app.js"></script>
+  <link rel="stylesheet" crossorigin="" href="./assets/app.css">
+</head>
+
+<body>
+    <div id="app" data-server-rendered="true"><div class="main-layout d-flex flex-column min-vh-100"><nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top"><div class="container"><a class="navbar-brand" href="./index.html"><strong>Builder 101</strong></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div id="mainNavbar" class="collapse navbar-collapse"><ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="./jobs.html">探索項目</a></li><li class="nav-item"><a class="nav-link" href="./how-to.html">如何使用</a></li><li class="nav-item"><a class="nav-link" href="./about.html">關於我們</a></li><li class="nav-item"><a class="nav-link" href="./contact.html">聯絡我們</a></li></ul><ul class="navbar-nav"><li class="nav-item" data-auth="guest"><a class="nav-link" href="./auth.html"><i class="fas fa-user me-1"></i>登入 / 註冊 </a></li><li class="nav-item d-none" data-auth="member"><a class="nav-link" href="./notifications.html"><i class="fas fa-bell"></i><span class="badge bg-danger rounded-pill ms-1 d-none" data-notification-count="">0</span></a></li><li class="nav-item dropdown d-none" data-auth="member"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-user-circle me-1"></i><span data-user-name="">會員</span></a><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="./dashboard.html">會員中心</a></li><li><hr class="dropdown-divider"></li><li><a class="dropdown-item" href="#" data-action="logout">登出</a></li></ul></li></ul></div></div></nav><main class="flex-grow-1"><!--[--><section class="py-5"><div class="container"><div class="text-center mb-5"><h1 class="display-5 fw-bold">如何運作</h1><p class="lead text-muted">三個步驟，開始你的換宿冒險</p></div><div class="row g-4 mb-5"><!--[--><div class="col-md-4"><div class="card h-100 border-0 shadow-sm text-center"><div class="card-body"><div class="bg-primary text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width:64px;height:64px;font-size:1.5rem;font-weight:bold;">1</div><h4>註冊帳號</h4><p class="text-muted">填寫基本資料，完成 Email 驗證，開始探索換宿機會</p></div></div></div><div class="col-md-4"><div class="card h-100 border-0 shadow-sm text-center"><div class="card-body"><div class="bg-primary text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width:64px;height:64px;font-size:1.5rem;font-weight:bold;">2</div><h4>搜尋媒合</h4><p class="text-muted">依照地點、類型、時間篩選，找到適合你的換宿職缺</p></div></div></div><div class="col-md-4"><div class="card h-100 border-0 shadow-sm text-center"><div class="card-body"><div class="bg-primary text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width:64px;height:64px;font-size:1.5rem;font-weight:bold;">3</div><h4>開始冒險</h4><p class="text-muted">與業主聯繫確認細節，準備行囊，出發去冒險！</p></div></div></div><!--]--></div><div class="row mb-5"><div class="col-lg-6 mb-4"><div class="card border-0 shadow-sm h-100"><div class="card-header bg-primary text-white"><h4 class="mb-0"><i class="fas fa-user me-2"></i>我是志工 (Builder)</h4></div><div class="card-body"><ol class="list-group list-group-numbered list-group-flush"><!--[--><li class="list-group-item">註冊帳號並完成 Email 驗證</li><li class="list-group-item">填寫個人資料與技能偏好</li><li class="list-group-item">瀏覽職缺列表，使用篩選器找到理想換宿</li><li class="list-group-item">點擊「應徵」送出申請，撰寫求職信</li><li class="list-group-item">等待業主回覆，進行面試或確認</li><li class="list-group-item">收到錄取通知後，確認入住日期</li><li class="list-group-item">完成換宿後，為對方撰寫評論</li><!--]--></ol></div></div></div><div class="col-lg-6 mb-4"><div class="card border-0 shadow-sm h-100"><div class="card-header bg-success text-white"><h4 class="mb-0"><i class="fas fa-home me-2"></i>我是業主 (Host)</h4></div><div class="card-body"><ol class="list-group list-group-numbered list-group-flush"><!--[--><li class="list-group-item">註冊帳號並完成 Email 驗證</li><li class="list-group-item">提交業主身份驗證資料</li><li class="list-group-item">刊登職缺，詳填工作內容與住宿條件</li><li class="list-group-item">審核志工應徵資料</li><li class="list-group-item">主動聯繫或回覆志工詢問</li><li class="list-group-item">確認錄取，寄送入住須知</li><li class="list-group-item">換宿結束後，為志工撰寫評論</li><!--]--></ol></div></div></div></div><div class="text-center"><h3 class="mb-4">準備好開始了嗎？</h3><a href="./jobs.html" class="btn btn-primary btn-lg me-2"><i class="fas fa-search me-2"></i>探索職缺 </a><a href="./auth.html" class="btn btn-outline-primary btn-lg"><i class="fas fa-user-plus me-2"></i>免費註冊 </a></div></div></section><!--]--></main><footer class="footer bg-dark text-white py-4" data-v-60efee7b=""><div class="container" data-v-60efee7b=""><div class="row" data-v-60efee7b=""><div class="col-md-4 mb-3 mb-md-0" data-v-60efee7b=""><h5 class="mb-3 text-white" data-v-60efee7b="">Builder 101</h5><p class="text-white-50 small mb-0" data-v-60efee7b="">以工換宿媒合平台 🏕️</p></div><div class="col-md-4 mb-3 mb-md-0" data-v-60efee7b=""><h6 class="mb-3 text-white" data-v-60efee7b="">快速連結</h6><ul class="list-unstyled small" data-v-60efee7b=""><li data-v-60efee7b=""><a href="./jobs.html" class="text-white-50 text-decoration-none link-hover" data-v-60efee7b="">探索項目</a></li><li data-v-60efee7b=""><a href="./how-to.html" class="text-white-50 text-decoration-none link-hover" data-v-60efee7b="">如何使用</a></li><li data-v-60efee7b=""><a href="./about.html" class="text-white-50 text-decoration-none link-hover" data-v-60efee7b="">關於我們</a></li><li data-v-60efee7b=""><a href="./contact.html" class="text-white-50 text-decoration-none link-hover" data-v-60efee7b="">聯絡我們</a></li></ul></div><div class="col-md-4" data-v-60efee7b=""><h6 class="mb-3 text-white" data-v-60efee7b="">關注我們</h6><div class="d-flex gap-3" data-v-60efee7b=""><a href="#" class="text-white fs-5 social-icon" aria-label="Facebook" data-v-60efee7b=""><i class="fab fa-facebook" aria-hidden="true" data-v-60efee7b=""></i></a><a href="#" class="text-white fs-5 social-icon" aria-label="Instagram" data-v-60efee7b=""><i class="fab fa-instagram" aria-hidden="true" data-v-60efee7b=""></i></a><a href="#" class="text-white fs-5 social-icon" aria-label="Line" data-v-60efee7b=""><i class="fab fa-line" aria-hidden="true" data-v-60efee7b=""></i></a></div></div></div><hr class="my-4 border-secondary" data-v-60efee7b=""><div class="row align-items-center" data-v-60efee7b=""><div class="col-md-6 text-center text-md-start" data-v-60efee7b=""><p class="small text-white-50 mb-0" data-v-60efee7b="">© 2024 Builder 101.</p></div><div class="col-md-6 text-center text-md-end" data-v-60efee7b=""><a href="./terms.html#privacy" class="text-white-50 small text-decoration-none me-3 link-hover" data-v-60efee7b="">隱私權政策</a><a href="./terms.html#terms" class="text-white-50 small text-decoration-none link-hover" data-v-60efee7b="">服務條款</a></div></div></div><button type="button" class="btn btn-primary btn-back-to-top" data-action="back-to-top" aria-label="回到頂部" data-v-60efee7b=""><i class="fas fa-arrow-up" aria-hidden="true" data-v-60efee7b=""></i></button></footer></div></div>
+
+    <!-- CDN: JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vite Entry Point -->
+
+
+</body></html>
