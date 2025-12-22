@@ -43,15 +43,31 @@
 </head>
 
 <body>
-    &copy;<br>&lt;<br>&gt;<br>
+    <!-- 特殊字元符號的使用 -->
+    <!-- 都是以 & 開頭, ; 結尾 -->
+    <!-- &copy; 版權符號 -->
+    <!-- &lt; 左尖括號 < -->
+    <!-- &gt; 右尖括號 > -->
+    &copy;
+    <br>
+    &lt;
+    <br>
+    &gt;
     <section id="code">
         <h3>原始碼輸出</h3>
         <!-- 請使用特殊字元修改以下原始碼 -->
+        <!-- <iframe src="https://www.ispan.com.tw" width="800" height="600"></iframe> -->
+        <!-- 比較，有使用 code 標籤與沒有使用下，顯示原始碼的效果 -->
         &lt;iframe src="https://www.ispan.com.tw" width="800" height="600">&lt;/iframe>
+
         <figure>
+            <!-- figure 標籤，除了可以用在圖片，也可以用在呈現原始碼 -->
+            <!-- 並且 figcaption 標籤可以用來描述 figure 的內容，可以放在前面，或是後面 -->
             <figcaption>原始碼輸出顯示</figcaption>
+            <!-- code 標籤，會方便顯示原始碼，browser 會用預設的等寬字距來顯示 -->
             <code>
-            &lt;iframe src="https://www.ispan.com.tw" width="800" height="600">&lt;/iframe>
+                <!-- 只需要把 tag 的 起頭 angle bracket 改成 特殊字元寫法 &lt; 瀏覽器就會知道，這是特殊字元 -->
+                &lt;iframe src="https://www.ispan.com.tw" width="800" height="600">&lt;/iframe>
             </code>
         </figure>
         <hr>
@@ -64,7 +80,8 @@
             </div>
             <div class="iframe_content">
                 <!-- 請在這裡輸入要嵌入的網站 -->
-                <iframe src="https://www.ispan.com.tw" width="600" height="400" frameborder="0"></iframe>
+                <!-- 裡面的 width and height 已預設像素，不需要加上 px 字元了 -->
+                <iframe src="https://www.ispan.com.tw" width="600" height="400"></iframe>
             </div><!--end iframe_content-->
         </div><!--end wrapper-->
         <hr>
@@ -83,7 +100,7 @@
             <div class="iframe_content">
                 <!-- 請在這裡嵌入地圖 -->
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.010053018835!2d121.54338439999998!3d25.0337329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd37971c7cb%3A0x40ba641f27b6d4e3!2zMTA26Ie65YyX5biC5aSn5a6J5Y2A5b6p6IiI5Y2X6Lev5LiA5q61Mzkw6Jmf!5e0!3m2!1szh-TW!2stw!4v1762417462988!5m2!1szh-TW!2stw"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0046035423134!2d121.5408326118613!3d25.033917838200683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xedc006d25a9e35df!2sDigital%20Talent%20Cultivation%20Center%2C%20III!5e0!3m2!1sen!2stw!4v1762417972530!5m2!1sen!2stw"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div><!--end iframe_content-->
@@ -104,6 +121,7 @@
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
             </div><!--end liframe_content-->
         </div><!--end wrapper-->
         <hr>

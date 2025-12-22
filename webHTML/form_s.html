@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <style>
+        .st1 {
+            width: 450px;
+            /* border: 1px solid lightblue; */
+            border-bottom: 3px dotted red;
+            padding-bottom: 10px;
+            margin: 20px;
+
+        }
+
+        .sub {
+            width: 450px;
+            /* text-align: center 會置中 */
+            text-align: center;
+            margin: 20px;
+        }
+
+        .t1 {
+            /* 要先給width，才能設定float */
+            width: 100px;
+            background-color: green;
+            float: left;
+            text-align: right;
+        }
+
+        fieldset {
+            width: 500px;
+            margin: 15px;
+            border: 1px solid blue;
+            /* border-radius 邊框圓角 */
+            border-radius: 15px;
+
+        }
+
+        legend {
+            color: blue;
+            margin-left: 50px;
+            /* text-align: center; */
+            /* border: 1px solid red; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- action值暫時設定#，表示資料傳輸留在表單上 -->
+    <!-- enctype="multipart/form-data" 是指表單可以上傳檔案 -->
+    <!-- it sends the form data in multiple parts, including binary data -->
+    <!-- 一般的 application/x-www-form-urlencoded, 無法上傳檔案 -->
+    <form action="#" method="get" enctype="multipart/form-data">
+        <fieldset>
+            <legend>個人資料</legend>
+            <div class="st1">
+                <!-- label 裡面的 for 屬性，在鼠標點擊這個label時，會自動移到相對應的id -->
+                <label for="act" class="t1">姓名:</label>
+                <!-- input(text) 裡面的 size 是指字元大小，不是指px -->
+                <input type="text" id="act" name="account" value="guest" size="10">
+            </div>
+            <div class="st1">
+                <label class="t1" for="">性別:</label>
+                <!-- radio的name屬性，需要寫一樣，才能變成單選 -->
+                <!-- 使用checked屬性 會有 radio 的預選 -->
+                <input type="radio" name="gender" value="male" id="" checked>男
+                <input type="radio" name="gender" value="female" id="">女
+            </div>
+            <div class="st1">
+                <label class="t1" for="pword">密碼:</label>
+                <input type="password" id="pword" name="pwd" maxlength="6">
+            </div>
+            <div class="st1">
+                <label class="t1" for="">興趣:</label>
+                <!-- 新的label寫法，不需要for(甚至不能有for屬性keyword出現，否則會失效)，裡面直接放input，就可以設定在點擊「字」時就會選取該box -->
+                <label>
+                    <!-- checkbox 複選使用 -->
+                    <input type="checkbox" name="hobby" value="jogging" id="">Jogging
+                </label>
+                <label>
+                    <input type="checkbox" name="hobby" value="swimming" id="">Swimming
+                </label>
+
+            </div>
+            <div class="st1">
+                <label class="t1" for="cmt">意見:</label>
+                <textarea id="cmt" name="comment" cols="40" rows="5"></textarea>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>其它</legend>
+            <div class="st1">
+                <label class="t1" for="">縣市</label>
+                <!-- select 選單，如上 multiple屬性，會可以複選 -->
+                <select name="liveIn" id="" multiple>
+                    <option value="TPE">Taipei</option>
+                    <option value="NTPE">New Taipei</option>
+                    <!-- selected屬性，會是預選 -->
+                    <option value="KH" selected>Kaohsiung</option>
+                </select>
+            </div>
+            <div class="st1">
+                <label for="" class="t1">地址</label>
+                <input type="text" name="address" id="" size="30">
+            </div>
+
+
+            <div class="st1">
+                <label for="" class="t1">上傳檔案</label>
+                <!-- 在 input type="file" 時，form 的 enctype 必須是 multipart/form-data -->
+                <!-- accept 指 input file 可以接受的檔案格式 -->
+                <input type="file" name="file01" id="" accept=".png,.jpg,.jpeg">
+            </div>
+            <div class="st1">
+                <label for="" class="t1">喜歡的水果:</label>
+                <input type="text" name="fruit" list="fruit_list" id="">
+                <datalist id="fruit_list">
+                    <option value="Apple">蘋果</option>
+                    <option value="Grape"></option>
+                    <option value="Banana"></option>
+                </datalist>
+                <!-- 說明 select 和 datalist 兩者差異 -->
+                <!-- <select> = fixed dropdown list; users must choose from the list. -->
+                <!-- <datalist> = suggestion list; users may type freely or pick a suggestion. -->
+
+            </div>
+            <div class="sub">
+                <input type="submit" value="送出">
+                <input type="reset" value="清除" disabled>
+            </div>
+            <div class="sub">
+                <input type="button" value="一般按鈕01" disabled>
+                <button type="button">一般按鈕02</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html>
