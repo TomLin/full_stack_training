@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate+Wowjs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        section {
+            padding: 50px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left-box {
+            width: 48%;
+            height: 500px;
+            background-color: rgb(233, 152, 94);
+        }
+
+        .right-box {
+            width: 48%;
+            height: 500px;
+            background-color: rgb(161, 233, 94);
+        }
+
+        #Products {
+            background-color: darkseagreen;
+        }
+
+        .card {
+            width: 31%;
+            height: 300px;
+            background-color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="Banner">
+        <div class="container">
+            <div class="left-box animate__animated animate__fadeInLeftBig"></div>
+            <div class="right-box animate__animated animate__fadeInTopRight"></div>
+        </div>
+    </section>
+    <section id="Products">
+        <div class="container">
+            <div class="card animate__animated animate__fadeInUp wow" data-wow-delay="0s"></div>
+            <div class="card animate__animated animate__fadeInUp wow" data-wow-delay="0.3s"></div>
+            <div class="card animate__animated animate__fadeInUp wow" data-wow-delay="0.5s"></div>
+        </div>
+    </section>
+    <section id="Event">
+        <div class="container">
+            <div class="left-box animate__animated animate__fadeInLeft wow"></div>
+            <div class="right-box animate__animated animate__fadeInRight wow"></div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+
+</html>

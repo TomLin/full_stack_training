@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習使用Ajax</title>
+</head>
+
+<body>
+    <select name="fruit" id="fruit"></select>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            // 載入資料
+            $.ajax({
+                url: "json/fruit.json",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    // 將資料加入下拉選單
+                    $.each(data.fruits, function (index, value) {
+                        $("#fruit").append($("<option></option>").text(value.name));
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error: " + error);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

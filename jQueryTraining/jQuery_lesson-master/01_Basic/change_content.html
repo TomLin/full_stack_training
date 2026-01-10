@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習使用hide&show</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: lightgoldenrodyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <p>第一句話</p>
+    <p class="weather">今天天氣很好
+        <!-- <a href="www.google.com">google</a> -->
+    </p>
+    <div class="box">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            console.log($("p").text()); // 取得p的純文字內容
+            console.log("--------------------1");
+            console.log($("p").html()); // 取得p的html內容(包含標籤語法)
+
+
+            //將p的文字改為「jQuery超有趣」
+            // $("p").text("jQuery超有趣");
+            $(".weather").html("<a href=''>jQuery超有趣</a>"); // 會變成超連結 (會把weather原本全部的內容覆蓋掉)
+
+            // 在box裡面加入img中的圖片
+            $(".box").html("<img src='imgs/potato.jpeg' alt=''>");
+            $(".box").append("<p>我是文字</p>"); // 在box的內容後面加入<p>我是文字</p> html 會清掉全部，但是 append 會保留原本的內容, 加在後方
+
+            // 在box的裡面，清除所有的內容
+            // $(".box").remove(); // 直接把box整個刪掉
+            $(".box img").remove(); // 只刪掉box裡面的img
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>

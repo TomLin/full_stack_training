@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>應用toggleClass</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1D90F5;
+            /* vh 和 px 一樣，也是長度單位，vh是指 viewport height，即視窗高度的百分比
+            1vh 就是 1% 的視窗高度 */
+            min-height: 100vh;
+            margin: 0;
+            font-family: roboto;
+        }
+
+        /* 
+        CSS pseudo-elements are commonly used for:
+        - Decorative icons without adding extra HTML
+        - Custom bullets for lists
+        - Adding labels or tags (e.g., “NEW”, “SALE”)
+        - Highlighting the first letter or line of a paragraph
+        - Creating tooltips or badges
+        - Creating separators or decorative lines
+        - Inserting content before or after elements
+        - Improving readability (e.g., styling the selected text)
+        */
+
+
+        body::before {
+            /* ::before 是偽元素 */
+            /* content 它會類似 div */
+            content: "";
+            background: #E8FAFF;
+            height: 50%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .menu {
+            display: block;
+            box-sizing: border-box;
+            background: white;
+            height: 87.75px;
+            width: 87.75px;
+            padding: 36px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+            transition: 1.3s cubic-bezier(0.53, 0, 0.15, 1.3);
+        }
+
+        .menu.expanded {
+            width: 400px;
+        }
+
+        .menu-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu-list li {
+            padding: 10px;
+            opacity: 1;
+            transition: 0.3s;
+        }
+
+        .menu-list li:nth-child(1) {
+            transition-delay: 0.4s;
+        }
+
+        .menu-list li:nth-child(2) {
+            transition-delay: 0.5s;
+        }
+
+        .menu-list li:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+
+        .menu-list li:nth-child(4) {
+            transition-delay: 0.7s;
+        }
+
+        .menu-list li.hidden {
+            /* width: 0; */
+            visibility: hidden;
+            opacity: 0;
+            transform: rotateY(90deg);
+        }
+
+        .menu-list li.hidden:nth-child(1) {
+            /* 動畫延遲 */
+            transition-delay: 0.7s;
+        }
+
+        .menu-list li.hidden:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        .menu-list li.hidden:nth-child(3) {
+            transition-delay: 0.5s;
+        }
+
+        .menu-list li.hidden:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .menu-list li a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            color: black;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .menu-list li a:hover {
+            color: #1D90F5;
+        }
+
+        .container {
+            position: absolute;
+            top: 22.5px;
+            /* calc() 是計算用的函數，可以混用不同 units: px, %, em, rem, vh 等 */
+            right: calc((100% - 60px)/2);
+            height: 60px;
+            width: 60px;
+
+            /* 'all' means apply the transition effect to every property that can be animated
+                (e.g., color, background-color, width, height, opacity, transform, etc.).
+
+            So when any of these properties change, the element will animate smoothly. 
+            */
+            transition: all 1s;
+        }
+
+        .container.close {
+            right: 0;
+        }
+
+        .toggle {
+            position: relative;
+            height: 42.75px;
+            width: 58.5px;
+            cursor: pointer;
+        }
+
+        /* 
+        .toggle:before and .toggle:after are CSS pseudo-elements.
+
+        They allow you to insert virtual elements
+            before and after the content of .toggle without writing extra HTML.
+        */
+        .toggle:after,
+        .toggle:before {
+            content: "";
+            background: #1D90F5;
+            width: 36px;
+            height: 4.5px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            transition: 1.3s cubic-bezier(0.53, 0, 0.15, 1.3);
+        }
+
+        .toggle:before {
+            top: -30%;
+        }
+
+        .toggle:after {
+            top: 30%;
+        }
+
+        .toggle.close:before {
+            transform: rotate(-225deg);
+            top: 0;
+        }
+
+        .toggle.close:after {
+            transform: rotate(225deg);
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="menu expanded">
+        <div class="container closed">
+            <div class="toggle"></div>
+        </div>
+        <ul class="menu-list">
+            <li class="hidden"><a href="#">Home</a></li>
+            <li class="hidden"><a href="#">About</a></li>
+            <li class="hidden"><a href="#">Info</a></li>
+            <li class="hidden"><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(".menu").on("click", function () {
+                /*
+                toggleClass() means to add a class if it is not present, and remove the class if it is already present.
+                
+                It “toggles” CSS classes on an element.
+                也就是「切換」CSS 樣式。
+                
+                */
+
+                //  toggleClass() 裡面的 class, 不需要有點 .
+                $(this).toggleClass('expanded');
+                $(".container").toggleClass('close');
+                $(".menu-list li").toggleClass('hidden');
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

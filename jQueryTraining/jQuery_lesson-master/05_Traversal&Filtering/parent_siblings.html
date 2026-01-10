@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parent()&siblings()示範</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.item').on('click',function() {
+                // 使用 parent() 函數獲取父級元素
+                var parentElement = $(this).parent();
+                parentElement.css('background-color', 'bisque');
+
+                // 使用 siblings() 函數獲取同級元素
+                var siblingElements = $(this).siblings();
+                siblingElements.css('color', 'blue');
+            });
+        });
+    </script>
+</body>
+</html>

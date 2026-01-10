@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>滾動淡入效果示例</title>
+  <style>
+    body {
+      background-color: bisque;
+      height: 2000px; /* 用於產生捲軸 */
+    }
+    #bottomBlock {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      display: none; /* 初始狀態隱藏 */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div id="bottomBlock">滾動到底部了，淡入效果</div>
+
+<script>
+$(document).ready(function() {
+
+  $(window).scroll(function() {
+    // 取得頁面高度
+    var scrollPosition = $(window).scrollTop();
+
+    // 取得底部位置
+    var bottomBlockPosition = $("#bottomBlock").position().top;
+
+    // 判斷是否到底部，如果是，則淡入
+    if (scrollPosition + $(window).height() >= bottomBlockPosition) {
+      $("#bottomBlock").fadeIn(1000); // 1000 毫秒淡入效果
+    }
+  });
+});
+</script>
+
+</body>
+</html>

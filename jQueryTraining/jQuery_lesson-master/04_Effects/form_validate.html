@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習使用hide&show</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container px-5 my-5">
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <div class="form-floating mb-3">
+                <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required" />
+                <label for="name">Name</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="emailAddress" type="email" placeholder="Email Address"
+                    data-sb-validations="required,email" />
+                <label for="emailAddress">Email Address</label>
+                <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;"
+                    data-sb-validations="required"></textarea>
+                <label for="message">Message</label>
+                <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+            </div>
+            <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                    <p>To activate this form, sign up at</p>
+                    <a
+                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                </div>
+            </div>
+            <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">Error sending message!</div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            // 隱藏所有段落元素 
+            $("p").hide();
+            // 顯示所有段落元素 
+            $("p").show();
+        });
+    </script>
+</body>
+
+</html>

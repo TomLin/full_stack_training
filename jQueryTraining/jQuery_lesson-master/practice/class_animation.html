@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        body {
+            margin: 0px;
+            background-color: beige;
+        }
+
+        .box {
+            width: 200px;
+            height: 300px;
+            background-color: lightblue;
+            position: absolute;
+            /* 為了讓選單隱藏在畫面外，之後由左側滑入 */
+            /* left: -200px; */
+            left: 0px;
+            /* transition: all 0.5s; */
+        }
+
+        .box a {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            border-bottom: 1px dashed lightpink;
+        }
+
+        .menu {
+            width: 40px;
+            height: 40px;
+            background-color: coral;
+            position: absolute;
+            right: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* font awesome 的 icon 就是字型，可以設定 font size 變大 */
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <!-- font awesome 的 icon -->
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="box">
+        <a href="">香草冰淇淋</a>
+        <a href="">巧克力冰淇淋</a>
+        <a href="">草莓冰淇淋</a>
+        <a href="">抹茶冰淇淋</a>
+        <a href="">芒果冰淇淋</a>
+    </div>
+    <!-- font awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // slideUp
+            // slideDown
+            // $(".box").hide(); // 先隱藏選單
+            // let is_open = false; // 預設選單關閉
+            // $(".menu").click(function () {
+            //     if (!is_open) {
+            //         $(".box").slideDown();
+            //         is_open = true;
+            //     } else {
+            //         $(".box").slideUp();
+            //         is_open = false;
+            //     }
+            // });
+
+            // let left_slide = false; // 預設選單在左側是關閉的
+            // 寫法一: 用 css 改變 left 屬性
+            // $(".menu").click(function () {
+            //     if (left_slide == false) {
+            //         $(".box").css("left", "0px");
+            //         left_slide = true;
+            //     } else {
+            //         $(".box").css("left", "-200px");
+            //         left_slide = false;
+            //     }
+            // });
+
+
+            // slideToggle，自動判斷是 slideUp 還是 slideDown
+            // let is_toggled = false;
+            // $(".box").hide(); // 先隱藏選單
+            // $(".menu").click(function () {
+            //     if (is_toggled == false) {
+            //         $(".box").slideToggle();
+            //         is_toggled = true;
+            //     } else {
+            //         $(".box").slideToggle();
+            //         is_toggled = false;
+            //     }
+            // });
+
+
+            /* 以下說明 jQuery 和 CSS transition 的差異
+            
+            jQuery animate()
+            A JavaScript-based animation method that gradually modifies numeric CSS properties using code.
+
+            CSS transition
+            A CSS feature that animates changes between two states when a property value changes.
+                CSS transition 只會在 屬性值改變時觸發
+
+            */
+
+            /*
+            
+            animate() is a jQuery method that allows you to create custom animations by gradually changing CSS properties over a specified duration. 
+            
+            It works only with numeric CSS values (e.g., width, height, opacity, left, top).
+
+            arguments for animate():
+                .animate( properties, duration, easing, complete )
+                properties: An object of CSS properties and values to animate. e.g. {css property: value, ...}
+                duration: The length of the animation in milliseconds (e.g., 300 for 0.3 seconds).
+                easing: A string indicating which easing function to use for the transition. 動畫的速度曲線
+                例: "swing" (default) or "linear"
+                complete: A callback function to be executed after the animation completes. 動畫結束後要執行的函式
+                - animate() 的好處是，執行完後，可以接著執行其他動作 (用 complete 參數)
+            */
+
+            // animate
+            let is_animated = false;
+            $(".menu").click(function () {
+                if (is_animated == false) {
+                    $(".box").animate({
+                        left: "0px"
+                    }, 300);
+                    is_animated = true;
+                } else {
+                    $(".box").animate({
+                        left: "-200px"
+                    }, 300);
+                    is_animated = false;
+                }
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

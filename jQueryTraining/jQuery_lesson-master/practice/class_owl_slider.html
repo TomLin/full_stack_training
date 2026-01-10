@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OwlCarousel</title>
+
+    <!-- OwlCarousel 的 CSS檔案 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <style>
+        .item {
+            height: 300px;
+            width: 300px;
+            overflow: hidden;
+        }
+
+        .Video {
+            width: 80%;
+            margin: auto;
+        }
+
+        /* item-video 的 div 需要給 height, 否則會看不到影片 */
+        .item-video {
+            height: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 套用 Owl Carousel 廣告輪播時，還是會把元素放在一個section區域裡面 -->
+    <section id="Banner">
+
+        <!-- 官方的 html structure 參考 demo: https://owlcarousel2.github.io/OwlCarousel2/demos/basic.html -->
+
+        <div class="image-carousel owl-carousel owl-theme">
+            <div class="item">
+                <!-- h4 元素，可以改成 img 或是 p 元素-->
+                <!-- <h4>1</h4> -->
+                <img src="imgs/banner1.jpg" alt="">
+            </div>
+            <div class="item">
+                <!-- <h4>2</h4> -->
+                <img src="imgs/banner2.jpg" alt="">
+            </div>
+            <div class="item">
+                <!-- <h4>3</h4> -->
+                <img src="imgs/banner3.jpg" alt="">
+            </div>
+            <div class="item">
+                <!-- <h4>4</h4> -->
+                <img src="imgs/christmas-bell.png" alt="">
+            </div>
+            <div class="item">
+                <!-- <h4>5</h4> -->
+                <img src="imgs/christmas-lights.png" alt="">
+            </div>
+            <div class="item">
+                <!-- <h4>6</h4> -->
+                <img src="imgs/snowman.png" alt="">
+            </div>
+            <div class="item">
+                <!-- <h4>7</h4> -->
+                <img src="imgs/presents.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- Owl Video 的官方API Demo -->
+    <!-- https://owlcarousel2.github.io/OwlCarousel2/demos/video.html -->
+    <section id="Video">
+        <div class="video-carousel owl-carousel owl-theme">
+            <div class="item-video" data-merge="3">
+                <a class="owl-video" href="https://youtu.be/YGqBv165gG8?si=jeiQR_12MQDUS_b8"></a>
+            </div>
+            <div class="item-video" data-merge="1">
+                <a class="owl-video" href="https://youtu.be/6er5oSPUGOI?si=XA2-AdpgM2_0vzKm"></a>
+            </div>
+            <div class="item-video" data-merge="2">
+                <a class="owl-video" href="https://youtu.be/3iU7ZQ1uKwA?si=fpGVN9OhqmvSud2T"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery 的 js 程式 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- OwlCarousel 的 js 程式 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+
+        // $(window).on('load') 是確保圖片或影片都載入完成後，再執行裡面的程式碼
+        $(window).on('load', function () {
+            $('.image-carousel').owlCarousel({
+                loop: true,  // 表示圖片循環
+                margin: 10,  // 表示 圖片間距
+                nav: true,  // 會有小小的左右箭頭
+                // responsive: 是指 手機版在使用
+                responsive: {
+                    0: {  // 手機版
+                        items: 1  // 每次畫面1個item
+                    },
+                    768: {  // screen 寬度超過 768 時
+                        items: 3
+                    },
+                    1024: {
+                        items: 5
+                    }
+                }
+            });
+
+            // video carousel
+            $('.video-carousel').owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                video: true,
+                nav: true,
+                lazyLoad: true,
+                responsive: {
+                    480: {
+                        items: 2
+                    },
+                    600: {
+                        items: 4
+                    }
+                }
+            });
+
+            // mouth wheel, 用滑鼠滾輪來控制影片輪播
+            // 參考 https://owlcarousel2.github.io/OwlCarousel2/demos/mousewheel.html
+
+        });
+    </script>
+</body>
+
+</html>

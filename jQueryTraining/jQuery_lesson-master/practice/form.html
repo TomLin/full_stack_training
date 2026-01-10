@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            padding: 20px;
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 93%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>表單事件測試</h2>
+        <!-- enctype="multipart/form-data" 用於表單包含檔案上傳時 -->
+        <form id="myForm" action="#" enctype="multipart/form-data">
+            <!-- 表單的label 外面再加上一個div form-group 方便在css設計樣式 -->
+            <!-- <div class="form-group">
+                <label for="avatar">圖像：</label>
+                <input type="file" id="avatar" name="avatar">
+            </div> -->
+            <div class="form-group">
+                <label for="name">姓名：</label>
+                <input type="text" id="name" name="name" placeholder="請輸入姓名">
+                <p class="output"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">電話：</label>
+                <input type="text" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail：</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <h3>興趣:</h3>
+                <div class="check-group">
+                    <input type="checkbox" name="habit1" id="habit1">
+                    <span>游泳</span>
+                </div>
+                <div class="check-group">
+                    <input type="checkbox" name="habit2" id="habit2">
+                    <span>閱讀</span>
+                </div>
+                <div class="check-group">
+                    <input type="checkbox" name="habit3" id="habit3">
+                    <span>聽音樂</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <h3>性別:</h3>
+                <div class="check-group">
+                    <!-- name 需要是一樣的，radio 才會變成是單選 -->
+                    <input type="radio" name="gender" value="male" checked>
+                    <span>男</span>
+                </div>
+                <div class="check-group">
+                    <input type="radio" name="gender" value="female">
+                    <span>女</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">留言：</label>
+                <textarea id="message" name="message" rows="5"></textarea>
+            </div>
+
+            <div class="form-group">
+                <!-- 送出按鈕，會把form送到 form 的 action 屬性指定的網址 -->
+                <button type="submit">送出</button>
+            </div>
+        </form>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // 把 placeholder 文字去除
+            $("#name").on("focus", function () {
+                // attr 是在改html屬性值, 例如 src, href, placeholder, id, class
+                // css 是在改css外觀樣式, 例如 color, background, width, height, font-size
+                $(this).attr("placeholder", "");
+            }).on("blur", function () {
+                $(this).attr("placeholder", "請輸入姓名");
+            })
+
+            // 群組選取器寫法，一次多個選取器綁定同一事件
+            $("input, textarea").on("focus", function () {
+                $(this).css({
+                    "background-color": "lightyellow"
+                });
+            }).on("blur", function () {
+                $(this).css({
+                    "background-color": "white"
+                });
+            });
+
+            // val() 取得或設定表單元素的值, 它是 jQuery專屬的方法
+            // value 是html原生的屬性, 例如 <input id="name" value="Tom">
+            // 或是 JavaScript 原生的屬性, 例如 document.getElementById("name").value
+            $("#name").on("keyup", function () {
+                $(".output").text($(this).val());
+            });
+
+            $("#habit1").on("change", function () {
+                console.log("habit1 changed: ", $(this).val());
+            });
+
+            $("input[name='gender']").on("change", function () {
+                let gender = $(this).val();
+                let str = "";
+
+                if (gender == "male") {
+                    str = "性別是男生";
+                } else {
+                    str = "性別是女生";
+                }
+
+                console.log(`你選擇了: ${gender}`);
+            });
+
+            $("#myForm").on("submit", function (e) {
+                e.preventDefault(); // 阻止表單送出, 這樣才看得到下面的 console.log
+                console.log(e);
+                console.log('--------------------1');
+                console.log(e.target);  // 表單本身 
+                console.log('--------------------2');
+                console.log(e.type); // 事件類型 submit
+                console.log('--------------------3');
+                console.log($("#name").val()); // 取得姓名欄位的值
+                console.log('--------------------4');
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

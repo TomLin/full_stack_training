@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window事件範例</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Window事件範例</h1>
+    <p>嘗試調整視窗大小。</p>
+
+    <script>
+        // 1. 視窗大小變化事件 (resize)
+        $(window).resize(function() {
+            alert("視窗大小發生變化！");
+        });
+
+        // 2. 使用者離開頁面事件 (unload)
+        $(window).on("unload", function() {
+            // 這裡可以執行一些清理操作
+            // 但因為瀏覽器的安全策略，不一定所有操作都會生效
+            return "您有未保存的更改。確定要離開嗎？";
+        });
+
+        // 3. 文件載入完成事件 (load)
+        $(window).on("load", function() {
+            alert("文件和所有內容已載入完成！");
+        });
+
+        // 4. 使用者嘗試離開頁面前事件 (beforeunload)
+        $(window).on("beforeunload", function() {
+            return "感謝你的光臨，再見!";
+        });
+    </script>
+</body>
+</html>

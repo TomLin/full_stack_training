@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習選擇元素</title>
+</head>
+
+<body>
+    <h1>歡迎來上好玩的jQuery課程</h1>
+    <p>今天天氣很好</p>
+    <p>jQuery超好玩</p>
+    <ul id="Menu">
+        <li>蛋糕</li>
+        <li>麵包</li>
+        <li>義大利麵</li>
+        <li>甜點</li>
+        <li>牛排</li>
+    </ul>
+
+    <input type="text" value="我是輸入框">
+    <input name="Phone" type="text" value="0988123456">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            /* 選取h1並使用console.log顯示元素 */
+            console.log($("h1"));
+
+            /* 選取Menu並使用console.log顯示元素 */
+            $("#Menu").css("background-color", "yellow");
+
+            /* 選取Menu li 並使用console.log顯示元素 */
+            // 如果寫法是 #Menu li 代表選取id為Menu底下的所有li
+            // 如果寫法是 #Menu > li 代表選取id為Menu底下的所有直接子元素li
+            $("#Menu li").css({
+                "color": "blue",
+                "font-size": "20px",
+                "text-decoration": "underline"
+            });
+
+            /* 選取p並使用console.log顯示元素 */
+            console.log($("p"));
+
+            $("p").css("color", "rgb(203,67,67)");
+
+            /* 選取input並使用console.log顯示元素 */
+            $("input[type='text']").css({
+                "border-color": "lightblue",
+                "border-style": "solid",
+                "padding": "15px",
+                "border-radius": "15px"
+            });
+
+            $("input[value='我是輸入框']").css("color", "purple");
+            $("input[name='Phone']").css("background-color", "lightgreen");
+
+            // 使用 nth-child 選取Menu底下的第1個li
+            $("#Menu li:nth-child(1)").css("color", "red");
+
+        });
+    </script>
+</body>
+
+</html>

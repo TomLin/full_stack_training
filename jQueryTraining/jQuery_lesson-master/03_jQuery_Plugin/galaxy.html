@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Card Example</title>
+  <style>
+    body {
+      background-image: url(imgs/bg.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    
+    .card {
+        display: flex;
+        align-items: center;
+        
+        padding: 20px;
+        width: 600px;
+        margin: 0 auto;
+        margin-top:100px;
+        background: rgba(255,255,255,.25);
+        border: 1px solid rgba(255,255,255,.7);
+        border-radius: 5px;
+        box-shadow: 0 20px 50px -10px rgba(0,0,0,.5);
+    }
+    .card:after {
+    filter: blur(8px);
+    content: "";
+    height: 100%;
+    position: absolute;
+    background-color: rgba(255,255,255,.5);
+    width: 100%;
+    left: 0;
+  }
+    .card .left {
+      flex: 0 0 300px;
+      margin-right: 20px;
+    }
+    
+    .card .left img {
+      width: 100%;
+      height: auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .card .right {
+      flex: 1;
+    }
+    
+    .card .right h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: rgb(0, 0, 0);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .card .right p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: rgb(0, 0, 0);
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="left">
+      <img src="https://muralsyourway.vtexassets.com/arquivos/ids/241294-825-auto?width=825&height=auto&aspect=true" alt="Constellation Image">
+    </div>
+    <div class="right">
+      <h2>星座的由來</h2>
+      <p>
+        星座是指天空上被劃分成不同區域的星群，通常以神話或傳說中的人物、動物等命名。古代人們觀察天空時發現，恆星呈現特定的排列，形成了各種圖案，並賦予其不同的象徵意義。星座的由來包含著悠久的歷史和文化，不同的文明和地區有著各自獨特的星座故事和傳說。
+      </p>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 引入 jQuery -->
+  <script src="js/jQuery-face-cursor.js"></script> <!-- 引入自訂的 JavaScript 檔案 -->
+  <script>
+    $(function(){
+      $(".card").faceCursor({
+          options: "go here"
+      });
+    })
+  </script>
+</body>
+</html>

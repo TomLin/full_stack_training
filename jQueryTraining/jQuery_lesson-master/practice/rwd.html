@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWD觀念</title>
+    <style>
+        /* 
+        
+        CSS3 is the third major version of Cascading Style Sheets, a language used to style and layout web pages.
+        Compared with older CSS versions, CSS3 adds many modern features such as animations, transitions, shadows, rounded corners, flexbox, grid, and responsive design tools.
+
+        Key Points
+
+        It is modular (split into many smaller “modules,” like backgrounds, animations, transforms, etc.).
+
+        It allows smoother animations and better UI effects without heavy JavaScript.
+
+        It makes responsive design (RWD) easier.
+        
+        */
+        body {
+            margin: 0px;
+        }
+
+        /* 手機版 0-767px */
+        /* 在 RWD 的設定下，都會讓 width 小於螢幕寬度 */
+        #nav {
+            width: 80%;
+            height: 80px;
+            margin: auto;
+            background-color: lightgray;
+
+        }
+
+        /* 平版裝置 768px - 1023px*/
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+            #nav {
+                width: 60%;
+                background-color: lightcoral;
+            }
+        }
+
+        /* 電腦版 1024px以上 */
+        @media screen and (min-width: 1024px) {
+            #nav {
+                background-color: lightblue;
+            }
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Responsive Web Design</h1>
+        <div>
+            <nav id="nav"></nav>
+        </div>
+    </header>
+
+</body>
+
+</html>

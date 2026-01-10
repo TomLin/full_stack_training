@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習使用addClass/removeClass/toggleClass</title>
+    <style>
+        #menu{
+            background: lightblue;
+        }
+        #menu.active{
+            background: orange;
+        }
+        #menu li.active{
+            color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <p>今天天氣很好</p>
+    
+    <ul id="menu">
+        <li>About</li>
+        <li class="active">Portfolio</li>
+        <li>Contact</li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            // 試著在menu加上active class
+            
+            // 試著移除Portfolio項目上的樣式
+
+            // 試著在所有li上自動加上樣式active或移除樣式active
+
+        });
+    </script>
+</body>
+</html>

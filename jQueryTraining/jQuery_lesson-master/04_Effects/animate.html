@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習使用animate</title>
+    <style>
+        .container{
+            display: flex;
+            width: 1000px;
+        }
+        .word1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: tomato;
+        }
+        .word2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: tomato;
+        }
+        .word3{
+            display: flex;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="word1">今天天氣很好</p>
+        <p class="word2">jQuery超好玩</p>
+        <p class="word3">Box3</p>
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            // 載入時加寬word1
+            $(".word1").animate({     
+                width: "500px" 
+            }, 1000);
+            $(".word2").animate({     
+                height: "500px" 
+            }, 1000);
+
+            // 加上mousemove事件應用
+            $(".word3").mousemove(function(){
+                
+                    $(".word3").animate({     
+                        left: "830px" 
+                    }, 1000);
+             
+                })
+           
+        });
+    </script>
+</body>
+</html>

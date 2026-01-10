@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snow Effect</title>\
+    <style>
+        .container {
+            width: 1000px;
+            height: 600px;
+            background-color: black;
+            position: relative;
+        }
+
+        .snow {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            /* 需要使用 position 屬性，才能設定 left 和 top */
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            /* 使用 animation 就可以做到動畫 */
+            animation: move 1s forwards;
+        }
+
+        /* 使用animation時，在這裡設定 @keyframes */
+        @keyframes move {
+            from {
+                /* 位移，起始位置 */
+                transform: translateY(0px);
+                opacity: 1;
+            }
+
+            to {
+                /* 位移，結束位置 */
+                transform: translateY(200px);
+                opacity: 0;
+            }
+        }
+
+        /* 另一個寫法
+        @keyframes move {
+            0% {    
+            transform: translateY(0px);
+            }
+
+        100% {
+            transform: translateY(200px);
+            }
+
+        }
+
+        */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="snow">
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // container 被 click 時，會產生雪花
+            $(".container").on("click", function (e) {
+                // e.pageX 以整個視窗為參考的X座標, 而不是以 container 元素本身為參考
+                let x = e.offsetX; // e.offsetX 以 container 元素本身為參考的X座標
+                // let x = e.pageX - $(this).offset().left;  // 另一個寫法
+                // e.pageY 以整個視窗為參考的Y座標
+                let y = e.offsetY; // e.offsetY 以 container 元素本身為參考的Y座標
+                // let y = e.pageY - $(this).offset().top;  // 另一個寫法
+
+                console.log("x:", x, "y:", y);
+                $(this).append(`<div class="snow"></div>`);
+                $(".snow:last").css({
+                    left: x + "px",
+                    top: y + "px"
+                })
+
+            });
+        });
+    </script>
+</body>
+
+</html>

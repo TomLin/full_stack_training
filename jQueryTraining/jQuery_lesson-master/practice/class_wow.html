@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate+Wow</title>
+    <!-- 這個範例是 animate.css 和 wow.js 的結合 -->
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        section {
+            padding: 50px;
+        }
+
+        .container {
+            width: 80%;
+            /* margin auto，會讓區塊置中，上下則是 0px */
+            margin: auto;
+            display: flex;
+            /* justify-content: space-between is a CSS Flexbox property that distributes items 
+                evenly across the main axis 
+                
+                預設的 main axis 是水平方向
+
+                */
+            justify-content: space-between;
+        }
+
+        .left-box {
+            /* 設定48%，讓左右兩邊的區塊，中間有gap */
+            width: 48%;
+            height: 500px;
+            background-color: lightyellow;
+
+        }
+
+        .right-box {
+            width: 48%;
+            height: 500px;
+            background-color: lightblue;
+        }
+
+        .card {
+            /* 讓gap可以大一點 */
+            width: 31%;
+            height: 300px;
+            background-color: lightgray;
+        }
+
+        #Products {
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="Banner">
+        <div class="container">
+            <!-- wow 加上去之後，可以讓 animate.css 的動畫, 是在 滾動到該元素時才開始執行 -->
+            <div class="left-box animate__animated animate__fadeInLeft wow"></div>
+            <div class="right-box animate__animated animate__fadeInRight wow"></div>
+        </div>
+    </section>
+    <section id="Products">
+        <div class="container">
+            <!-- 進階 wow 的設定，可以看 API 文件 -->
+            <!-- 記得，animate的符號 __ 是兩個底線 -->
+            <div class="card animate__animated animate__fadeInUp wow" data-wow-delay="0s"></div>
+            <div class="card animate__animated animate__fadeInUp wow" data-wow-delay="0.3s"></div>
+            <div class="card animate__animated animate__fadeInUp wow" data-wow-delay="0.5s"></div>
+        </div>
+    </section>
+    <section id="Event">
+        <div class="container">
+            <div class="left-box animate__animated animate__fadeInLeft wow"></div>
+            <div class="right-box animate__animated animate__fadeInRight wow"></div>
+        </div>
+    </section>
+    <!-- Wow.js -->
+    <!-- API 使用說明連結: -->
+    <!-- https://wowjs.uk/docs.html -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+
+</html>

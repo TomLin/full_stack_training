@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>自訂左右箭頭切換圖片</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      height: 600px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      display: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    .dot-container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .dot {
+      height: 20px;
+      width: 20px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <div class="slide">
+    <img src="imgs/dessert1.jpg" alt="Image 1">
+  </div>
+  <div class="slide">
+    <img src="imgs/dessert2.jpg" alt="Image 2">
+  </div>
+  <div class="slide">
+    <img src="imgs/dessert3.jpg" alt="Image 3">
+  </div>
+
+  <a class="prev"><i class="fa fa-chevron-left"></i></a>
+  <a class="next"><i class="fa fa-chevron-right"></i></a>
+</div>
+
+<div class="dot-container">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<script>
+$(document).ready(function() {
+  var currentIndex = 0;
+  var slides = $(".slide");
+  var dots = $(".dot");
+  var sliding = false;
+
+  function showSlide(index, direction) {
+    if (sliding) return;
+    sliding = true;
+
+    var currentSlide = slides.eq(currentIndex);
+    var nextSlide = slides.eq(index);
+    var currentDot = dots.eq(currentIndex);
+    var nextDot = dots.eq(index);
+
+    currentSlide.fadeOut(500);
+    nextSlide.fadeIn(500, function() {
+      sliding = false;
+    });
+
+    currentDot.removeClass("active");
+    nextDot.addClass("active");
+
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    var index = (currentIndex + 1) % slides.length;
+    showSlide(index, "right");
+  }
+
+  function prevSlide() {
+    var index = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(index, "left");
+  }
+
+  $(".next").click(nextSlide);
+  $(".prev").click(prevSlide);
+  dots.click(function() {
+    var index = dots.index(this);
+    showSlide(index, index > currentIndex ? "right" : "left");
+  });
+
+  showSlide(currentIndex, "right");
+
+  // 自动轮播
+  setInterval(nextSlide, 3000);
+});
+</script>
+
+</body>
+</html>

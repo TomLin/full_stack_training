@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習使用append</title>
+</head>
+
+<body>
+    <p>今天天氣很好</p>
+
+    <ul id="menu">
+        <li>About</li>
+        <li>Portfolio</li>
+        <li>Contact</li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+
+            // 在所有段落元素後面添加一個新的 div 元素
+            $("p").append("<div>我是新元素</div>");
+            // 刪除所有段落元素
+            // $("p").remove();
+
+            // 試著在menu後面增加一個li標題叫Product
+            $("#menu").append("<li>Product</li>");
+
+            // 試著移除menu選單
+
+            $("#menu li").eq(1).css({
+                "color": "red",
+                "font-size": "20px"
+            });
+
+            // $("#menu li:nth-child(2)").css("background-color", "yellow"); // 是由 1 開始算起
+            $("#menu li").eq(0).remove(); // 是由 0 開始算起
+
+            // 當menu被點擊時，contact 的文字變成綠色
+            $("#menu").on("click", function () {
+                $("#menu li").eq(2).css("color", "green");
+            });
+
+        });
+    </script>
+</body>
+
+</html>

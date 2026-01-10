@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>find() 方法範例</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container">
+     <p>這是第一段文字</p>
+     <p>這是第二段文字</p>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      const paragraphs = $('.container').find('p');
+      console.log(paragraphs);
+    });
+  </script>
+</body>
+</html>

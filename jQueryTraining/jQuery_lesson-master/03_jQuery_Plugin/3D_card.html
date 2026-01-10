@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Face cursor</title>
+  <style>
+    .card-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -20px; /* 設定 card 之間的負邊距，以產生間距效果 */
+  }
+
+  .card {
+    flex: 0 0 calc(25% - 20px); /* 設定每張 card 的寬度，並考慮到間距 */
+    margin: 20px; /* 設定 card 的間距 */
+    background-color: #f2f2f2;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    height: 400px;
+    box-shadow: 2px 2px 5px #999;
+  }
+
+  .card h2 {
+    margin-bottom: 10px;
+  }
+
+  .card img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="card-list">
+    <div class="card">
+      <h2>Card 1</h2>
+      <img src="imgs/card1.jpg" alt="Image 1">
+    </div>
+    <div class="card">
+      <h2>Card 2</h2>
+      <img src="imgs/card2.jpg" alt="Image 2">
+    </div>
+    <div class="card">
+      <h2>Card 3</h2>
+      <img src="imgs/card3.jpg" alt="Image 3">
+    </div>
+    <div class="card">
+      <h2>Card 4</h2>
+      <img src="imgs/card4.jpg" alt="Image 4">
+    </div>
+    <div class="card">
+      <h2>Card 5</h2>
+      <img src="imgs/card5.jpg" alt="Image 5">
+    </div>
+    <div class="card">
+      <h2>Card 6</h2>
+      <img src="imgs/card6.jpg" alt="Image 6">
+    </div>
+    <div class="card">
+      <h2>Card 7</h2>
+      <img src="imgs/card7.jpg" alt="Image 7">
+    </div>
+    <div class="card">
+      <h2>Card 8</h2>
+      <img src="imgs/card8.jpg" alt="Image 8">
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- 引入 jQuery -->
+  <script src="js/jQuery-face-cursor.js"></script> <!-- 引入自訂的 JavaScript 檔案 -->
+  <script>
+    $(function(){
+      $(".card").faceCursor({
+          options: "go here"
+      });
+    })
+  </script>
+</body>
+</html>

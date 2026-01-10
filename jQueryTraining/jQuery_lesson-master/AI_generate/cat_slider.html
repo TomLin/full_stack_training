@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 圖片輪播</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .slider {
+            position: relative;
+            width: 600px;
+            height: 450px; /* 4:3 比例 */
+            overflow: hidden;
+            background: #fff;
+        }
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .slides img {
+            width: auto;
+            height: 100%;
+            max-width: none;
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .controls button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            background: gray;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .active {
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slides"></div>
+        <div class="controls">
+            <button id="prev">上一張</button>
+            <button id="next">下一張</button>
+        </div>
+        <div class="dots"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            let images = [
+                "imgs/cats/cat1.jpg",
+                "imgs/cats/cat2.jpg",
+                "imgs/cats/cat3.jpg",
+                "imgs/cats/cat4.jpg",
+                "imgs/cats/cat5.jpg"
+            ];
+            let currentIndex = 0;
+
+            function renderSlides() {
+                images.forEach((src, index) => {
+                    $(".slides").append(`<img src="${src}" class="slide">`);
+                    $(".dots").append(`<div class="dot" data-index="${index}"></div>`);
+                });
+                $(".slide").first().show();
+                $(".dot").first().addClass("active");
+            }
+            renderSlides();
+
+            function showSlide(index) {
+                $(".slide").eq(currentIndex).fadeOut(300, function () {
+                    $(".slide").eq(index).fadeIn(300);
+                });
+                $(".dot").removeClass("active").eq(index).addClass("active");
+                currentIndex = index;
+            }
+
+            $("#next").click(function () {
+                let nextIndex = (currentIndex + 1) % images.length;
+                showSlide(nextIndex);
+            });
+
+            $("#prev").click(function () {
+                let prevIndex = (currentIndex - 1 + images.length) % images.length;
+                showSlide(prevIndex);
+            });
+
+            $(".dot").click(function () {
+                let index = $(this).data("index");
+                showSlide(index);
+            });
+        });
+    </script>
+</body>
+</html>

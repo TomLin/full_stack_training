@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Practice</title>
+</head>
+
+<body>
+    <h1>今天上jQuery課程</h1>
+    <!-- <h1>今天天氣很好</h1> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        /*
+            $(document).ready(function() {
+                // 你的jQuery程式碼放在這裡
+            });
+            //或簡寫成
+            $(function() {
+                // 你的jQuery程式碼放在這裡
+            });
+        */
+
+        // $ 符號，代表 jQuery 函式庫
+        // () 小括號，代表函式的參數，裡面可以放入選擇器
+
+        $(function () {
+            // 取得所有 h1 標籤
+            console.log($("h1"));
+            console.log($("h1").html()); // 取得第一個 h1 標籤的內容
+            $
+        });
+
+        $("h1").css("color", "red"); // 單一屬性變換寫法
+
+        $("h1").css({
+            "color": "purple",
+            "background-color": "yellow",
+            "font-size": "20px"
+        }); // 多重屬性變換寫法
+
+    </script>
+</body>
+
+</html>

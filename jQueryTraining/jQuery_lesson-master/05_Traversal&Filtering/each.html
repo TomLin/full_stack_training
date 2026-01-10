@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery each 方法示範</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div id="output">
+  <!-- 這裡將輸出遍歷結果 -->
+</div>
+
+<button id="showFruits">顯示水果</button>
+
+<script>
+$(document).ready(function() {
+  // 建立一個陣列，包含水果名稱
+  var fruits = ["蘋果", "香蕉", "橙子", "草莓", "葡萄"];
+  console.log("蘋果在第"+index+"個索引")
+  // 初始化時隱藏輸出區域 #output
+  $("#output").hide();
+
+  // 當使用者按下按鈕後執行以下程式碼
+  $("#showFruits").on('click',function() {
+    // 使用 each 方法遍歷陣列並將值輸出到網頁上
+    $.each(fruits, function(index, value) {
+      $("#output").append("<p>水果 " + (index + 1) + ": " + value + "</p>");
+    });
+    // 顯示輸出區域
+    $("#output").show();
+  });
+});
+</script>
+
+</body>
+</html>

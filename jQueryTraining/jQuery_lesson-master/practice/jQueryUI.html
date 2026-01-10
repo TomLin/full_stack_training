@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery UI Example</title>
+
+    <!-- 套用 jQuery UI, sunny 主題，需加上兩個 CSS檔案 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/sunny/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/sunny/theme.min.css">
+    <style>
+        /* 想要變成兩欄式的格式 */
+        .two-col {
+            display: flex;
+            /* space between 變成兩欄式 */
+            justify-content: space-between;
+        }
+
+        .News {
+            width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <p>日期:
+        <input type="text" id="datepicker" name="date">
+    </p>
+    <hr>
+    <!-- 要使用套件的 accordion, 就要按照它的 html 格式 -->
+    <!-- 例如下面的 accordion, 就是需要有 h3, div, p 等 element-->
+    <section class="News">
+        <h2>Accordion</h2>
+        <div id="accordion">
+            <h3>Section 1</h3>
+            <div class="two-col">
+                <p>
+                    A hike is a long, vigorous walk, usually on trails or footpaths in the countryside. Walking for
+                    pleasure
+                    developed in Europe during the eighteenth century.[1] Long hikes as part of a religious pilgrimage
+                    have
+                    existed for a much longer time. "Hiking" is the preferred term in Canada and the United States; the
+                    term
+                    "walking" is used in these regions for shorter, particularly urban walks. In the United Kingdom and
+                    Ireland, the word "walking" describes all forms of walking, whether it is a walk in the park or
+                    backpacking in the Alps. The word hiking is also often used in the UK, along with rambling,
+                    hillwalking,
+                    and fell walking (a term mostly used for hillwalking in northern England). The term bushwalking is
+                    endemic to Australia, having been adopted by the Sydney Bush Walkers Club in 1927.[2] In New Zealand
+                    a
+                    long, vigorous walk or hike is called tramping.[3] It is a popular activity with numerous hiking
+                    organizations worldwide, and studies suggest that all forms of walking have health benefits.
+                </p>
+                <!-- 也可以在裡面，加上圖片 -->
+                <img src="imgs/christmas-bell.png" alt="">
+            </div>
+            <h3>Section 2</h3>
+            <div class="two-col">
+                <p>
+                    A hike is a long, vigorous walk, usually on trails or footpaths in the countryside. Walking for
+                    pleasure
+                    developed in Europe during the eighteenth century.[1] Long hikes as part of a religious pilgrimage
+                    have
+                    existed for a much longer time. "Hiking" is the preferred term in Canada and the United States; the
+                    term
+                </p>
+                <p>
+                    "walking" is used in these regions for shorter, particularly urban walks. In the United Kingdom and
+                    Ireland, the word "walking" describes all forms of walking, whether it is a walk in the park or
+                    backpacking in the Alps. The word hiking is also often used in the UK, along with rambling,
+                    hillwalking,
+                    and fell walking (a term mostly used for hillwalking in northern England). The term bushwalking is
+                    endemic to Australia, having been adopted by the Sydney Bush Walkers Club in 1927.[2] In New Zealand
+                    a
+                    long, vigorous walk or hike is called tramping.[3] It is a popular activity with numerous hiking
+                    organizations worldwide, and studies suggest that all forms of walking have health benefits.
+                </p>
+            </div>
+            <h3>Section 3</h3>
+            <div>
+                <p>
+                    A hike is a long, vigorous walk, usually on trails or footpaths in the countryside. Walking for
+                    pleasure
+                    developed in Europe during the eighteenth century.[1] Long hikes as part of a religious pilgrimage
+                    have
+                    existed for a much longer time. "Hiking" is the preferred term in Canada and the United States; the
+                    term
+                    "walking" is used in these regions for shorter, particularly urban walks. In the United Kingdom and
+                    Ireland, the word "walking" describes all forms of walking, whether it is a walk in the park or
+                    backpacking in the Alps. The word hiking is also often used in the UK, along with rambling,
+                    hillwalking,
+                    and fell walking (a term mostly used for hillwalking in northern England). The term bushwalking is
+                    endemic to Australia, having been adopted by the Sydney Bush Walkers Club in 1927.[2] In New Zealand
+                    a
+                    long, vigorous walk or hike is called tramping.[3] It is a popular activity with numerous hiking
+                    organizations worldwide, and studies suggest that all forms of walking have health benefits.
+                </p>
+                <ul>
+                    <li>List item one</li>
+                    <li>List item two</li>
+                    <li>List item three</li>
+                </ul>
+            </div>
+            <h3>Section 4</h3>
+            <div>
+                <p>
+                    In the United States, Canada, Ireland, and the United Kingdom, hiking means walking outdoors on a
+                    trail,
+                    or off trail, for recreational purposes.[6] A day hike refers to a hike that can be completed in a
+                    single day. However, in the United Kingdom, the word walking is also used, as well as rambling,
+                    while
+                    walking in mountainous areas is called hillwalking. In Northern England, Including the Lake District
+                    and
+                    Yorkshire Dales, fell walking describes hill or mountain walks, as fell is the common word for both
+                    features there.
+                </p>
+                <p>
+                    In the United States, Canada, Ireland, and the United Kingdom, hiking means walking outdoors on a
+                    trail,
+                    or off trail, for recreational purposes.[6] A day hike refers to a hike that can be completed in a
+                    single day. However, in the United Kingdom, the word walking is also used, as well as rambling,
+                    while
+                    walking in mountainous areas is called hillwalking. In Northern England, Including the Lake District
+                    and
+                    Yorkshire Dales, fell walking describes hill or mountain walks, as fell is the common word for both
+                    features there.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+    <section class="News">
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">vigorous walk</a></li>
+                <li><a href="#tabs-2">trails</a></li>
+                <li><a href="#tabs-3">footpaths</a></li>
+            </ul>
+            <div id="tabs-1">
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ullam tempora, reprehenderit
+                    incidunt
+                    eveniet tempore omnis praesentium. Est excepturi doloremque maiores corrupti dignissimos sed id.
+                    Veritatis maiores commodi perferendis pariatur?
+                </p>
+            </div>
+            <div id="tabs-2">
+                <p>In the United States, Canada, Ireland, and the United Kingdom, hiking means walking outdoors on a
+                    trail,
+                    or off trail, for recreational purposes.[6] A day hike refers to a hike that can be completed in a
+                    single day. However, in the United Kingdom, the word walking is also used, as well as rambling,
+                    while
+                    walking in mountainous areas is called hillwalking. In Northern England, Including the Lake District
+                    and
+                    Yorkshire Dales, fell walking describes hill or mountain walks, as fell is the common word for both
+                    features there.</p>
+            </div>
+            <div id="tabs-3">
+                <p>Hiking sometimes involves bushwhacking and is sometimes referred to as such. This specifically refers
+                    to
+                    difficult walking through dense forest, undergrowth, or bushes where forward progress requires
+                    pushing
+                    vegetation aside. In extreme cases of bushwhacking, where the vegetation is so dense that human
+                    passage
+                    is impeded, a machete is used to clear a pathway. The Australian term bushwalking refers to both on
+                    and
+                    off-trail hiking.[7] Common terms for hiking used by New Zealanders are tramping (particularly for
+                    overnight and longer trips),[8] walking or bushwalking. Trekking is the preferred word used to
+                    describe
+                    multi-day hiking in the mountainous regions of India, Pakistan, Nepal, North America, South America,
+                    Iran, and the highlands of East Africa. Hiking a long-distance trail from end-to-end is also
+                    referred to
+                    as trekking and as thru-hiking in some places.[9] In North America, multi-day hikes, usually with
+                    camping, are referred to as backpacking.</p>
+                <p>The poet Petrarch is frequently mentioned as an early example of someone hiking. Petrarch recounts
+                    that
+                    on April 26, 1336, with his brother and two servants, he climbed to the top of Mont Ventoux (1,912
+                    meters (6,273 ft)), a feat which he undertook for recreation rather than necessity.[10] The exploit
+                    is
+                    described in a celebrated letter addressed to his friend and confessor, the monk Dionigi di Borgo
+                    San
+                    Sepolcro, composed some time after the fact. However, some have suggested that Petrarch's climb was
+                    fictional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery 的 js 程式 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- jQuery UI 的 js 程式 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js">
+
+    </script>
+    <script>
+        $(function () {
+
+            // 關於 jQuery UI Datepicker 的說明，請參考:
+            // https://api.jqueryui.com/datepicker/#option-dateFormat
+            $("#datepicker").datepicker(
+                {
+                    dateFormat: "yy-mm-dd", //  日期格式
+                    changeMonth: true,      //  可選月份
+                    changeYear: true,        //  可選年份
+                    yearRange: "1950:2020", //  可選年份範圍
+
+                    /*
+                    
+                    minDate sets the earliest date the user is allowed to choose.
+                    maxDate sets the latest date the user is allowed to choose.
+
+                    */
+
+                    minDate: "-2d", // 從今天起的兩天前
+                    maxDate: "+1M +1W" // 從今天起的一個月又一週內
+                }
+            );
+
+            // 使用 套件的 Accordion, 直接 selector.accordion() 就可以使用了
+            $("#accordion").accordion();
+
+            $("#tabs").tabs();
+
+        });
+    </script>
+</body>
+
+</html>

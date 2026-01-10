@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>過濾器練習</title>
+</head>
+<body>
+    <ul>
+        <li>列表項目 1</li>
+        <li>列表項目 2</li>
+        <li>列表項目 3</li>
+    </ul>
+    <p>Today is a sunny day</p>
+    <div></div>
+    <button style="display: block;">請點我</button>
+    <img src="../01_Basic/imgs/potato.jpeg" style="display: none;">
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script>
+        //選擇第一個元素並將文字顏色變成紅色
+        $("li:first").css("color", "red");
+        //選擇最後一個元素並加字體加粗
+        $("li:last").css("font-weight", "bold");
+        //選擇文字包含sunny的元素並加上樣式
+        $("p:contains('sunny')").css("text-decoration", "underline");
+        //選擇没有子元素的DIV元素並設定H1文字
+        $("div:empty").html("<h1>這是div元素</h1>");
+        //選擇可見的按鈕元素並設定成草綠色
+        $("button:visible").css("background-color", "#82E0AA");
+        //選擇看不見的img圖片並執行淡入
+        $("img:hidden").fadeIn(1000);
+     </script> 
+</body>
+</html>

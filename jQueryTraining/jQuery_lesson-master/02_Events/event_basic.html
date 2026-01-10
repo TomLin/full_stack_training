@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認識jquery事件</title>
+    <style>
+        .container{
+            display: flex;
+            width: 800px;
+        }
+        .word1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: tomato;
+        }
+        .word2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: tomato;
+        }
+        .word3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="word1">今天天氣很好</p>
+        <p class="word2">jQuery超好玩</p>
+        <p class="word3">Box3</p>
+    </div>
+    <select name="fruit" id="fruit">
+        <option value="蘋果">蘋果</option>
+        <option value="草莓">草莓</option>
+        <option value="香蕉">香蕉</option>
+        <option value="芭樂">芭樂</option>
+        <option value="水蜜桃">水蜜桃</option>
+    </select>
+    <p class="list">您選擇的水果是蘋果</p>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            // 按一下word1換色
+            // 綁定 click 事件 
+            $(".word1").on('click',function(){   
+                $(this).css('background-color','yellow');
+                $(this).css('color','black');
+            });  
+            $(".word1").on('dblclick',function(){   
+                $(this).css('background-color','blue');
+                $(this).css('color','white');
+            });  
+            $(".word1").on('mousemove',function(){   
+                $(this).html('滑鼠正在移動');
+            });  
+            $(".word1").on('mouseleave',function(){   
+                $(this).html('今天天氣真好');
+            });  
+            // 綁定 mousemove 事件 
+            $(".word2").on('mousemove',function(){   
+                $(this).css("background-color", "pink"); 
+            });
+            $(".word2").on('mouseup',function(){   
+                $(this).css("background-color", "orange"); 
+            });
+            // 綁定 hover 事件
+            $(".word3").hover(
+                function(){   
+                    //滑鼠滑入執行程式
+                    $(this).css('background-color','lightgreen');
+                },
+                function(){
+                    //滑鼠移出執行程式
+                    $(this).css('background-color','lightskyblue');
+                }
+            )
+            $("#fruit").on('change',function(){
+                $('.list').text("您選擇的水果是"+ $(this).val());
+            });
+       
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認識jquery事件</title>
+    <style>
+       
+        .word1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: tomato;
+        }
+        .word2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: tomato;
+        }
+        .word3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right:10px;
+            width: 300px;
+            height: 300px;
+            background: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <ul id="my-list">
+        <li><a href="#">按鈕1</a></li>
+        <li><a href="#">按鈕2</a></li>
+        <li><a href="#">按鈕3</a></li>
+    </ul>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('#my-list').on('click', 'a', function() {
+                // 程式碼
+                $(this).css('color','tomato');
+            });
+        });
+    </script>
+</body>
+</html>

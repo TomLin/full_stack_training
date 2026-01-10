@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>貓咪圖片輪播</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #carousel-container {
+            width: 400px;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+
+        #carousel img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+            border-radius: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            border: none;
+            background-color: orange;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: darkorange;
+        }
+
+        .dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: gray;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .active {
+            background-color: orange;
+            transform: scale(1.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>🐱 貓咪圖片輪播 🐱</h2>
+
+    <div id="carousel-container">
+        <div id="carousel"></div>
+    </div>
+
+    <div class="button-container">
+        <button id="prev">⬅️ 上一張</button>
+        <button id="next">下一張 ➡️</button>
+    </div>
+
+    <div class="dots"></div>
+
+    <script>
+        $(document).ready(function() {
+            // 確保圖片可正常顯示
+            let images = [
+                "https://images.unsplash.com/photo-1574158622682-e40e69881006",  
+                "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb",  
+                "https://images.unsplash.com/photo-1561948955-570b270e7c36",  
+                "https://images.unsplash.com/photo-1592194996308-7b43878e84a3",  
+                "https://images.unsplash.com/photo-1518791841217-8f162f1e1131"  
+            ];
+
+            let currentIndex = 0;
+
+            function loadImages() {
+                images.forEach((src, index) => {
+                    $('#carousel').append(`<img src="${src}?auto=format&fit=crop&w=400&h=250" data-index="${index}">`);
+                    $('.dots').append(`<span class="dot" data-index="${index}"></span>`);
+                });
+
+                $('#carousel img').eq(0).show();
+                $('.dot').eq(0).addClass('active');
+            }
+
+            loadImages();
+
+            function updateImage(index) {
+                $('#carousel img:visible').fadeOut(300, function() {
+                    $('#carousel img').eq(index).fadeIn(300);
+                });
+
+                $('.dot').removeClass('active');
+                $('.dot').eq(index).addClass('active');
+            }
+
+            $('#next').click(function() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateImage(currentIndex);
+            });
+
+            $('#prev').click(function() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateImage(currentIndex);
+            });
+
+            $('.dot').click(function() {
+                let index = $(this).data('index');
+                currentIndex = index;
+                updateImage(currentIndex);
+            });
+        });
+    </script>
+</body>
+</html>

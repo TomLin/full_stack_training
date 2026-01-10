@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Event</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+        }
+
+        .box a {
+            width: 80px;
+            height: 40px;
+            /* 沒有 display block, width and height 不會生效 */
+            display: block;
+            color: black;
+        }
+
+        .reservation {
+            width: 100px;
+            height: 50px;
+            color: white;
+            background-color: coral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            right: 0px;
+            bottom: 200px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <a href="www.google.com">Google</a>
+        <a href="www.yahoo.com">Yahoo</a>
+        <a href="www.pchome.com.tw">PChome</a>
+    </div>
+    <div class="reservation">
+        立即預約
+    </div>
+    <div><img
+            src="https://img.freepik.com/free-photo/beautiful-tropical-beach-sea-ocean-with-white-cloud-blue-sky-copyspace_74190-8663.jpg"
+            alt=""></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        /*
+         通常 window 物件會最先被創造, 它會最先載入
+         之後才是 document (DOM)
+
+         因此比較保險的做法是把 window load 放在最外層
+         再把 DOM load放在裡面
+        
+        */
+        $(window).on("resize", function () {
+            $(".box").css({
+                "width": "200px",
+            })
+        })
+
+        // $(document).ready(function () {}) 與 $(function() {}) 相同
+        $(function () {
+            console.log("DOM 已準備好！");
+            $("img").css({
+                "width": "200px",
+                "height": "150px"
+            });
+        }); // DOM ready
+
+
+        $(window).on("load", function () {
+            console.log("文件和所有內容已載入完成！");
+        });
+
+        $(".reservation").hide(); // 預設隱藏
+
+        // TODO: 查詢 scrollTop and scrollLeft 等的px位置算法
+        // 取得捲動高度(往下滑動的距離)
+        $(window).on("scroll", function () {
+            var scrollPosition = $(window).scrollTop();
+            console.log("目前捲動位置：" + scrollPosition + "px");
+
+            if (scrollPosition > 1000) {
+                $(".reservation").fadeIn(1000); // 1000毫秒出現
+            } else if (scrollPosition <= 300) {
+                $(".reservation").fadeOut(1000); // 1000毫秒消失
+            }
+        });
+
+        // event delegation, 將事件綁在 .box 的 a 元素上
+        $(".box").on("click", "a", function () {
+            // 這裡的 this 是被點擊的 a 元素
+            $(this).css("color", "red");
+            alert(`你點擊了${$(this).text()}連結`);
+        });
+
+        // 另外一個寫法，直接寫在 selector 上
+        // $(".box a").on("click", function() {});
+
+    </script>
+</body>
+
+</html>

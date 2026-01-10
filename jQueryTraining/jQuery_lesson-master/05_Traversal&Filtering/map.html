@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery map 方法示例</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div id="fruits">
+  <p>蘋果</p>
+  <p>香蕉</p>
+  <p>橙子</p>
+  <p>草莓</p>
+</div>
+
+<script>
+$(document).ready(function() {
+  // 選擇所有段落元素並使用 .map() 方法
+  var transformedFruits = $("#fruits p").map(function(index, element) {
+    // 將每個段落元素的文字內容包裹在 <span> 標籤中，並加入 "特價中" 的字樣
+    return "<p>" + $(element).text() + "<span style='color:red;'>特價中</span></p>";
+  });
+
+  // 將結果顯示在網頁上
+  $("#fruits").empty();
+  transformedFruits.each(function(index, value) {
+    $("#fruits").append(value);
+  });
+  
+});
+</script>
+
+</body>
+</html>
+ 
