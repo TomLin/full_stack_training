@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css"> 
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    </head>
+
+    <body class="p-4">
+
+        <h1>01b-基礎繪圖(線)</h1>
+        <hr>
+                   
+        <canvas style="border: 1px solid gray;" width="640" height="400">
+            您的瀏覽器不支援canvas
+        </canvas>
+
+        <script>
+
+            const canvas = document.querySelector("canvas");
+
+            //渲染繪圖物件
+            const ctx = canvas.getContext("2d");
+
+            //畫一條線 ===============================================================
+            
+            //開始一段新的路徑
+            ctx.beginPath();  
+
+            //畫筆移置x,y
+            ctx.moveTo(50,50);   
+
+            //從上一個位置移到x,y
+            ctx.lineTo(450,50); 
+
+            //畫線
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = "green"; 
+            ctx.stroke();        
+
+
+            //畫斑馬線 ===============================================================
+            
+            //設置線寬度30px，線為黑色
+            var xPoint = 50;
+            ctx.lineWidth = 30;
+            ctx.strokeStyle = "black"; 
+            //畫N條線
+            for (i = 1; i < 10; i++) {
+                ctx.beginPath();  //開始一段新的路徑
+                ctx.moveTo(xPoint * i, 100);    //畫筆移置x=xPoint*i,y=100 
+                ctx.lineTo(xPoint * i, 200);    //從上一個畫筆位置移到x=xPoint,y=200
+                ctx.stroke();   //畫線 
+            } 
+
+
+            //畫三角形(填色) ===============================================================
+
+            ctx.beginPath();   //開始一段新的路徑
+            ctx.moveTo(30,250);     //畫筆移置x=30,y=250
+            ctx.lineTo(30,350);     //從上一個畫筆位置移到x=30,y=350
+            ctx.lineTo(155,250);    //再從上一個畫筆位置移到x=155,y=250
+            ctx.closePath();    //閉合路徑
+
+            //設置路徑線寬度5px，線為紅色，並繪製線
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = "red"; 
+            ctx.stroke();        
+
+            //填色為綠色，並填充路徑
+            ctx.fillStyle = "green";
+            ctx.fill();
+
+        </script>
+
+    </body>
+</html>
