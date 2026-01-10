@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreakPoint</title>
+    <!-- Bootstrap.css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <!-- g-1 是 gutter，用來控制 column 之間的間距 -->
+        <!-- bootstrap 有多種 gutter 大小，像是 g-0, g-1, g-2, g-3, g-4, g-5 -->
+        <!-- 通常放在column的父元素，來控制 column 的間距 -->
+        <div class="row g-1">
+            <!-- 這裡的多種 column 的 class, 是當作不同screen大小下的breakpoint，去切換 1 row 要呈現多少個數量 -->
+            <!-- md 寬約 768px, xl 寬約 1200px -->
+            <!-- class 的寫法，通常是 col-[breakpoint]-[number] -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <a href="product.html">
+                    <img src="./imgs/image01.png" alt="" class="img-fluid">
+                    <p class="text-center"><a href="">圖片 - 01</a></p>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <a href="product.html">
+                    <img src="./imgs/image02.png" alt="" class="img-fluid">
+                    <p class="text-center"><a href="">圖片 - 02</a></p>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <a href="product.html">
+                    <img src="./imgs/image03.png" alt="" class="img-fluid">
+                    <p class="text-center"><a href="">圖片 - 03</a></p>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <a href="product.html">
+                    <img src="./imgs/image04.png" alt="" class="img-fluid">
+                    <p class="text-center"><a href="">圖片 - 04</a></p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
